@@ -5,13 +5,13 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Kypro AI — Intelligent Trading Signals',
+  title: 'Kypro AI — AI Pitfall Guide & Token Optimizer',
   description:
-    'AI-powered TSLA trading signals. Backtested. Data-driven. Automated.',
+    'We burned thousands in AI tokens so you don\'t have to. Get verified results, optimized prompts, and a map of what works.',
   openGraph: {
-    title: 'Kypro AI — Intelligent Trading Signals',
+    title: 'Kypro AI — Stop Wasting AI Tokens',
     description:
-      'AI-powered TSLA trading signals. Backtested. Data-driven. Automated.',
+      'Verified AI pitfalls, token optimization, and proven methods. We test so you don\'t waste.',
     type: 'website',
   },
 };
