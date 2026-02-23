@@ -1,3 +1,5 @@
+"use client";
+
 export default function Waitlist() {
   return (
     <section id="waitlist" className="px-6 py-24 sm:py-32">
