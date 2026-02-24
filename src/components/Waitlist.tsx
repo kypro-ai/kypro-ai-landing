@@ -1,6 +1,39 @@
 "use client";
 
+import { useState } from "react";
+
 export default function Waitlist() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email.trim()) return;
+
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus("success");
+        setMessage(data.message || "You're on the list!");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Something went wrong.");
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Network error. Please try again.");
+    }
+  }
+
   return (
     <section id="waitlist" className="px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-2xl text-center">
@@ -8,30 +41,50 @@ export default function Waitlist() {
           Join the Waitlist
         </h2>
         <p className="mt-4 text-lg text-dark-300">
-          Be the first to access our AI pitfall database and token optimization toolkit. Free early access for waitlist members.
+          Be the first to access our AI pitfall database and token optimization
+          toolkit. Free early access for waitlist members.
         </p>
 
-        <form
-          className="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="flex-1 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-white placeholder:text-dark-400 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
-            required
-          />
-          <button
-            type="submit"
-            className="rounded-xl bg-brand-600 px-6 py-3.5 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
+        {status === "success" ? (
+          <div className="mt-10 glass-card rounded-2xl p-8 border border-green-500/20 bg-green-500/5">
+            <div className="text-4xl mb-3">🎉</div>
+            <h3 className="text-xl font-bold text-green-300">You&apos;re In!</h3>
+            <p className="mt-2 text-dark-200">{message}</p>
+          </div>
+        ) : (
+          <form
+            className="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+            onSubmit={handleSubmit}
           >
-            Get Early Access
-          </button>
-        </form>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="flex-1 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-white placeholder:text-dark-400 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              required
+              disabled={status === "loading"}
+            />
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="rounded-xl bg-brand-600 px-6 py-3.5 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {status === "loading" ? "Joining..." : "Get Early Access"}
+            </button>
+          </form>
+        )}
 
-        <p className="mt-4 text-sm text-dark-400">
-          No spam. Unsubscribe anytime. We respect your inbox (and your tokens).
-        </p>
+        {status === "error" && (
+          <p className="mt-4 text-sm text-red-400">{message}</p>
+        )}
+
+        {status !== "success" && (
+          <p className="mt-4 text-sm text-dark-400">
+            No spam. Unsubscribe anytime. We respect your inbox (and your
+            tokens).
+          </p>
+        )}
       </div>
     </section>
   );
