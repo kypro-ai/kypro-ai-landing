@@ -3,13 +3,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About — Kypro AI | Our Story",
+  title: "About — TokenGuard | Our Story",
   description:
-    "Kypro AI was born from a construction supply company owner's real experience with AI. We test with real money, burn real tokens, and share honest results.",
+    "TokenGuard was founded by a real business owner who burned thousands testing AI. We test with real money, burn real tokens, and share honest results.",
   openGraph: {
-    title: "About Kypro AI — Our Story",
+    title: "About TokenGuard — Our Story",
     description:
-      "A construction company owner + AI assistant tested everything so you don't have to. Real money, real failures, real lessons.",
+      "Founded by a real business owner who burned thousands testing AI. Real money, real failures, real lessons.",
     type: "website",
   },
 };
@@ -34,7 +34,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="mt-6 text-lg text-dark-300 max-w-2xl mx-auto">
-              Kypro AI was born from frustration — the gap between what AI
+              TokenGuard was born from frustration — the gap between what AI
               &quot;gurus&quot; promise and what actually happens when you try it.
             </p>
           </div>
@@ -47,8 +47,7 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-dark-200 leading-relaxed">
                 <p>
-                  It started with JD — the owner of a construction supply
-                  company. Like many business owners in 2025, JD heard the
+                  It started with JD — a real business owner who heard the
                   buzz about AI and thought: &quot;What if I could use AI to
                   find new revenue streams? Automate parts of my business?
                   Maybe even build something new?&quot;
@@ -81,7 +80,7 @@ export default function AboutPage() {
                   same expensive mistake.
                 </p>
                 <p>
-                  That&apos;s Kypro AI. We&apos;re the crash test dummies of the
+                  That&apos;s TokenGuard. We&apos;re the crash test dummies of the
                   AI gold rush.
                 </p>
               </div>
@@ -141,11 +140,11 @@ export default function AboutPage() {
                   <h3 className="text-xl font-bold text-white">JD</h3>
                   <p className="text-brand-400 text-sm font-medium">Founder</p>
                   <p className="mt-3 text-sm text-dark-300">
-                    Construction supply company owner turned AI tester.
-                    Approaches AI with a businessman&apos;s skepticism: &quot;Show
-                    me the P&amp;L, not the pitch deck.&quot; Has personally
-                    lost money on most of the pitfalls we document — so you
-                    don&apos;t have to.
+                    Business owner turned AI tester. Approaches AI with a
+                    businessman&apos;s skepticism: &quot;Show me the P&amp;L,
+                    not the pitch deck.&quot; Has personally lost money on
+                    most of the pitfalls we document — so you don&apos;t
+                    have to.
                   </p>
                 </div>
 

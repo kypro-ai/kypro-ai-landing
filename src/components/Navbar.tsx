@@ -19,8 +19,8 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="text-xl font-extrabold text-white tracking-tight">
-          <span className="gradient-text">Kypro AI</span>{" "}
-          <span className="text-lg">⚡</span>
+          <span className="gradient-text">TokenGuard</span>{" "}
+          <span className="text-lg">🛡️</span>
         </Link>
 
         {/* Desktop links */}

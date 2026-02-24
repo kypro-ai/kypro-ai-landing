@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-sm text-dark-400">
-            © 2026 Kypro AI — A product of Kypro Distribution Inc.
+            © 2026 TokenGuard
           </div>
 
           {/* Navigation Links */}
@@ -29,7 +29,7 @@ export default function Footer() {
         {/* Social Links */}
         <div className="mt-6 flex items-center justify-center gap-6">
           <a
-            href="https://twitter.com/KyproAI"
+            href="https://twitter.com/TokenGuardAI"
             target="_blank"
             rel="noopener noreferrer"
             className="text-dark-400 hover:text-white transition-colors"
@@ -40,7 +40,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://reddit.com/u/KyproAI"
+            href="https://reddit.com/u/TokenGuardAI"
             target="_blank"
             rel="noopener noreferrer"
             className="text-dark-400 hover:text-white transition-colors"
@@ -51,7 +51,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://github.com/kypro-ai"
+            href="https://github.com/tokenguard-ai"
             target="_blank"
             rel="noopener noreferrer"
             className="text-dark-400 hover:text-white transition-colors"

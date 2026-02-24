@@ -28,7 +28,7 @@ export default function Hero() {
 
         {/* Headline */}
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl">
-          <span className="gradient-text">Kypro AI</span>
+          <span className="gradient-text">TokenGuard</span>
           <br />
           <span className="text-white/90">AI Pitfall Guide &amp; Token Optimizer</span>
         </h1>

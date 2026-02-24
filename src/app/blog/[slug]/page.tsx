@@ -25,7 +25,7 @@ export function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} — Kypro AI Blog`,
+    title: `${post.title} — TokenGuard Blog`,
     description: post.description,
     openGraph: {
       title: post.title,
@@ -87,7 +87,7 @@ export default function BlogPostPage({
             <span>·</span>
             <span>{post.readTime}</span>
             <span>·</span>
-            <span>By Kypro AI Research Team</span>
+            <span>By TokenGuard Research Team</span>
           </div>
 
           {/* Divider */}
