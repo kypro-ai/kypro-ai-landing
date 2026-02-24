@@ -1,28 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
-  <!-- Gold token base -->
-  <circle cx="60" cy="65" r="38" fill="#D4A017" stroke="#B8860B" stroke-width="3"/>
-  <circle cx="60" cy="65" r="32" fill="none" stroke="#F0D060" stroke-width="1.5" opacity="0.6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" fill="none">
+  <!-- Gold token base - strong outline -->
+  <circle cx="70" cy="75" r="42" fill="#D4A017" stroke="#8B6914" stroke-width="4"/>
+  <circle cx="70" cy="75" r="38" fill="#E8B824" stroke="#D4A017" stroke-width="2"/>
+  <circle cx="70" cy="75" r="33" fill="none" stroke="#F5D040" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="70" cy="75" r="28" fill="none" stroke="#B8860B" stroke-width="1"/>
+  <circle cx="70" cy="75" r="42" fill="none" stroke="#B8860B" stroke-width="1" stroke-dasharray="2 4"/>
   
-  <!-- Token "T" letter -->
-  <text x="60" y="75" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="30" fill="#1a1a1a" opacity="0.3">T</text>
-  
-  <!-- Black fedora hat -->
-  <ellipse cx="60" cy="35" rx="35" ry="8" fill="#111111"/>
-  <path d="M30 35 Q32 12 60 10 Q88 12 90 35" fill="#1a1a1a"/>
-  <ellipse cx="60" cy="35" rx="42" ry="10" fill="#111111"/>
+  <!-- === COWBOY HAT with green matrix glow === -->
+  <!-- Green glow on brim edges -->
+  <path d="M8 42 Q20 52 40 48 Q55 45 70 40 Q85 45 100 48 Q120 52 132 42 Q125 50 100 52 Q85 50 70 48 Q55 50 40 52 Q15 50 8 42Z" fill="#111111" stroke="#00ff41" stroke-width="1" opacity="0.6"/>
+  <!-- Hat crown -->
+  <path d="M38 48 Q40 18 55 12 Q63 8 70 10 Q77 8 85 12 Q100 18 102 48" fill="#1a1a1a"/>
+  <!-- Brim solid -->
+  <ellipse cx="70" cy="48" rx="50" ry="10" fill="#111111"/>
+  <!-- Green glow outline on brim -->
+  <ellipse cx="70" cy="48" rx="50" ry="10" fill="none" stroke="#00ff41" stroke-width="0.8" opacity="0.5"/>
+  <!-- Brim curl -->
+  <path d="M12 48 Q8 40 15 38" stroke="#00ff41" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M128 48 Q132 40 125 38" stroke="#00ff41" stroke-width="1" fill="none" opacity="0.4"/>
   <!-- Hat band -->
-  <rect x="28" y="32" width="64" height="5" rx="2" fill="#2a2a2a"/>
-  <rect x="54" y="31" width="12" height="7" rx="1" fill="#D4A017" opacity="0.8"/>
+  <path d="M38 46 Q70 40 102 46" stroke="#D4A017" stroke-width="3" fill="none"/>
+  <rect x="64" y="41" width="12" height="8" rx="1.5" fill="#D4A017" stroke="#8B6914" stroke-width="1"/>
+  <rect x="67" y="43" width="6" height="4" rx="1" fill="#1a1a1a"/>
+  <!-- Crown dent -->
+  <path d="M52 20 Q70 28 88 20" stroke="#0d0d0d" stroke-width="1" fill="none" opacity="0.5"/>
+  <!-- Green glow on crown top edge -->
+  <path d="M38 48 Q40 18 55 12 Q63 8 70 10 Q77 8 85 12 Q100 18 102 48" fill="none" stroke="#00ff41" stroke-width="0.8" opacity="0.4"/>
   
-  <!-- Black sunglasses -->
-  <rect x="36" y="55" width="20" height="13" rx="4" fill="#0a0a0a" stroke="#333" stroke-width="1"/>
-  <rect x="64" y="55" width="20" height="13" rx="4" fill="#0a0a0a" stroke="#333" stroke-width="1"/>
-  <!-- Bridge -->
-  <path d="M56 61 Q60 58 64 61" stroke="#333" stroke-width="2" fill="none"/>
-  <!-- Lens glare -->
-  <rect x="39" y="57" width="6" height="3" rx="1" fill="white" opacity="0.15"/>
-  <rect x="67" y="57" width="6" height="3" rx="1" fill="white" opacity="0.15"/>
+  <!-- === AVIATOR SUNGLASSES === -->
+  <path d="M38 67 L58 64 Q64 64 64 71 L62 82 Q60 86 54 86 L42 84 Q36 82 35 76 Z" fill="#0a0a0a" stroke="#555" stroke-width="1.5"/>
+  <path d="M76 71 Q76 64 82 64 L102 67 Q105 69 105 76 L98 84 Q96 86 86 86 L78 82 Z" fill="#0a0a0a" stroke="#555" stroke-width="1.5"/>
+  <path d="M64 69 Q70 65 76 69" stroke="#888" stroke-width="1.5" fill="none"/>
+  <path d="M62 66 Q70 62 78 66" stroke="#888" stroke-width="1" fill="none"/>
+  <!-- Green tint reflection in lenses -->
+  <path d="M42 69 L55 67 Q58 67 57 71 L44 72 Z" fill="#00ff41" opacity="0.06"/>
+  <path d="M83 67 L96 69 L95 72 L84 71 Q82 67 83 67 Z" fill="#00ff41" opacity="0.06"/>
   <!-- Temple arms -->
-  <line x1="36" y1="60" x2="25" y2="58" stroke="#333" stroke-width="2"/>
-  <line x1="84" y1="60" x2="95" y2="58" stroke="#333" stroke-width="2"/>
+  <line x1="35" y1="71" x2="24" y2="67" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+  <line x1="105" y1="71" x2="116" y2="67" stroke="#888" stroke-width="2" stroke-linecap="round"/>
 </svg>
