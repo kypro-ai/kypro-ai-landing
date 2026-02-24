@@ -6,8 +6,10 @@ import Footer from "@/components/Footer";
 import { blogPosts, getPostBySlug } from "@/lib/blog-data";
 import AiMoneyMethodsContent from "@/components/blog/AiMoneyMethodsContent";
 import ZeroDteOptionsContent from "@/components/blog/ZeroDteOptionsContent";
+import ShopifySeoContent from "@/components/blog/ShopifySeoContent";
 
 const contentMap: Record<string, React.ComponentType> = {
+  "shopify-seo-ai-one-day": ShopifySeoContent,
   "ai-money-methods-what-actually-works": AiMoneyMethodsContent,
   "0dte-options-ai-guaranteed-loss": ZeroDteOptionsContent,
 };

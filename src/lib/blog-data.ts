@@ -10,6 +10,16 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "shopify-seo-ai-one-day",
+    title:
+      "I Used AI to Take a Shopify Store from 0 to 100 SEO Score in One Day",
+    description:
+      "115 products, zero meta descriptions, 75 identical copy-pasted descriptions. We fixed everything in one day with AI. Here's the exact playbook.",
+    date: "2026-02-24",
+    readTime: "8 min read",
+    tags: ["SEO", "Shopify", "AI Testing"],
+  },
+  {
     slug: "ai-money-methods-what-actually-works",
     title:
       "I Spent a Weekend Testing 15 'Make Money with AI' Methods — Here's What Actually Works",
