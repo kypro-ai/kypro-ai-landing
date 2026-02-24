@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -16,12 +17,19 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-emerald-500/10 bg-[#050505]/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 text-xl font-extrabold font-mono text-white tracking-tight">
-          <img src="/logo.svg" alt="TokenGuard" className="h-8 w-8" />
-          <span className="gradient-text">TokenGuard</span>{" "}
-          <span className="text-lg">🛡️</span>
+        <Link href="/" className="flex items-center gap-2.5">
+          <Image
+            src="/logo-icon.svg"
+            alt="TokenGuard"
+            width={36}
+            height={36}
+            className="w-9 h-9"
+          />
+          <span className="text-lg font-extrabold font-mono text-white tracking-tight hidden sm:inline">
+            <span className="gradient-text">TokenGuard</span>
+          </span>
         </Link>
 
         {/* Desktop links */}

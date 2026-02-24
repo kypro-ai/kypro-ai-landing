@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <!-- Gold gradient for the token -->
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#FFA500"/>
+    </linearGradient>
+    <!-- Darker gold for token inner details -->
+    <linearGradient id="goldDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFA500"/>
+      <stop offset="100%" stop-color="#CC8400"/>
+    </linearGradient>
+    <!-- Green gradient for the shield -->
+    <linearGradient id="shield" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <!-- Green glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Outer glow for shield -->
+    <filter id="shieldGlow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Shield shape (outer protective element) -->
+  <path
+    d="M32 4 L54 16 L54 36 C54 48 44 56 32 60 C20 56 10 48 10 36 L10 16 Z"
+    fill="none"
+    stroke="url(#shield)"
+    stroke-width="2"
+    stroke-linejoin="round"
+    filter="url(#shieldGlow)"
+    opacity="0.9"
+  />
+
+  <!-- Inner shield glow line -->
+  <path
+    d="M32 8 L50 18 L50 35 C50 45.5 41.5 52.5 32 56 C22.5 52.5 14 45.5 14 35 L14 18 Z"
+    fill="none"
+    stroke="#34d399"
+    stroke-width="0.75"
+    stroke-linejoin="round"
+    opacity="0.35"
+  />
+
+  <!-- Energy arcs — top left -->
+  <path d="M18 12 Q14 18 13 25" fill="none" stroke="#34d399" stroke-width="1" stroke-linecap="round" opacity="0.4" filter="url(#glow)"/>
+  <!-- Energy arcs — top right -->
+  <path d="M46 12 Q50 18 51 25" fill="none" stroke="#34d399" stroke-width="1" stroke-linecap="round" opacity="0.4" filter="url(#glow)"/>
+
+  <!-- Token (gold coin) -->
+  <circle cx="32" cy="32" r="15" fill="url(#gold)" />
+  <!-- Token rim -->
+  <circle cx="32" cy="32" r="15" fill="none" stroke="url(#goldDark)" stroke-width="1.5"/>
+  <!-- Token inner ring -->
+  <circle cx="32" cy="32" r="12" fill="none" stroke="#CC8400" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- Circuit traces on token -->
+  <!-- Horizontal line -->
+  <line x1="23" y1="32" x2="27" y2="32" stroke="#CC8400" stroke-width="0.7" opacity="0.5"/>
+  <line x1="37" y1="32" x2="41" y2="32" stroke="#CC8400" stroke-width="0.7" opacity="0.5"/>
+  <!-- Vertical line -->
+  <line x1="32" y1="21" x2="32" y2="25" stroke="#CC8400" stroke-width="0.7" opacity="0.5"/>
+  <line x1="32" y1="39" x2="32" y2="43" stroke="#CC8400" stroke-width="0.7" opacity="0.5"/>
+  <!-- Small circuit dots -->
+  <circle cx="23" cy="32" r="0.8" fill="#CC8400" opacity="0.6"/>
+  <circle cx="41" cy="32" r="0.8" fill="#CC8400" opacity="0.6"/>
+  <circle cx="32" cy="21" r="0.8" fill="#CC8400" opacity="0.6"/>
+  <circle cx="32" cy="43" r="0.8" fill="#CC8400" opacity="0.6"/>
+
+  <!-- "T" letter on token -->
+  <text
+    x="32" y="37"
+    text-anchor="middle"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-weight="700"
+    font-size="16"
+    fill="#7C4A00"
+    opacity="0.85"
+  >T</text>
+
+  <!-- Highlight on token (glossy reflection) -->
+  <ellipse cx="28" cy="26" rx="6" ry="3" fill="white" opacity="0.15" transform="rotate(-20 28 26)"/>
+</svg>
