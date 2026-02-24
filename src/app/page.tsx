@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
+import UseCases from '@/components/UseCases';
 import AI101 from '@/components/AI101';
 import Projects from '@/components/Projects';
 import Report from '@/components/Report';
@@ -14,6 +15,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Features />
+      <UseCases />
       <AI101 />
       <Projects />
       <Report />

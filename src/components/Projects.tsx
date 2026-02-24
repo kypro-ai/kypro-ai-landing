@@ -8,6 +8,7 @@ const projects = [
     tokens: "$2,400+",
     duration: "3 days",
     tags: ["Trading", "Options", "TSLA"],
+    locked: false,
     link: "/blog/0dte-options-ai-guaranteed-loss",
   },
   {
@@ -18,48 +19,141 @@ const projects = [
     resultColor: "text-brand-400",
     tokens: "$800+",
     duration: "1 week",
-    tags: ["Research", "Side Hustle", "AI Money"],
+    tags: ["Research", "Side Hustle"],
+    locked: false,
     link: "/blog/ai-money-methods-what-actually-works",
   },
   {
     status: "completed",
-    title: "TSLA Day Trade Short Strategy",
-    desc: "Built and backtested intraday short-selling strategy with MA5 filter. 78.5% win rate over 10 years, $251K profit.",
-    result: "✅ Strategy Validated",
+    title: "TSLA Intraday Short Strategy",
+    desc: "Built and backtested intraday short-selling strategy with MA5 filter. Tested across 10 years of data with 37+ filter combinations.",
+    result: "✅ 78.5% Win Rate",
     resultColor: "text-brand-400",
     tokens: "$1,200+",
     duration: "5 days",
     tags: ["Trading", "Backtesting", "TSLA"],
+    locked: true,
+  },
+  {
+    status: "completed",
+    title: "Momentum Breakout Swing Trade",
+    desc: "20-day breakout + MACD + RSI filter strategy. Optimized through v9 iterations with 10 years of data.",
+    result: "✅ CAGR 21.2%",
+    resultColor: "text-brand-400",
+    tokens: "$900+",
+    duration: "4 days",
+    tags: ["Trading", "Swing", "Momentum"],
+    locked: true,
+  },
+  {
+    status: "completed",
+    title: "Triple-Top Short Strategy",
+    desc: "Original strategy: 3 touches at resistance + VWAP + RSI + rejection candle → short. Tested 30+ filter combos.",
+    result: "✅ PF 1.80, $77K/2yr",
+    resultColor: "text-brand-400",
+    tokens: "$700+",
+    duration: "3 days",
+    tags: ["Trading", "Original", "Pattern"],
+    locked: true,
+  },
+  {
+    status: "completed",
+    title: "Oversold Short vs Long",
+    desc: "Tested both directions when TSLA is oversold. 28/30 short strategies profitable. Long strategies almost all lost money.",
+    result: "✅ Short Wins, Long Fails",
+    resultColor: "text-brand-400",
+    tokens: "$500+",
+    duration: "2 days",
+    tags: ["Trading", "Contrarian", "TSLA"],
+    locked: true,
+  },
+  {
+    status: "completed",
+    title: "Mean Reversion Swing Trade",
+    desc: "RSI oversold → buy, RSI overbought → sell. Best result after optimization: only $7K over 10 years. TSLA doesn't mean-revert.",
+    result: "❌ TSLA Not Suited",
+    resultColor: "text-red-400",
+    tokens: "$400+",
+    duration: "2 days",
+    tags: ["Trading", "Mean Reversion"],
+    locked: false,
+  },
+  {
+    status: "completed",
+    title: "Weekly Credit Spread (5DTE)",
+    desc: "Tested credit spread strategies with real Polygon.io options data. 2-year backtest with actual option prices.",
+    result: "❌ Only +3.5%/2yr",
+    resultColor: "text-red-400",
+    tokens: "$600+",
+    duration: "3 days",
+    tags: ["Trading", "Options", "Spreads"],
+    locked: true,
   },
   {
     status: "completed",
     title: "Real Estate Data Scraping",
-    desc: "Attempted to scrape realtor.ca, zolo.ca, housesigma.com, rew.ca for property data. All blocked by Cloudflare/Incapsula.",
+    desc: "Attempted to scrape realtor.ca, zolo.ca, housesigma.com, rew.ca for property data. All blocked by anti-bot systems.",
     result: "❌ All Sites Blocked",
     resultColor: "text-red-400",
     tokens: "$150+",
     duration: "1 day",
-    tags: ["Web Scraping", "Real Estate", "Anti-Bot"],
+    tags: ["Scraping", "Real Estate"],
+    locked: false,
   },
   {
     status: "completed",
     title: "AI Content Farm Viability",
-    desc: "Tested mass AI-generated blog content strategy. Google HCU update detection rate and potential penalties analyzed.",
+    desc: "Tested mass AI-generated blog content for SEO. Analyzed Google HCU update impact and detection patterns.",
     result: "⚠️ High Risk",
     resultColor: "text-yellow-400",
     tokens: "$300+",
     duration: "2 days",
     tags: ["SEO", "Content", "Google"],
+    locked: false,
+  },
+  {
+    status: "completed",
+    title: "Polygon.io API Deep Review",
+    desc: "Developer plan ($79/mo) for options data. Tested rate limits, data quality, historical coverage, and Canada availability.",
+    result: "✅ Solid for Options",
+    resultColor: "text-brand-400",
+    tokens: "$200+",
+    duration: "3 days",
+    tags: ["API", "Data", "Review"],
+    locked: false,
+  },
+  {
+    status: "completed",
+    title: "GPT-4 vs Claude vs Gemini: Coding",
+    desc: "Compared all three models on real-world coding tasks: backtesting scripts, web scraping, API integration, data analysis.",
+    result: "✅ Claude Wins Coding",
+    resultColor: "text-brand-400",
+    tokens: "$350+",
+    duration: "2 days",
+    tags: ["AI Tools", "Comparison"],
+    locked: true,
   },
   {
     status: "in-progress",
-    title: "Weekly Credit Spread Strategy",
-    desc: "Testing 5DTE credit spread strategies on TSLA with real Polygon.io options data. Initial results: only +3.5% over 2 years.",
-    result: "🔄 In Progress",
+    title: "Combo Strategy: Live Signals",
+    desc: "Triple-top + oversold short combo. Built signal engine, backtested $93K-$147K/2yr. Now running paper trade validation.",
+    result: "🔄 Paper Trading",
     resultColor: "text-blue-400",
-    tokens: "$600+",
+    tokens: "$800+",
     duration: "Ongoing",
-    tags: ["Trading", "Options", "Credit Spread"],
+    tags: ["Trading", "Live", "Signals"],
+    locked: true,
+  },
+  {
+    status: "planned",
+    title: "Moomoo OpenD API (Canada)",
+    desc: "Automated trading via Moomoo's OpenD when it launches in Canada. Will test latency, reliability, and strategy execution.",
+    result: "📋 Waiting for Launch",
+    resultColor: "text-dark-400",
+    tokens: "TBD",
+    duration: "~1 month",
+    tags: ["Trading", "Automation", "API"],
+    locked: true,
   },
 ];
 
@@ -76,6 +170,10 @@ const statusLabels: Record<string, string> = {
 };
 
 export default function Projects() {
+  const completedCount = projects.filter((p) => p.status === "completed").length;
+  const failCount = projects.filter((p) => p.result.includes("❌") || p.result.includes("⚠️")).length;
+  const totalTokens = "$9,300+";
+
   return (
     <section id="projects" className="px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-5xl">
@@ -97,8 +195,8 @@ export default function Projects() {
         <div className="grid grid-cols-3 gap-4 mb-12">
           {[
             { value: String(projects.length), label: "Projects Tested" },
-            { value: "$5,450+", label: "Total Tokens Burned" },
-            { value: "67%", label: "Failure Rate" },
+            { value: totalTokens, label: "Total Tokens Burned" },
+            { value: Math.round((failCount / completedCount) * 100) + "%", label: "Failure Rate" },
           ].map((stat) => (
             <div key={stat.label} className="glass-card rounded-xl p-4 text-center">
               <div className="text-2xl font-bold text-white font-mono">{stat.value}</div>
@@ -108,32 +206,35 @@ export default function Projects() {
         </div>
 
         {/* Project Cards */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {projects.map((project) => (
             <div
               key={project.title}
-              className="glass-card rounded-xl p-6 transition-all hover:bg-white/[0.06] hover:border-brand-500/15"
+              className="glass-card rounded-xl p-5 transition-all hover:bg-white/[0.06] hover:border-brand-500/15"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-3">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
                     <span
                       className={`inline-block text-[10px] font-mono font-medium rounded-full px-2 py-0.5 border ${statusStyles[project.status]}`}
                     >
                       {statusLabels[project.status]}
                     </span>
-                    <div className="flex gap-1.5">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[10px] font-mono text-dark-500 bg-dark-800 rounded-full px-2 py-0.5"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    {project.locked && (
+                      <span className="text-[10px] font-mono text-yellow-500/70 bg-yellow-500/10 rounded-full px-2 py-0.5">
+                        🔒 Members Only
+                      </span>
+                    )}
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] font-mono text-dark-500 bg-dark-800 rounded-full px-2 py-0.5"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                  <h3 className="text-lg font-bold text-white font-mono">
+                  <h3 className="text-base font-bold text-white font-mono">
                     {project.link ? (
                       <a href={project.link} className="hover:text-brand-400 transition-colors">
                         {project.title} →
@@ -144,7 +245,7 @@ export default function Projects() {
                   </h3>
                   <p className="mt-1 text-sm text-dark-400">{project.desc}</p>
                 </div>
-                <div className="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-1 shrink-0">
+                <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-1 shrink-0">
                   <span className={`text-sm font-mono font-bold ${project.resultColor}`}>
                     {project.result}
                   </span>
@@ -158,8 +259,25 @@ export default function Projects() {
           ))}
         </div>
 
+        {/* Unlock CTA */}
+        <div className="mt-10 glass-card rounded-2xl p-8 text-center border border-yellow-500/20 bg-yellow-500/5">
+          <div className="text-3xl mb-3">🔓</div>
+          <h3 className="text-xl font-bold text-white font-mono mb-2">
+            Unlock Full Project Details
+          </h3>
+          <p className="text-dark-300 text-sm max-w-lg mx-auto mb-6">
+            Members get access to complete data, code, parameters, and strategy details for all locked projects. Plus community discussion with other members.
+          </p>
+          <a
+            href="#waitlist"
+            className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
+          >
+            Join Waitlist — Early Access Free
+          </a>
+        </div>
+
         {/* More Coming */}
-        <div className="mt-8 text-center">
+        <div className="mt-6 text-center">
           <p className="text-sm text-dark-500 font-mono">
             New projects added weekly. Follow us on{" "}
             <a
