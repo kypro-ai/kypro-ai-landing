@@ -7,7 +7,7 @@
   <circle cx="70" cy="75" r="42" fill="none" stroke="#B8860B" stroke-width="1" stroke-dasharray="2 4"/>
   
   <!-- === COWBOY HAT === -->
-  <!-- Brim with green glow only on outer edges -->
+  <!-- Brim -->
   <path d="M8 42 Q20 52 40 48 Q55 45 70 40 Q85 45 100 48 Q120 52 132 42 Q125 50 100 52 Q85 50 70 48 Q55 50 40 52 Q15 50 8 42Z" fill="#111111" stroke="#2a2a2a" stroke-width="1"/>
   <!-- Hat crown -->
   <path d="M38 48 Q40 18 55 12 Q63 8 70 10 Q77 8 85 12 Q100 18 102 48" fill="#1a1a1a"/>
