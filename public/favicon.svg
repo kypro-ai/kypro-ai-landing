@@ -1,23 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <defs>
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFD700"/>
-      <stop offset="100%" stop-color="#B8860B"/>
-    </linearGradient>
-    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#34d399"/>
-      <stop offset="100%" stop-color="#059669"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Shield -->
-  <path d="M32 4 L56 15 L56 35 C56 48 46 58 32 62 C18 58 8 48 8 35 L8 15 Z" 
-        fill="none" stroke="url(#shieldGrad)" stroke-width="3"/>
-  
-  <!-- Gold coin -->
-  <circle cx="32" cy="32" r="17" fill="url(#goldGrad)"/>
-  
-  <!-- T letter -->
-  <text x="32" y="39" text-anchor="middle" font-family="Arial, sans-serif" 
-        font-size="22" font-weight="bold" fill="#1a1a2e">T</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="65" r="38" fill="#D4A017" stroke="#B8860B" stroke-width="3"/>
+  <circle cx="60" cy="65" r="32" fill="none" stroke="#F0D060" stroke-width="1.5" opacity="0.6"/>
+  <text x="60" y="75" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="30" fill="#1a1a1a" opacity="0.3">T</text>
+  <ellipse cx="60" cy="35" rx="35" ry="8" fill="#111111"/>
+  <path d="M30 35 Q32 12 60 10 Q88 12 90 35" fill="#1a1a1a"/>
+  <ellipse cx="60" cy="35" rx="42" ry="10" fill="#111111"/>
+  <rect x="28" y="32" width="64" height="5" rx="2" fill="#2a2a2a"/>
+  <rect x="54" y="31" width="12" height="7" rx="1" fill="#D4A017" opacity="0.8"/>
+  <rect x="36" y="55" width="20" height="13" rx="4" fill="#0a0a0a" stroke="#333" stroke-width="1"/>
+  <rect x="64" y="55" width="20" height="13" rx="4" fill="#0a0a0a" stroke="#333" stroke-width="1"/>
+  <path d="M56 61 Q60 58 64 61" stroke="#333" stroke-width="2" fill="none"/>
+  <rect x="39" y="57" width="6" height="3" rx="1" fill="white" opacity="0.15"/>
+  <rect x="67" y="57" width="6" height="3" rx="1" fill="white" opacity="0.15"/>
 </svg>

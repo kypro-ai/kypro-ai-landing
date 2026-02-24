@@ -186,7 +186,7 @@ export default function ZeroDteOptionsContent() {
         </p>
         <p className="mt-4 text-dark-200 leading-relaxed">
           We burned real money learning this so you don&apos;t have to. That&apos;s
-          what TokenGuard is about — testing things with real stakes and
+          what TokenSpy is about — testing things with real stakes and
           sharing the honest results.
         </p>
       </div>

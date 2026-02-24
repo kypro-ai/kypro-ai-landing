@@ -34,19 +34,19 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-400" />
           </span>
-          Stop Wasting AI Tokens — Start Saving Today
+          🕵️ Undercover AI Intelligence — We Test So You Don&apos;t Get Burned
         </div>
 
         {/* Headline */}
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl">
-          <span className="gradient-text font-mono">TokenGuard</span>
+          <span className="gradient-text font-mono">TokenSpy</span>
           <br />
-          <span className="text-white/90">AI Pitfall Guide &amp; Token Optimizer</span>
+          <span className="text-white/90">Undercover AI Testing &amp; Pitfall Intelligence</span>
         </h1>
 
         {/* Subtitle */}
         <p className="mt-8 text-lg leading-relaxed text-dark-300 sm:text-xl max-w-2xl mx-auto">
-          We burned thousands in AI tokens so you don&apos;t have to. Get verified results, optimized prompts, and a growing database of what works — and what doesn&apos;t.
+          We go undercover inside AI tools so you don&apos;t get burned. Real tests, real results, and a growing database of what works — and what&apos;s a waste of money.
         </p>
 
         {/* CTA Buttons */}
@@ -77,8 +77,8 @@ export default function Hero() {
         {/* Stats */}
         <div className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto">
           {[
-            { value: '$10K+', label: 'Tokens Burned Testing' },
-            { value: '200+', label: 'Pitfalls Documented' },
+            { value: '$10K+', label: 'Spent Going Undercover' },
+            { value: '200+', label: 'Pitfalls Exposed' },
             { value: '80%', label: 'Avg Token Savings' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">

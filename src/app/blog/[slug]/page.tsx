@@ -25,7 +25,7 @@ export function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} — TokenGuard Blog`,
+    title: `${post.title} — TokenSpy Blog`,
     description: post.description,
     openGraph: {
       title: post.title,
@@ -87,7 +87,7 @@ export default function BlogPostPage({
             <span>·</span>
             <span>{post.readTime}</span>
             <span>·</span>
-            <span>By TokenGuard Research Team</span>
+            <span>By TokenSpy Research Team</span>
           </div>
 
           {/* Divider */}

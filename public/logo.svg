@@ -1,78 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none">
-  <defs>
-    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FFD700"/>
-      <stop offset="100%" stop-color="#FFA500"/>
-    </linearGradient>
-    <linearGradient id="goldDark" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FFA500"/>
-      <stop offset="100%" stop-color="#CC8400"/>
-    </linearGradient>
-    <linearGradient id="shield" x1="0.5" y1="0" x2="0.5" y2="1">
-      <stop offset="0%" stop-color="#34d399"/>
-      <stop offset="100%" stop-color="#059669"/>
-    </linearGradient>
-    <linearGradient id="textGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#e2e8f0"/>
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="1.5" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="shieldGlow">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-
-  <!-- === ICON (same as logo-icon.svg) === -->
-  <g>
-    <!-- Shield -->
-    <path
-      d="M32 4 L54 16 L54 36 C54 48 44 56 32 60 C20 56 10 48 10 36 L10 16 Z"
-      fill="none" stroke="url(#shield)" stroke-width="2" stroke-linejoin="round"
-      filter="url(#shieldGlow)" opacity="0.9"
-    />
-    <path
-      d="M32 8 L50 18 L50 35 C50 45.5 41.5 52.5 32 56 C22.5 52.5 14 45.5 14 35 L14 18 Z"
-      fill="none" stroke="#34d399" stroke-width="0.75" stroke-linejoin="round" opacity="0.35"
-    />
-    <!-- Energy arcs -->
-    <path d="M18 12 Q14 18 13 25" fill="none" stroke="#34d399" stroke-width="1" stroke-linecap="round" opacity="0.4" filter="url(#glow)"/>
-    <path d="M46 12 Q50 18 51 25" fill="none" stroke="#34d399" stroke-width="1" stroke-linecap="round" opacity="0.4" filter="url(#glow)"/>
-    <!-- Token -->
-    <circle cx="32" cy="32" r="15" fill="url(#gold)"/>
-    <circle cx="32" cy="32" r="15" fill="none" stroke="url(#goldDark)" stroke-width="1.5"/>
-    <circle cx="32" cy="32" r="12" fill="none" stroke="#CC8400" stroke-width="0.5" opacity="0.6"/>
-    <!-- Circuit traces -->
-    <line x1="23" y1="32" x2="27" y2="32" stroke="#CC8400" stroke-width="0.7" opacity="0.5"/>
-    <line x1="37" y1="32" x2="41" y2="32" stroke="#CC8400" stroke-width="0.7" opacity="0.5"/>
-    <line x1="32" y1="21" x2="32" y2="25" stroke="#CC8400" stroke-width="0.7" opacity="0.5"/>
-    <line x1="32" y1="39" x2="32" y2="43" stroke="#CC8400" stroke-width="0.7" opacity="0.5"/>
-    <circle cx="23" cy="32" r="0.8" fill="#CC8400" opacity="0.6"/>
-    <circle cx="41" cy="32" r="0.8" fill="#CC8400" opacity="0.6"/>
-    <circle cx="32" cy="21" r="0.8" fill="#CC8400" opacity="0.6"/>
-    <circle cx="32" cy="43" r="0.8" fill="#CC8400" opacity="0.6"/>
-    <!-- T -->
-    <text x="32" y="37" text-anchor="middle" font-family="'JetBrains Mono','Fira Code',monospace" font-weight="700" font-size="16" fill="#7C4A00" opacity="0.85">T</text>
-    <!-- Gloss -->
-    <ellipse cx="28" cy="26" rx="6" ry="3" fill="white" opacity="0.15" transform="rotate(-20 28 26)"/>
-  </g>
-
-  <!-- === TEXT === -->
-  <text
-    x="72" y="39"
-    font-family="'JetBrains Mono', 'Fira Code', monospace"
-    font-weight="800"
-    font-size="26"
-    fill="url(#textGrad)"
-    letter-spacing="-0.5"
-  >TokenGuard</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Gold token base -->
+  <circle cx="60" cy="65" r="38" fill="#D4A017" stroke="#B8860B" stroke-width="3"/>
+  <circle cx="60" cy="65" r="32" fill="none" stroke="#F0D060" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Token "T" letter -->
+  <text x="60" y="75" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="30" fill="#1a1a1a" opacity="0.3">T</text>
+  
+  <!-- Black fedora hat -->
+  <ellipse cx="60" cy="35" rx="35" ry="8" fill="#111111"/>
+  <path d="M30 35 Q32 12 60 10 Q88 12 90 35" fill="#1a1a1a"/>
+  <ellipse cx="60" cy="35" rx="42" ry="10" fill="#111111"/>
+  <!-- Hat band -->
+  <rect x="28" y="32" width="64" height="5" rx="2" fill="#2a2a2a"/>
+  <rect x="54" y="31" width="12" height="7" rx="1" fill="#D4A017" opacity="0.8"/>
+  
+  <!-- Black sunglasses -->
+  <rect x="36" y="55" width="20" height="13" rx="4" fill="#0a0a0a" stroke="#333" stroke-width="1"/>
+  <rect x="64" y="55" width="20" height="13" rx="4" fill="#0a0a0a" stroke="#333" stroke-width="1"/>
+  <!-- Bridge -->
+  <path d="M56 61 Q60 58 64 61" stroke="#333" stroke-width="2" fill="none"/>
+  <!-- Lens glare -->
+  <rect x="39" y="57" width="6" height="3" rx="1" fill="white" opacity="0.15"/>
+  <rect x="67" y="57" width="6" height="3" rx="1" fill="white" opacity="0.15"/>
+  <!-- Temple arms -->
+  <line x1="36" y1="60" x2="25" y2="58" stroke="#333" stroke-width="2"/>
+  <line x1="84" y1="60" x2="95" y2="58" stroke="#333" stroke-width="2"/>
 </svg>

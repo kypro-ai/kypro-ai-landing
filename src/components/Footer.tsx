@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-sm text-dark-400 font-mono">
-            © 2026 TokenGuard
+            © 2026 TokenSpy
           </div>
 
           {/* Navigation Links */}

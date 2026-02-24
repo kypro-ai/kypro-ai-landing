@@ -5,13 +5,13 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'TokenGuard — AI Pitfall Guide & Token Optimizer',
+  title: 'TokenSpy — AI Undercover Testing & Pitfall Intelligence',
   description:
-    'We burned thousands in AI tokens so you don\'t have to. Get verified results, optimized prompts, and a map of what works.',
+    'We go undercover inside AI tools so you don\'t get burned. Real tests, real results, real savings.',
   openGraph: {
-    title: 'TokenGuard — Stop Wasting AI Tokens',
+    title: 'TokenSpy — We Test AI So You Don\'t Get Burned',
     description:
-      'Verified AI pitfalls, token optimization, and proven methods. We test so you don\'t waste.',
+      'Undercover AI testing, verified pitfalls, and proven methods. Intelligence you can trust.',
     type: 'website',
   },
 };

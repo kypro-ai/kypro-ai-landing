@@ -5,11 +5,11 @@ import Footer from "@/components/Footer";
 import { blogPosts } from "@/lib/blog-data";
 
 export const metadata: Metadata = {
-  title: "Blog — TokenGuard | Real AI Testing, Real Results",
+  title: "Blog — TokenSpy | Real AI Testing, Real Results",
   description:
     "Read our latest findings from real-world AI testing. No hype, no affiliate links — just honest data on what works and what doesn't.",
   openGraph: {
-    title: "TokenGuard Blog — Real AI Testing, Real Results",
+    title: "TokenSpy Blog — Real AI Testing, Real Results",
     description:
       "Honest AI research backed by real experiments. We test so you don't waste.",
     type: "website",

@@ -5,7 +5,7 @@ export default function AiMoneyMethodsContent() {
         Last weekend, I sat down with a pot of coffee, 6 browser tabs full of
         &quot;how to make money with AI&quot; guides, and a spreadsheet. I
         cross-referenced everything against Reddit community data, real
-        earnings reports, and our own testing at TokenGuard. Here&apos;s the
+        earnings reports, and our own testing at TokenSpy. Here&apos;s the
         unfiltered truth.
       </p>
 

@@ -3,11 +3,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About — TokenGuard | Our Story & Team",
+  title: "About — TokenSpy | Our Story & Team",
   description:
-    "Meet the TokenGuard team — 9 specialists dedicated to testing AI methods with real money and delivering honest results.",
+    "Meet the TokenSpy team — 9 specialists dedicated to testing AI methods with real money and delivering honest results.",
   openGraph: {
-    title: "About TokenGuard — Our Story & Team",
+    title: "About TokenSpy — Our Story & Team",
     description:
       "Founded by a real business owner who burned thousands testing AI. Meet our 9-person team.",
     type: "website",
@@ -48,7 +48,7 @@ const team = [
     name: "Pixel",
     role: "Creative Lead",
     color: "pink",
-    desc: "Brand identity, visual design, video production, and everything that makes TokenGuard look as sharp as its data. The Matrix green? That was Pixel.",
+    desc: "Brand identity, visual design, video production, and everything that makes TokenSpy look as sharp as its data. The Matrix green? That was Pixel.",
   },
   {
     emoji: "🔍",
@@ -76,7 +76,7 @@ const team = [
     name: "Echo",
     role: "Growth & Marketing",
     color: "orange",
-    desc: "User acquisition, social media strategy, community building. Turns TokenGuard's research into content that reaches the people who need it most.",
+    desc: "User acquisition, social media strategy, community building. Turns TokenSpy's research into content that reaches the people who need it most.",
   },
 ];
 
@@ -112,7 +112,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="mt-6 text-lg text-dark-300 max-w-2xl mx-auto">
-              TokenGuard was born from frustration — the gap between what AI
+              TokenSpy was born from frustration — the gap between what AI
               &quot;gurus&quot; promise and what actually happens when you try it.
             </p>
           </div>
@@ -158,7 +158,7 @@ export default function AboutPage() {
                   same expensive mistake.
                 </p>
                 <p>
-                  That&apos;s TokenGuard. We&apos;re the crash test dummies of the
+                  That&apos;s TokenSpy. We&apos;re the crash test dummies of the
                   AI gold rush.
                 </p>
               </div>

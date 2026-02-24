@@ -23,13 +23,13 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2.5">
           <Image
             src="/logo-icon.svg"
-            alt="TokenGuard"
+            alt="TokenSpy"
             width={36}
             height={36}
             className="w-9 h-9"
           />
           <span className="text-lg font-extrabold font-mono text-white tracking-tight hidden sm:inline">
-            <span className="gradient-text">TokenGuard</span>
+            <span className="gradient-text">TokenSpy</span>
           </span>
         </Link>
 
