@@ -25,10 +25,10 @@ export default function BlogPage() {
         <div className="mx-auto max-w-4xl">
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="inline-block text-xs font-medium text-brand-400 bg-brand-500/10 rounded-full px-3 py-1 mb-4">
+            <span className="inline-block text-xs font-medium font-mono text-brand-400 bg-brand-500/10 rounded-full px-3 py-1 mb-4">
               Blog
             </span>
-            <h1 className="text-4xl font-extrabold text-white sm:text-5xl">
+            <h1 className="text-4xl font-extrabold text-white sm:text-5xl font-mono">
               <span className="gradient-text">Research & Insights</span>
             </h1>
             <p className="mt-4 text-lg text-dark-300 max-w-2xl mx-auto">
@@ -41,19 +41,19 @@ export default function BlogPage() {
           <div className="space-y-6">
             {blogPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`}>
-                <article className="glass-card rounded-2xl p-8 transition-all hover:bg-white/[0.06] hover:scale-[1.01] cursor-pointer group">
+                <article className="glass-card rounded-2xl p-8 transition-all cursor-pointer group">
                   <div className="flex flex-wrap gap-2 mb-3">
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs font-medium text-brand-400 bg-brand-500/10 rounded-full px-2.5 py-0.5"
+                        className="text-xs font-medium font-mono text-brand-400 bg-brand-500/10 rounded-full px-2.5 py-0.5"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <h2 className="text-xl font-bold text-white sm:text-2xl group-hover:text-brand-300 transition-colors">
+                  <h2 className="text-xl font-bold text-white sm:text-2xl font-mono group-hover:text-brand-400 transition-colors">
                     {post.title}
                   </h2>
 
@@ -61,7 +61,7 @@ export default function BlogPage() {
                     {post.description}
                   </p>
 
-                  <div className="mt-4 flex items-center gap-4 text-sm text-dark-400">
+                  <div className="mt-4 flex items-center gap-4 text-sm text-dark-400 font-mono">
                     <span>{post.date}</span>
                     <span>·</span>
                     <span>{post.readTime}</span>

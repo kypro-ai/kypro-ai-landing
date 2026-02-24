@@ -63,7 +63,7 @@ export default function Pricing() {
     <section id="pricing" className="px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold text-white sm:text-4xl font-mono">
             Invest Cents, Save Dollars
           </h2>
           <p className="mt-4 text-lg text-dark-300 max-w-xl mx-auto">
@@ -82,13 +82,13 @@ export default function Pricing() {
               }`}
             >
               {tier.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold font-mono text-white shadow-lg shadow-brand-600/30">
                   Most Popular
                 </div>
               )}
-              <h3 className="text-lg font-semibold text-white">{tier.name}</h3>
+              <h3 className="text-lg font-semibold text-white font-mono">{tier.name}</h3>
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-white">{tier.price}</span>
+                <span className="text-4xl font-extrabold font-mono text-brand-400">{tier.price}</span>
                 {tier.period && (
                   <span className="text-dark-400">{tier.period}</span>
                 )}
@@ -120,10 +120,10 @@ export default function Pricing() {
               </ul>
 
               <button
-                className={`mt-8 w-full rounded-xl py-3 text-sm font-semibold transition-all active:scale-[0.98] ${
+                className={`mt-8 w-full rounded-xl py-3 text-sm font-semibold font-mono transition-all active:scale-[0.98] ${
                   tier.highlight
-                    ? 'bg-brand-600 text-white hover:bg-brand-500'
-                    : 'bg-white/5 text-white/80 hover:bg-white/10 hover:text-white'
+                    ? 'bg-brand-600 text-white hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20'
+                    : 'bg-emerald-500/5 border border-emerald-500/20 text-white/80 hover:bg-emerald-500/10 hover:text-white hover:border-emerald-500/40'
                 }`}
               >
                 {tier.cta}

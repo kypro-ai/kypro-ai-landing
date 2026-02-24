@@ -37,7 +37,7 @@ export default function Waitlist() {
   return (
     <section id="waitlist" className="px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold text-white sm:text-4xl">
+        <h2 className="text-3xl font-bold text-white sm:text-4xl font-mono">
           Join the Waitlist
         </h2>
         <p className="mt-4 text-lg text-dark-300">
@@ -46,9 +46,9 @@ export default function Waitlist() {
         </p>
 
         {status === "success" ? (
-          <div className="mt-10 glass-card rounded-2xl p-8 border border-green-500/20 bg-green-500/5">
+          <div className="mt-10 glass-card rounded-2xl p-8 border-brand-500/20 bg-brand-500/5">
             <div className="text-4xl mb-3">🎉</div>
-            <h3 className="text-xl font-bold text-green-300">You&apos;re In!</h3>
+            <h3 className="text-xl font-bold text-brand-300 font-mono">You&apos;re In!</h3>
             <p className="mt-2 text-dark-200">{message}</p>
           </div>
         ) : (
@@ -61,14 +61,14 @@ export default function Waitlist() {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-white placeholder:text-dark-400 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              className="flex-1 rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-5 py-3.5 text-white font-mono placeholder:text-dark-500 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
               required
               disabled={status === "loading"}
             />
             <button
               type="submit"
               disabled={status === "loading"}
-              className="rounded-xl bg-brand-600 px-6 py-3.5 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-xl bg-brand-600 px-6 py-3.5 font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {status === "loading" ? "Joining..." : "Get Early Access"}
             </button>
@@ -76,7 +76,7 @@ export default function Waitlist() {
         )}
 
         {status === "error" && (
-          <p className="mt-4 text-sm text-red-400">{message}</p>
+          <p className="mt-4 text-sm text-red-400 font-mono">{message}</p>
         )}
 
         {status !== "success" && (

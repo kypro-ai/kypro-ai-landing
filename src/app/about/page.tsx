@@ -23,10 +23,10 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl">
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="inline-block text-xs font-medium text-brand-400 bg-brand-500/10 rounded-full px-3 py-1 mb-4">
+            <span className="inline-block text-xs font-medium font-mono text-brand-400 bg-brand-500/10 rounded-full px-3 py-1 mb-4">
               About Us
             </span>
-            <h1 className="text-4xl font-extrabold text-white sm:text-5xl">
+            <h1 className="text-4xl font-extrabold text-white sm:text-5xl font-mono">
               <span className="gradient-text">We&apos;re Not Theorists.</span>
               <br />
               <span className="text-white/90">
@@ -42,7 +42,7 @@ export default function AboutPage() {
           {/* Origin Story */}
           <div className="space-y-8">
             <div className="glass-card rounded-2xl p-8">
-              <h2 className="text-2xl font-bold text-white mb-4">
+              <h2 className="text-2xl font-bold text-white mb-4 font-mono">
                 The Origin Story 📖
               </h2>
               <div className="space-y-4 text-dark-200 leading-relaxed">
@@ -88,7 +88,7 @@ export default function AboutPage() {
 
             {/* What Makes Us Different */}
             <div className="glass-card rounded-2xl p-8">
-              <h2 className="text-2xl font-bold text-white mb-4">
+              <h2 className="text-2xl font-bold text-white mb-4 font-mono">
                 What Makes Us Different 💎
               </h2>
               <div className="grid gap-6 sm:grid-cols-2">
@@ -117,7 +117,7 @@ export default function AboutPage() {
                   <div key={item.title} className="flex gap-4">
                     <span className="text-2xl shrink-0">{item.icon}</span>
                     <div>
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-white font-mono">
                         {item.title}
                       </h3>
                       <p className="mt-1 text-sm text-dark-300">{item.desc}</p>
@@ -129,16 +129,16 @@ export default function AboutPage() {
 
             {/* Team */}
             <div className="glass-card rounded-2xl p-8">
-              <h2 className="text-2xl font-bold text-white mb-8 text-center">
+              <h2 className="text-2xl font-bold text-white mb-8 text-center font-mono">
                 The Team 👥
               </h2>
               <div className="grid gap-8 sm:grid-cols-2">
                 <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-brand-600/20 text-4xl">
+                  <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-brand-600/20 border border-brand-500/20 text-4xl">
                     🧑‍💼
                   </div>
-                  <h3 className="text-xl font-bold text-white">JD</h3>
-                  <p className="text-brand-400 text-sm font-medium">Founder</p>
+                  <h3 className="text-xl font-bold text-white font-mono">JD</h3>
+                  <p className="text-brand-400 text-sm font-medium font-mono">Founder</p>
                   <p className="mt-3 text-sm text-dark-300">
                     Business owner turned AI tester. Approaches AI with a
                     businessman&apos;s skepticism: &quot;Show me the P&amp;L,
@@ -149,11 +149,11 @@ export default function AboutPage() {
                 </div>
 
                 <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-cyan-500/20 text-4xl">
+                  <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-cyan-500/20 border border-cyan-500/20 text-4xl">
                     🤖
                   </div>
-                  <h3 className="text-xl font-bold text-white">KY</h3>
-                  <p className="text-cyan-400 text-sm font-medium">
+                  <h3 className="text-xl font-bold text-white font-mono">KY</h3>
+                  <p className="text-cyan-400 text-sm font-medium font-mono">
                     AI Research Assistant
                   </p>
                   <p className="mt-3 text-sm text-dark-300">
@@ -168,8 +168,8 @@ export default function AboutPage() {
             </div>
 
             {/* Mission */}
-            <div className="glass-card rounded-2xl p-8 border border-brand-500/20">
-              <h2 className="text-2xl font-bold text-white mb-4 text-center">
+            <div className="glass-card rounded-2xl p-8 border-brand-500/20">
+              <h2 className="text-2xl font-bold text-white mb-4 text-center font-mono">
                 Our Mission 🎯
               </h2>
               <p className="text-center text-lg text-dark-200 leading-relaxed max-w-2xl mx-auto">
@@ -178,7 +178,7 @@ export default function AboutPage() {
                 We share what works, what doesn&apos;t, and exactly how much it
                 costs to find out.
               </p>
-              <p className="mt-4 text-center text-dark-400 italic">
+              <p className="mt-4 text-center text-dark-400 italic font-mono">
                 &quot;We burned the tokens so you don&apos;t have to.&quot;
               </p>
             </div>
@@ -188,7 +188,7 @@ export default function AboutPage() {
           <div className="mt-16 text-center">
             <a
               href="/#waitlist"
-              className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
+              className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
             >
               Join the Waitlist — Get Our Research Free
             </a>

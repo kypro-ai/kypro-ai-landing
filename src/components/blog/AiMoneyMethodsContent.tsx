@@ -9,11 +9,11 @@ export default function AiMoneyMethodsContent() {
         unfiltered truth.
       </p>
 
-      <div className="my-10 glass-card rounded-2xl p-6 border border-yellow-500/20 bg-yellow-500/5">
+      <div className="my-10 glass-card rounded-2xl p-6 border-yellow-500/20 bg-yellow-500/5">
         <div className="flex items-start gap-3">
           <span className="text-2xl">💡</span>
           <div>
-            <h3 className="text-lg font-semibold text-yellow-300">
+            <h3 className="text-lg font-semibold text-yellow-300 font-mono">
               The #1 Brutal Truth
             </h3>
             <p className="mt-1 text-dark-200">
@@ -28,13 +28,13 @@ export default function AiMoneyMethodsContent() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         Three Things Nobody Tells You
       </h2>
 
       <div className="space-y-6">
         <div className="glass-card rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-2">
+          <h3 className="text-lg font-semibold text-white mb-2 font-mono">
             1. &quot;Passive Income&quot; is a Lie
           </h3>
           <p className="text-dark-300">
@@ -46,7 +46,7 @@ export default function AiMoneyMethodsContent() {
         </div>
 
         <div className="glass-card rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-2">
+          <h3 className="text-lg font-semibold text-white mb-2 font-mono">
             2. The Income Screenshots are Survivorship Bias
           </h3>
           <p className="text-dark-300">
@@ -59,7 +59,7 @@ export default function AiMoneyMethodsContent() {
         </div>
 
         <div className="glass-card rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-2">
+          <h3 className="text-lg font-semibold text-white mb-2 font-mono">
             3. AI Can&apos;t Replace Skills You Don&apos;t Have
           </h3>
           <p className="text-dark-300">
@@ -72,7 +72,7 @@ export default function AiMoneyMethodsContent() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         The Top 5 That Actually Work 🏆
       </h2>
 
@@ -112,8 +112,8 @@ export default function AiMoneyMethodsContent() {
           <div key={method.name} className="glass-card rounded-xl p-6">
             <div className="flex items-center gap-3 mb-2">
               <span className="text-2xl">{method.rank}</span>
-              <h3 className="text-lg font-semibold text-white">{method.name}</h3>
-              <span className="ml-auto px-2 py-1 rounded-lg bg-green-500/10 text-green-400 text-sm">
+              <h3 className="text-lg font-semibold text-white font-mono">{method.name}</h3>
+              <span className="ml-auto px-2 py-1 rounded-lg bg-brand-500/10 text-brand-400 text-sm font-mono">
                 {method.income}
               </span>
             </div>
@@ -122,7 +122,7 @@ export default function AiMoneyMethodsContent() {
         ))}
       </div>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         The Top 5 Traps to Avoid ⛔
       </h2>
 
@@ -161,12 +161,12 @@ export default function AiMoneyMethodsContent() {
         ].map((trap) => (
           <div
             key={trap.name}
-            className="glass-card rounded-xl p-6 border border-red-500/10"
+            className="glass-card rounded-xl p-6 border-red-500/10"
           >
             <div className="flex items-start gap-3">
               <span className="text-xl">{trap.icon}</span>
               <div>
-                <h3 className="text-lg font-semibold text-white">{trap.name}</h3>
+                <h3 className="text-lg font-semibold text-white font-mono">{trap.name}</h3>
                 <p className="mt-1 text-dark-300 text-sm">{trap.reason}</p>
               </div>
             </div>
@@ -174,7 +174,7 @@ export default function AiMoneyMethodsContent() {
         ))}
       </div>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         The Bottom Line
       </h2>
 
@@ -195,7 +195,7 @@ export default function AiMoneyMethodsContent() {
       <div className="mt-10 text-center">
         <a
           href="/#waitlist"
-          className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
+          className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
         >
           Get the Full Report — Free
         </a>

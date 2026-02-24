@@ -105,10 +105,10 @@ export default function Report() {
       <div className="mx-auto max-w-5xl">
         {/* Section Header */}
         <div className="text-center mb-4">
-          <span className="inline-block text-xs font-medium text-brand-400 bg-brand-500/10 rounded-full px-3 py-1 mb-4">
+          <span className="inline-block text-xs font-medium font-mono text-brand-400 bg-brand-500/10 rounded-full px-3 py-1 mb-4">
             Issue #001 — Feb 2026
           </span>
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold text-white sm:text-4xl font-mono">
             AI Money-Making Methods: Tested &amp; Rated
           </h2>
           <p className="mt-4 text-lg text-dark-300 max-w-2xl mx-auto">
@@ -117,11 +117,11 @@ export default function Report() {
         </div>
 
         {/* Key Insight Banner */}
-        <div className="my-12 glass-card rounded-2xl p-6 border border-yellow-500/20 bg-yellow-500/5">
+        <div className="my-12 glass-card rounded-2xl p-6 border-yellow-500/20 bg-yellow-500/5">
           <div className="flex items-start gap-3">
             <span className="text-2xl">💡</span>
             <div>
-              <h3 className="text-lg font-semibold text-yellow-300">The Brutal Truth</h3>
+              <h3 className="text-lg font-semibold text-yellow-300 font-mono">The Brutal Truth</h3>
               <p className="mt-1 text-dark-200">
                 AI is an <strong className="text-white">efficiency multiplier</strong>, not a money printer. The formula is: <strong className="text-white">Existing Skill + AI Speed = Income</strong>. Zero skills + AI = zero income, faster.
               </p>
@@ -130,7 +130,7 @@ export default function Report() {
         </div>
 
         {/* Top 5 Recommended */}
-        <h3 className="text-2xl font-bold text-white mb-6">
+        <h3 className="text-2xl font-bold text-white mb-6 font-mono">
           Top 5 Recommended ✅
         </h3>
         <div className="space-y-4 mb-16">
@@ -140,14 +140,14 @@ export default function Report() {
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{m.rank}</span>
                   <div>
-                    <h4 className="text-lg font-semibold text-white">{m.name}</h4>
+                    <h4 className="text-lg font-semibold text-white font-mono">{m.name}</h4>
                     <span className="text-sm text-dark-400">{m.nameCn}</span>
                   </div>
                 </div>
                 <div className="flex gap-3 text-sm">
-                  <span className="px-2 py-1 rounded-lg bg-green-500/10 text-green-400">{m.income}</span>
+                  <span className="px-2 py-1 rounded-lg bg-brand-500/10 text-brand-400 font-mono">{m.income}</span>
                   <span className="px-2 py-1 rounded-lg bg-white/5 text-dark-300">{m.competition}</span>
-                  <span className="px-2 py-1 rounded-lg bg-brand-500/10 text-brand-300">{m.auto} auto</span>
+                  <span className="px-2 py-1 rounded-lg bg-brand-500/10 text-brand-300 font-mono">{m.auto} auto</span>
                 </div>
               </div>
               <p className="text-sm text-dark-200 mb-2">{m.summary}</p>
@@ -160,21 +160,21 @@ export default function Report() {
         </div>
 
         {/* Top 5 Avoid */}
-        <h3 className="text-2xl font-bold text-white mb-6">
+        <h3 className="text-2xl font-bold text-white mb-6 font-mono">
           Top 5 to Avoid ⛔
         </h3>
         <div className="space-y-4 mb-12">
           {avoidList.map((a) => (
-            <div key={a.name} className="glass-card rounded-xl p-6 border border-red-500/10">
+            <div key={a.name} className="glass-card rounded-xl p-6 border-red-500/10">
               <div className="flex items-start gap-3">
                 <span className="text-2xl">{a.icon}</span>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className="text-lg font-semibold text-white">{a.name}</h4>
+                    <h4 className="text-lg font-semibold text-white font-mono">{a.name}</h4>
                     <span className="text-sm text-dark-400">({a.nameCn})</span>
                   </div>
                   <p className="text-sm text-dark-200 mb-2">{a.reason}</p>
-                  <p className="text-xs text-red-400">💸 Potential waste: {a.lossRisk}</p>
+                  <p className="text-xs text-red-400 font-mono">💸 Potential waste: {a.lossRisk}</p>
                 </div>
               </div>
             </div>
@@ -182,14 +182,14 @@ export default function Report() {
         </div>
 
         {/* CTA */}
-        <div className="text-center glass-card rounded-2xl p-8 border border-brand-500/20">
-          <h3 className="text-xl font-bold text-white mb-2">Want the full 15-method report?</h3>
+        <div className="text-center glass-card rounded-2xl p-8 border-brand-500/20">
+          <h3 className="text-xl font-bold text-white mb-2 font-mono">Want the full 15-method report?</h3>
           <p className="text-dark-300 mb-6 text-sm">
             Detailed scores, real Reddit data, source links, and our 4-week testing plan.
           </p>
           <a
             href="#waitlist"
-            className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
+            className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
           >
             Get Full Report — Free
           </a>

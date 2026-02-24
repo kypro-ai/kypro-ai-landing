@@ -2,25 +2,25 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 px-6 py-12">
+    <footer className="border-t border-emerald-500/10 px-6 py-12">
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-sm text-dark-400">
+          <div className="text-sm text-dark-400 font-mono">
             © 2026 TokenGuard
           </div>
 
           {/* Navigation Links */}
           <div className="flex gap-6 text-sm text-dark-400">
-            <Link href="/" className="hover:text-white transition-colors">
+            <Link href="/" className="hover:text-brand-400 transition-colors">
               Home
             </Link>
-            <Link href="/blog" className="hover:text-white transition-colors">
+            <Link href="/blog" className="hover:text-brand-400 transition-colors">
               Blog
             </Link>
-            <Link href="/#pricing" className="hover:text-white transition-colors">
+            <Link href="/#pricing" className="hover:text-brand-400 transition-colors">
               Pricing
             </Link>
-            <Link href="/about" className="hover:text-white transition-colors">
+            <Link href="/about" className="hover:text-brand-400 transition-colors">
               About
             </Link>
           </div>
@@ -29,10 +29,10 @@ export default function Footer() {
         {/* Social Links */}
         <div className="mt-6 flex items-center justify-center gap-6">
           <a
-            href="https://twitter.com/TokenGuardAI"
+            href="https://twitter.com/KyproAI"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-dark-400 hover:text-white transition-colors"
+            className="text-dark-400 hover:text-brand-400 transition-colors"
             aria-label="Twitter"
           >
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -40,10 +40,10 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://reddit.com/u/TokenGuardAI"
+            href="https://reddit.com/u/KyproAI"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-dark-400 hover:text-white transition-colors"
+            className="text-dark-400 hover:text-brand-400 transition-colors"
             aria-label="Reddit"
           >
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -51,10 +51,10 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://github.com/tokenguard-ai"
+            href="https://github.com/kypro-ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-dark-400 hover:text-white transition-colors"
+            className="text-dark-400 hover:text-brand-400 transition-colors"
             aria-label="GitHub"
           >
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -63,7 +63,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="mt-6 text-center text-xs text-dark-500">
+        <p className="mt-6 text-center text-xs text-dark-500 font-mono">
           Built by AI, verified by humans. All pitfall data is based on real
           testing.
         </p>

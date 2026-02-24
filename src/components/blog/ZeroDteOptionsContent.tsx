@@ -8,11 +8,11 @@ export default function ZeroDteOptionsContent() {
         Not 95%. <strong className="text-red-400">All of them.</strong>
       </p>
 
-      <div className="my-10 glass-card rounded-2xl p-6 border border-red-500/20 bg-red-500/5">
+      <div className="my-10 glass-card rounded-2xl p-6 border-red-500/20 bg-red-500/5">
         <div className="flex items-start gap-3">
           <span className="text-2xl">🚨</span>
           <div>
-            <h3 className="text-lg font-semibold text-red-300">
+            <h3 className="text-lg font-semibold text-red-300 font-mono">
               TL;DR — Don&apos;t Do This
             </h3>
             <p className="mt-1 text-dark-200">
@@ -25,7 +25,7 @@ export default function ZeroDteOptionsContent() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         The Setup
       </h2>
 
@@ -43,7 +43,7 @@ export default function ZeroDteOptionsContent() {
         for $5 an hour later&quot; — that&apos;s the dream.
       </p>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         What We Tested
       </h2>
 
@@ -62,7 +62,7 @@ export default function ZeroDteOptionsContent() {
           { label: "Stop-Loss / Take-Profit", value: "Dozens of ratio combinations" },
         ].map((param) => (
           <div key={param.label} className="glass-card rounded-xl p-4">
-            <div className="text-sm font-medium text-brand-400">{param.label}</div>
+            <div className="text-sm font-medium font-mono text-brand-400">{param.label}</div>
             <div className="mt-1 text-sm text-dark-200">{param.value}</div>
           </div>
         ))}
@@ -70,25 +70,25 @@ export default function ZeroDteOptionsContent() {
 
       <p className="text-dark-200 leading-relaxed">
         Total unique combinations tested:{" "}
-        <strong className="text-white text-2xl">1,944</strong>
+        <strong className="text-brand-400 text-2xl font-mono">1,944</strong>
       </p>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         The Results
       </h2>
 
       <div className="glass-card rounded-2xl p-8 my-8">
         <div className="grid grid-cols-3 gap-6 text-center">
           <div>
-            <div className="text-3xl font-bold text-red-400">1,944</div>
+            <div className="text-3xl font-bold font-mono text-red-400">1,944</div>
             <div className="mt-1 text-sm text-dark-400">Strategies Tested</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-red-400">0</div>
+            <div className="text-3xl font-bold font-mono text-red-400">0</div>
             <div className="mt-1 text-sm text-dark-400">Profitable Strategies</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-red-400">100%</div>
+            <div className="text-3xl font-bold font-mono text-red-400">100%</div>
             <div className="mt-1 text-sm text-dark-400">Loss Rate</div>
           </div>
         </div>
@@ -100,13 +100,13 @@ export default function ZeroDteOptionsContent() {
         strategies merely lost money more slowly.
       </p>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         Why It&apos;s Mathematically Impossible
       </h2>
 
       <div className="space-y-6">
         <div className="glass-card rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-2">
+          <h3 className="text-lg font-semibold text-white mb-2 font-mono">
             1. Theta Decay is a Buzz Saw
           </h3>
           <p className="text-dark-300">
@@ -118,7 +118,7 @@ export default function ZeroDteOptionsContent() {
         </div>
 
         <div className="glass-card rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-2">
+          <h3 className="text-lg font-semibold text-white mb-2 font-mono">
             2. The Spread Kills You
           </h3>
           <p className="text-dark-300">
@@ -129,7 +129,7 @@ export default function ZeroDteOptionsContent() {
         </div>
 
         <div className="glass-card rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-2">
+          <h3 className="text-lg font-semibold text-white mb-2 font-mono">
             3. Volatility is Already Priced In
           </h3>
           <p className="text-dark-300">
@@ -142,7 +142,7 @@ export default function ZeroDteOptionsContent() {
         </div>
 
         <div className="glass-card rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-2">
+          <h3 className="text-lg font-semibold text-white mb-2 font-mono">
             4. Survivorship Bias in &quot;Success&quot; Stories
           </h3>
           <p className="text-dark-300">
@@ -154,7 +154,7 @@ export default function ZeroDteOptionsContent() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         What About &quot;Oversold = Buy&quot;?
       </h2>
 
@@ -172,11 +172,11 @@ export default function ZeroDteOptionsContent() {
         options expiry.
       </p>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         The Lesson
       </h2>
 
-      <div className="glass-card rounded-2xl p-8 border border-brand-500/20">
+      <div className="glass-card rounded-2xl p-8 border-brand-500/20">
         <p className="text-lg text-dark-200 leading-relaxed">
           <strong className="text-white">AI doesn&apos;t create alpha where none exists.</strong>{" "}
           If the underlying math is against you, no amount of machine
@@ -194,7 +194,7 @@ export default function ZeroDteOptionsContent() {
       <div className="mt-10 text-center">
         <a
           href="/#waitlist"
-          className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
+          className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
         >
           Get Our Full Testing Results — Free
         </a>

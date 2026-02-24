@@ -58,7 +58,7 @@ export default function BlogPostPage({
           <div className="mb-8">
             <Link
               href="/blog"
-              className="text-sm text-dark-400 hover:text-brand-400 transition-colors"
+              className="text-sm font-mono text-dark-400 hover:text-brand-400 transition-colors"
             >
               ← Back to Blog
             </Link>
@@ -69,7 +69,7 @@ export default function BlogPostPage({
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs font-medium text-brand-400 bg-brand-500/10 rounded-full px-2.5 py-0.5"
+                className="text-xs font-medium font-mono text-brand-400 bg-brand-500/10 rounded-full px-2.5 py-0.5"
               >
                 {tag}
               </span>
@@ -77,12 +77,12 @@ export default function BlogPostPage({
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl leading-tight">
+          <h1 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl leading-tight font-mono">
             {post.title}
           </h1>
 
           {/* Meta */}
-          <div className="mt-4 flex items-center gap-4 text-sm text-dark-400">
+          <div className="mt-4 flex items-center gap-4 text-sm text-dark-400 font-mono">
             <span>{post.date}</span>
             <span>·</span>
             <span>{post.readTime}</span>
@@ -91,7 +91,7 @@ export default function BlogPostPage({
           </div>
 
           {/* Divider */}
-          <div className="my-10 border-t border-white/10" />
+          <div className="my-10 border-t border-emerald-500/10" />
 
           {/* Content */}
           <Content />
