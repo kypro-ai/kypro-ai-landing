@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="shieldGlow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#34d399" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  
+  <!-- Shield shape (outer) -->
+  <path d="M60 8 L105 28 L105 65 C105 85 85 105 60 115 C35 105 15 85 15 65 L15 28 Z" 
+        fill="none" stroke="url(#shieldGrad)" stroke-width="4" 
+        filter="url(#shieldGlow)" opacity="0.9"/>
+  
+  <!-- Shield shape (inner glow line) -->
+  <path d="M60 16 L98 33 L98 64 C98 81 80 98 60 108 C40 98 22 81 22 64 L22 33 Z" 
+        fill="none" stroke="url(#shieldGrad)" stroke-width="1.5" opacity="0.4"/>
+  
+  <!-- Gold coin circle -->
+  <circle cx="60" cy="58" r="32" fill="url(#goldGrad)" filter="url(#glow)"/>
+  
+  <!-- Coin inner ring -->
+  <circle cx="60" cy="58" r="27" fill="none" stroke="#DAA520" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- T letter -->
+  <text x="60" y="70" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="38" font-weight="bold" fill="#1a1a2e" opacity="0.9">T</text>
+  
+  <!-- Energy particles -->
+  <circle cx="30" cy="40" r="1.5" fill="#34d399" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="90" cy="40" r="1.5" fill="#34d399" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0.1;0.5" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="60" cy="18" r="1" fill="#34d399" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.15;0.6" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+</svg>

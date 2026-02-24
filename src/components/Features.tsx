@@ -21,10 +21,20 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="px-6 py-24 sm:py-32">
+    <section id="features" className="px-6 py-24 sm:py-32 relative">
+      {/* Subtle green grid */}
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.02]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(52,211,153,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.3) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+        }}
+      />
+
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold text-white sm:text-4xl font-mono">
             Stop Burning Tokens on Dead Ends
           </h2>
           <p className="mt-4 text-lg text-dark-300 max-w-2xl mx-auto">
@@ -36,10 +46,10 @@ export default function Features() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="glass-card group rounded-2xl p-8 transition-all hover:bg-white/[0.06]"
+              className="glass-card group rounded-2xl p-8 transition-all"
             >
               <div className="mb-4 text-4xl">{f.icon}</div>
-              <h3 className="text-xl font-semibold text-white">{f.title}</h3>
+              <h3 className="text-xl font-semibold text-white font-mono">{f.title}</h3>
               <p className="mt-3 text-dark-300 leading-relaxed">{f.description}</p>
             </div>
           ))}
@@ -47,7 +57,7 @@ export default function Features() {
 
         {/* Example pitfalls */}
         <div className="mt-20">
-          <h3 className="text-center text-2xl font-bold text-white mb-10">
+          <h3 className="text-center text-2xl font-bold text-white mb-10 font-mono">
             Recent Pitfalls We&apos;ve Documented
           </h3>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -60,9 +70,9 @@ export default function Features() {
               <div key={i} className="glass-card rounded-xl p-6 flex gap-4">
                 <div className="text-2xl">⚠️</div>
                 <div>
-                  <span className="inline-block text-xs font-medium text-brand-400 bg-brand-500/10 rounded-full px-2 py-0.5 mb-2">{item.tag}</span>
+                  <span className="inline-block text-xs font-medium font-mono text-brand-400 bg-brand-500/10 rounded-full px-2 py-0.5 mb-2">{item.tag}</span>
                   <p className="text-sm text-dark-200">{item.pitfall}</p>
-                  <p className="mt-2 text-xs text-green-400">Saved you: {item.saved} in tokens</p>
+                  <p className="mt-2 text-xs text-brand-400 font-mono">Saved you: {item.saved} in tokens</p>
                 </div>
               </div>
             ))}

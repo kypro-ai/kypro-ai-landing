@@ -23,7 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
+      <body className={inter.className}>
+        {/* Scanline overlay */}
+        <div className="scanline-overlay" />
+        {children}
+      </body>
     </html>
   );
 }

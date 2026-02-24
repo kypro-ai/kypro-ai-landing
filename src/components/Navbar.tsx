@@ -15,10 +15,11 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-dark-950/80 backdrop-blur-xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-emerald-500/10 bg-[#050505]/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link href="/" className="text-xl font-extrabold text-white tracking-tight">
+        <Link href="/" className="flex items-center gap-2 text-xl font-extrabold font-mono text-white tracking-tight">
+          <img src="/logo.svg" alt="TokenGuard" className="h-8 w-8" />
           <span className="gradient-text">TokenGuard</span>{" "}
           <span className="text-lg">🛡️</span>
         </Link>
@@ -29,14 +30,14 @@ export default function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm text-dark-300 transition-colors hover:text-white"
+              className="text-sm font-mono text-dark-400 transition-colors hover:text-brand-400"
             >
               {link.label}
             </Link>
           ))}
           <Link
             href="/#waitlist"
-            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
+            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
           >
             Join Waitlist
           </Link>
@@ -49,17 +50,17 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block h-0.5 w-6 bg-white transition-all ${
+            className={`block h-0.5 w-6 bg-brand-400 transition-all ${
               open ? "translate-y-2 rotate-45" : ""
             }`}
           />
           <span
-            className={`block h-0.5 w-6 bg-white transition-all ${
+            className={`block h-0.5 w-6 bg-brand-400 transition-all ${
               open ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block h-0.5 w-6 bg-white transition-all ${
+            className={`block h-0.5 w-6 bg-brand-400 transition-all ${
               open ? "-translate-y-2 -rotate-45" : ""
             }`}
           />
@@ -68,13 +69,13 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-white/5 bg-dark-950/95 backdrop-blur-xl px-6 pb-6 pt-4">
+        <div className="md:hidden border-t border-emerald-500/10 bg-[#050505]/95 backdrop-blur-xl px-6 pb-6 pt-4">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-sm text-dark-300 transition-colors hover:text-white"
+                className="text-sm font-mono text-dark-400 transition-colors hover:text-brand-400"
                 onClick={() => setOpen(false)}
               >
                 {link.label}
