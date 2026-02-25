@@ -1,14 +1,60 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { getPitfallById } from "@/lib/pitfalls-data";
+import { getSignalById } from "@/lib/signals-data";
 
-async function handleCheckout(request: NextRequest, pitfallId: string) {
+async function handleCheckout(request: NextRequest, pitfallId?: string, signalId?: string) {
   const stripe = getStripe();
   if (!stripe) {
     return NextResponse.json(
       { error: "Stripe is not configured. Set STRIPE_SECRET_KEY." },
       { status: 503 }
     );
+  }
+
+  const origin = request.headers.get("origin") || "https://www.tokenspy.ai";
+
+  // Signal subscription checkout
+  if (signalId) {
+    const signal = getSignalById(signalId);
+    if (!signal) {
+      return NextResponse.json(
+        { error: "Signal not found", id: signalId },
+        { status: 404 }
+      );
+    }
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            unit_amount: Math.round(signal.price * 100),
+            recurring: { interval: "month" },
+            product_data: {
+              name: signal.name,
+              description: signal.description.slice(0, 500),
+            },
+          },
+          quantity: 1,
+        },
+      ],
+      metadata: {
+        signalId: signal.id,
+        type: "signal_subscription",
+      },
+      success_url: `${origin}/purchase/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/signals/${signal.id}`,
+    });
+
+    return session.url;
+  }
+
+  // Pitfall one-time checkout
+  if (!pitfallId) {
+    return NextResponse.json({ error: "pitfallId or signalId is required" }, { status: 400 });
   }
 
   const pitfall = getPitfallById(pitfallId);
@@ -25,8 +71,6 @@ async function handleCheckout(request: NextRequest, pitfallId: string) {
       { status: 400 }
     );
   }
-
-  const origin = request.headers.get("origin") || "https://www.tokenspy.ai";
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
@@ -57,10 +101,11 @@ async function handleCheckout(request: NextRequest, pitfallId: string) {
 export async function GET(request: NextRequest) {
   try {
     const pitfallId = request.nextUrl.searchParams.get("pitfallId");
-    if (!pitfallId) {
-      return NextResponse.json({ error: "pitfallId is required" }, { status: 400 });
+    const signalId = request.nextUrl.searchParams.get("signalId");
+    if (!pitfallId && !signalId) {
+      return NextResponse.json({ error: "pitfallId or signalId is required" }, { status: 400 });
     }
-    const url = await handleCheckout(request, pitfallId);
+    const url = await handleCheckout(request, pitfallId || undefined, signalId || undefined);
     if (url && typeof url === "string") {
       return NextResponse.redirect(url);
     }
@@ -75,11 +120,11 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { pitfallId } = body as { pitfallId?: string };
-    if (!pitfallId) {
-      return NextResponse.json({ error: "pitfallId is required" }, { status: 400 });
+    const { pitfallId, signalId } = body as { pitfallId?: string; signalId?: string };
+    if (!pitfallId && !signalId) {
+      return NextResponse.json({ error: "pitfallId or signalId is required" }, { status: 400 });
     }
-    const url = await handleCheckout(request, pitfallId);
+    const url = await handleCheckout(request, pitfallId, signalId);
     if (typeof url === "string") {
       return NextResponse.json({ url });
     }

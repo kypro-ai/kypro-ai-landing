@@ -276,9 +276,12 @@ export default function SignalDetailPage({
                   <p className="text-sm text-dark-300 font-mono mb-3">
                     🔒 Full methodology requires a subscription
                   </p>
-                  <button className="rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] font-mono">
+                  <a
+                    href={`/api/checkout?signalId=${s.id}`}
+                    className="inline-block rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] font-mono"
+                  >
                     Subscribe for ${s.price}/mo
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
