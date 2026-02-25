@@ -6,7 +6,6 @@ import AI101 from '@/components/AI101';
 import Projects from '@/components/Projects';
 import Report from '@/components/Report';
 import Pricing from '@/components/Pricing';
-import Waitlist from '@/components/Waitlist';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
       <Projects />
       <Report />
       <Pricing />
-      <Waitlist />
       <Footer />
     </main>
   );

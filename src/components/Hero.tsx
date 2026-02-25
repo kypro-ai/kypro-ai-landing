@@ -52,10 +52,10 @@ export default function Hero() {
         {/* CTA Buttons */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="#waitlist"
+            href="#pricing"
             className="group relative inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-[0.98]"
           >
-            Join Waitlist — It&apos;s Free
+            Get Pitfall Intel — From $2.99
             <svg
               className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5"
               fill="none"
@@ -67,10 +67,10 @@ export default function Hero() {
             </svg>
           </a>
           <a
-            href="#features"
+            href="/pitfalls"
             className="inline-flex items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-8 py-4 text-lg font-semibold text-white/80 transition-all hover:bg-emerald-500/10 hover:text-white hover:border-emerald-500/40 active:scale-[0.98]"
           >
-            See What We&apos;ve Tested
+            Browse Pitfalls Free
           </a>
         </div>
 

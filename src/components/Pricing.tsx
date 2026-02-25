@@ -75,7 +75,7 @@ export default function Pricing() {
             Invest Cents, Save Dollars
           </h2>
           <p className="mt-4 text-lg text-dark-300 max-w-xl mx-auto">
-            12 pitfalls · 30 trading signals · One API. Pay $2.99-7.99 per pitfall, save $200+ in wasted time.
+            20 pitfalls · 30 trading signals · One API. Pay $2.99-7.99 per pitfall, save $200+ in wasted time.
           </p>
         </div>
 

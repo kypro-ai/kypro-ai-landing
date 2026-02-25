@@ -47,10 +47,10 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/#waitlist"
+            href="/#pricing"
             className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
           >
-            Join Waitlist
+            Buy Access
           </Link>
         </div>
 
@@ -93,11 +93,11 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/#waitlist"
+              href="/#pricing"
               className="mt-2 rounded-lg bg-brand-600 px-4 py-2.5 text-center text-sm font-semibold text-white transition-all hover:bg-brand-500"
               onClick={() => setOpen(false)}
             >
-              Join Waitlist
+              Buy Access
             </Link>
           </div>
         </div>
