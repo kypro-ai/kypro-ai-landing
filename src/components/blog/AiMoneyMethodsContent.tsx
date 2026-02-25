@@ -73,90 +73,88 @@ export default function AiMoneyMethodsContent() {
       </div>
 
       <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
-        The Top 5 That Actually Work 🏆
+        15 Methods We Tested — Overview
       </h2>
+
+      <p className="text-dark-300 mb-6">
+        We scored each method on five dimensions: startup cost, time-to-first-dollar,
+        income ceiling, competition level, and longevity. Here are the categories
+        and our high-level take:
+      </p>
+
+      {/* Top 5 — names and general direction only, no income ranges or detailed reasoning */}
+      <h3 className="text-xl font-semibold text-white mt-8 mb-4 font-mono">
+        The Top 5 That Actually Work 🏆
+      </h3>
 
       <div className="space-y-4">
         {[
           {
             rank: "🥇",
             name: "AI Chatbot Building for Small Businesses",
-            income: "$1,500-$5,000/mo",
-            why: "Competition is still low — most small businesses haven't implemented AI yet. Pick one vertical (dental, restaurant) and go deep. Reddit verified: one user hit $7K/mo in 8 months specializing in dental chatbots.",
+            teaser: "Competition is still low — most small businesses haven't implemented AI yet. Pick one vertical and go deep.",
           },
           {
             rank: "🥈",
             name: "AI-Assisted Content Writing",
-            income: "$500-$3,000/mo",
-            why: "Lowest barrier to entry and fastest to monetize. But generic content is dead — you need industry expertise combined with AI speed. Expect $200-$800 in the first 60 days, not the $15K dream.",
+            teaser: "Lowest barrier to entry and fastest to monetize. But generic content is dead — you need industry expertise combined with AI speed.",
           },
           {
             rank: "🥉",
             name: "AI Video Editing / Content Repurposing",
-            income: "$1,000-$4,000/mo",
-            why: "Short-form demand is exploding. Every podcaster and YouTuber wants Reels and Shorts but doesn't have time. AI tools like OpusClip let you deliver in 30 minutes what used to take 4-6 hours.",
+            teaser: "Short-form demand is exploding. Every podcaster and YouTuber wants Reels and Shorts but doesn't have time.",
           },
           {
             rank: "4️⃣",
             name: "AI Social Media Management",
-            income: "$2,000-$8,000/mo",
-            why: "Monthly retainer model = real recurring income. The sweet spot: managing 7 dental offices at $1,200/mo each = $8,400/mo. Go vertical, not horizontal.",
+            teaser: "Monthly retainer model = real recurring income. Go vertical, not horizontal.",
           },
           {
             rank: "5️⃣",
             name: "AI Resume Writing Service",
-            income: "$500-$2,000/mo",
-            why: "Not glamorous, but evergreen demand. Bundle it: Resume + Cover Letter + Interview Script = $500-$700 package. Low risk, stable income.",
+            teaser: "Not glamorous, but evergreen demand. Low risk, stable income.",
           },
         ].map((method) => (
           <div key={method.name} className="glass-card rounded-xl p-6">
             <div className="flex items-center gap-3 mb-2">
               <span className="text-2xl">{method.rank}</span>
               <h3 className="text-lg font-semibold text-white font-mono">{method.name}</h3>
-              <span className="ml-auto px-2 py-1 rounded-lg bg-brand-500/10 text-brand-400 text-sm font-mono">
-                {method.income}
-              </span>
             </div>
-            <p className="text-dark-300 text-sm">{method.why}</p>
+            <p className="text-dark-300 text-sm">{method.teaser}</p>
           </div>
         ))}
       </div>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
+      <h3 className="text-xl font-semibold text-white mt-10 mb-4 font-mono">
         The Top 5 Traps to Avoid ⛔
-      </h2>
+      </h3>
 
       <div className="space-y-4">
         {[
           {
             icon: "⛔",
             name: "AI Blog Farms / Content Sites",
-            reason:
-              "Google is actively hunting AI content farms. The HCU update wiped out thousands of sites overnight. You could invest 6-12 months and lose everything.",
+            reason: "Google is actively hunting AI content farms. The HCU update wiped out thousands of sites overnight.",
           },
           {
             icon: "⛔",
             name: "Prompt Engineering as a Career",
-            reason:
-              "AI tools are getting smarter — complex prompts are becoming unnecessary. GPT-5 and Claude auto-optimize better than any human prompt engineer. This job title is dying.",
+            reason: "AI tools are getting smarter — complex prompts are becoming unnecessary. This job title is dying.",
           },
           {
             icon: "⛔",
             name: "Generic AI Art on Etsy",
-            reason:
-              'Tens of thousands of sellers already hawking AI "inspirational quote posters" and "galaxy wallpapers." It\'s a race to the bottom.',
+            reason: "Tens of thousands of sellers already. It's a race to the bottom.",
           },
           {
             icon: "⛔",
             name: "AI eBook Mass Publishing (KDP)",
-            reason:
-              "Amazon KDP is cracking down on AI-generated low-quality books. Mandatory AI disclosure, increased takedowns. The gold rush is over.",
+            reason: "Amazon KDP is cracking down on AI-generated low-quality books. The gold rush is over.",
           },
           {
             icon: "💀",
             name: '"Make $10K in 7 Days with AI" Courses',
-            reason:
-              "The only person making money is the one selling the course to YOU. If the method actually worked, they'd use it themselves.",
+            reason: "The only person making money is the one selling the course to YOU.",
           },
         ].map((trap) => (
           <div
@@ -172,6 +170,37 @@ export default function AiMoneyMethodsContent() {
             </div>
           </div>
         ))}
+      </div>
+
+      <p className="text-dark-300 mt-8">
+        ...plus 5 more methods in the middle — some surprising, some disappointing.
+        But the real value isn&apos;t the list — it&apos;s the <strong className="text-white">detailed scores,
+        exact income ranges, Reddit-verified earnings data, and step-by-step
+        playbooks</strong> for each method.
+      </p>
+
+      {/* BLUR LOCK — hides detailed scores, income data, step-by-step guides */}
+      <div className="relative rounded-xl border border-white/[0.08] bg-white/[0.02] p-6 overflow-hidden mt-8">
+        <div className="blur-sm select-none pointer-events-none text-dark-200 text-sm leading-relaxed space-y-2 max-h-48 overflow-hidden">
+          <p>Method 1 Score: Startup Cost 2/10, Time-to-Dollar 8/10, Income Ceiling 9/10, Competition 6/10...</p>
+          <p>Reddit verified: user hit $7K/mo in 8 months specializing in dental chatbots. Here&apos;s the exact niche selection framework...</p>
+          <p>Method 2: Expect $200-$800 in first 60 days. The $15K stories are outliers. Exact pricing strategy...</p>
+          <p>Method 4: Managing 7 dental offices at $1,200/mo each = $8,400/mo. Client acquisition script...</p>
+          <p>Method 6-10: The &quot;middle tier&quot; — AI tutoring ($800-2K), AI data analysis ($1.5-4K), AI translation...</p>
+          <p>Full comparison matrix with all 15 methods scored across 5 dimensions...</p>
+          <p>Which 3 methods we recommend starting with based on your existing skills...</p>
+          <p>Red flag checklist: 7 signs an &quot;AI money method&quot; is actually a scam...</p>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/80 to-[#050505] flex items-end justify-center pb-8">
+          <div className="text-center">
+            <p className="text-sm text-dark-300 font-mono mb-3">
+              🔒 Detailed scores, income data, Reddit验证, and step-by-step playbooks for all 15 methods
+            </p>
+            <a href="/#pricing" className="inline-block rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] font-mono">
+              Unlock Full Research — From $2.99
+            </a>
+          </div>
+        </div>
       </div>
 
       <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">

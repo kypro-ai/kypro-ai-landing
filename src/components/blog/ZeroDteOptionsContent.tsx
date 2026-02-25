@@ -74,7 +74,7 @@ export default function ZeroDteOptionsContent() {
       </p>
 
       <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
-        The Results
+        The Results (Summary)
       </h2>
 
       <div className="glass-card rounded-2xl p-8 my-8">
@@ -154,24 +154,44 @@ export default function ZeroDteOptionsContent() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
-        What About &quot;Oversold = Buy&quot;?
-      </h2>
-
-      <p className="text-dark-200 leading-relaxed">
-        We also tested a popular related theory: that when a stock is
-        &quot;oversold&quot; (RSI below 30, etc.), you should buy. We tested{" "}
-        <strong className="text-white">27 variations of this strategy on TSLA</strong>.
+      <p className="text-dark-300 mt-8">
+        We also tested the popular &quot;Oversold = Buy&quot; theory on TSLA with 27 variations.
+        The counterintuitive finding: <strong className="text-white">&quot;Oversold = Short&quot;
+        actually performed better.</strong> When a stock is getting hammered, it tends to keep
+        getting hammered in the short term.
       </p>
 
-      <p className="mt-4 text-dark-200 leading-relaxed">
-        Result? <strong className="text-white">Almost ALL lost money.</strong>{" "}
-        The counterintuitive finding: &quot;Oversold = Short&quot; actually performed
-        better. When a stock is getting hammered, it tends to keep getting
-        hammered in the short term. Mean reversion takes longer than your
-        options expiry.
+      <p className="text-dark-300 mt-4">
+        But <em>how much</em> better? Which specific strategy combinations lost the least? What
+        are the exact theta decay numbers? And what does the full backtest data actually look like
+        across all 1,944 combinations?
       </p>
 
+      {/* BLUR LOCK — hides specific backtest data, exact numbers, strategy rankings */}
+      <div className="relative rounded-xl border border-white/[0.08] bg-white/[0.02] p-6 overflow-hidden mt-8">
+        <div className="blur-sm select-none pointer-events-none text-dark-200 text-sm leading-relaxed space-y-2 max-h-48 overflow-hidden">
+          <p>Complete backtest results for all 1,944 combinations ranked by loss percentage...</p>
+          <p>The &quot;least bad&quot; strategy: Momentum + ATM + Power Hour on SPY lost only -XX.X% annually vs worst at -XX.X%...</p>
+          <p>Exact theta decay curves: at 4 hours to expiry, ATM options lose $X.XX/min; at 1 hour, $X.XX/min...</p>
+          <p>TSLA &quot;Oversold = Short&quot; full data: 27 variations, RSI thresholds, exact P&L per strategy...</p>
+          <p>Spread analysis: average bid-ask cost per underlying (SPY: X.X%, QQQ: X.X%, TSLA: X.X%)...</p>
+          <p>The ONE edge case where 0DTE could theoretically work (and why it still doesn&apos;t in practice)...</p>
+          <p>Full parameter sensitivity analysis — which variables matter most and which are noise...</p>
+          <p>Our recommendation: what to do instead if you want to use AI for options trading...</p>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/80 to-[#050505] flex items-end justify-center pb-8">
+          <div className="text-center">
+            <p className="text-sm text-dark-300 font-mono mb-3">
+              🔒 Complete backtest data for 1,944 combinations, exact loss percentages, and theta decay analysis
+            </p>
+            <a href="/pitfalls/0dte-options-all-lose" className="inline-block rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] font-mono">
+              Unlock Full Backtest Data — $7.99
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* The Lesson — keep for SEO */}
       <h2 className="text-2xl font-bold text-white mt-12 mb-6 font-mono">
         The Lesson
       </h2>
@@ -196,7 +216,7 @@ export default function ZeroDteOptionsContent() {
           href="/#pricing"
           className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
         >
-          Get Trading Signals — $4.99/mo
+          Get Pitfall Intel — From $2.99
         </a>
       </div>
     </div>

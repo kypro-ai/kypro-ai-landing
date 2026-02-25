@@ -73,7 +73,7 @@ export default function ShopifySeoContent() {
       </p>
 
       <h3 className="text-xl font-semibold text-white mt-8 mb-4">
-        Then I went full automation mode (1 hour)
+        Then I went full automation mode
       </h3>
 
       <p className="text-dark-300">
@@ -83,20 +83,11 @@ export default function ShopifySeoContent() {
 
       <p className="text-dark-300">
         Instead I pulled everything through Shopify&apos;s JSON API, had AI write unique descriptions
-        for each product based on its category and specs, and pushed them all back. 68 products.
-        Updated in seconds. I actually laughed out loud when it worked.
+        for each product based on its category and specs, and pushed them all back. The key insight:
+        you need the <code className="text-brand-400">metafields</code> endpoint, not the product API.
       </p>
 
-      <p className="text-dark-300">
-        Did the same for 13 collections and 3 pages. Every single page on the site went from
-        &quot;nothing&quot; to &quot;optimized.&quot;
-      </p>
-
-      <h3 className="text-xl font-semibold text-white mt-8 mb-4">
-        The part that almost broke me (1 hour of debugging)
-      </h3>
-
-      {/* Technical Gotcha */}
+      {/* Technical Gotcha - keep this as teaser */}
       <div className="my-6 glass-card rounded-2xl p-6 border-yellow-500/20 bg-yellow-500/5">
         <div className="flex items-start gap-3">
           <span className="text-2xl">⚠️</span>
@@ -118,37 +109,37 @@ export default function ShopifySeoContent() {
         </div>
       </div>
 
-      <h3 className="text-xl font-semibold text-white mt-8 mb-4">
-        Fixing the copy-paste disaster (2 hours)
-      </h3>
-
       <p className="text-dark-300">
-        75 identical product descriptions. This was the big one. My approach: I built rotating
-        templates. 5 different description styles for SPC flooring, 3 for WPC, 10 for porcelain
-        tile. Each template hits different angles — one talks about durability, another about
-        installation ease, another about aesthetics. Then I plugged in each product&apos;s actual specs.
+        Sounds simple enough, right? But the devil is in the details — the exact API calls,
+        the CSRF workaround, the batch update script that handles rate limits, and the schema
+        markup injection that doesn&apos;t need a $29/month app...
       </p>
 
-      <p className="text-dark-300">
-        End result: every single product reads differently. Not AI-generic-differently.
-        Actually-different-differently.
-      </p>
+      {/* BLUR LOCK — hides the actual how-to, code, and scripts */}
+      <div className="relative rounded-xl border border-white/[0.08] bg-white/[0.02] p-6 overflow-hidden mt-8">
+        <div className="blur-sm select-none pointer-events-none text-dark-200 text-sm leading-relaxed space-y-2 max-h-48 overflow-hidden">
+          <p>Step 1: Connect to Shopify Admin API using private app credentials and set up the metafields batch endpoint...</p>
+          <p>Step 2: Batch update all 68 product meta descriptions via metafields API with rate-limit handling script...</p>
+          <p>Step 3: Handle the collections.json 406 gotcha — switch to custom_collections endpoint with CSRF token workaround...</p>
+          <p>Step 4: Rotating description templates — 5 SPC styles, 3 WPC styles, 10 porcelain tile variations with spec injection...</p>
+          <p>Step 5: LocalBusiness schema markup injection directly into theme.liquid (no paid app needed)...</p>
+          <p>Step 6: Internal link automation script — auto-link blog posts bidirectionally based on keyword matching...</p>
+          <p>Step 7: Alt text batch updater — pull image filenames, generate descriptive alt text with AI, push back via API...</p>
+          <p>Step 8: Google Search Console DNS verification shortcut and initial sitemap submission...</p>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/80 to-[#050505] flex items-end justify-center pb-8">
+          <div className="text-center">
+            <p className="text-sm text-dark-300 font-mono mb-3">
+              🔒 Full step-by-step playbook with code examples
+            </p>
+            <a href="/pitfalls/shopify-seo-0-to-100" className="inline-block rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] font-mono">
+              Unlock Full Playbook — $7.99
+            </a>
+          </div>
+        </div>
+      </div>
 
-      <h3 className="text-xl font-semibold text-white mt-8 mb-4">
-        The boring stuff that actually matters (1.5 hours)
-      </h3>
-
-      <p className="text-dark-300">
-        Internal links between all 6 blog posts. Alt text on every image. LocalBusiness schema
-        markup injected straight into the theme code (no $29/month app needed, thank you). Google
-        Search Console setup with DNS verification. Google Business Profile cleaned up.
-      </p>
-
-      <p className="text-dark-300 italic">
-        None of this is exciting. All of it matters.
-      </p>
-
-      {/* Scoreboard */}
+      {/* Scoreboard — keep for SEO value */}
       <h2 className="text-2xl font-bold text-white font-mono mt-12 mb-6">
         📊 The Scoreboard
       </h2>
@@ -182,9 +173,9 @@ export default function ShopifySeoContent() {
         Yeah. Seriously.
       </p>
 
-      {/* Playbook */}
+      {/* Playbook — teaser version */}
       <h2 className="text-2xl font-bold text-white font-mono mt-12 mb-6">
-        🎯 Steal This Playbook
+        🎯 The Playbook (Overview)
       </h2>
 
       <ol className="space-y-3 my-6">
@@ -199,11 +190,22 @@ export default function ShopifySeoContent() {
 
       <p className="text-dark-300">
         The dirty secret of Shopify SEO? It&apos;s not hard. It&apos;s just tedious. AI makes it not tedious.
+        But the specific scripts, API calls, and workarounds took us a full day of debugging to figure out.
       </p>
 
       <p className="text-lg text-white font-semibold mt-8">
         One day. One hundred out of one hundred. My buddy owes me dinner.
       </p>
+
+      {/* Bottom CTA */}
+      <div className="mt-10 text-center">
+        <a
+          href="/#pricing"
+          className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
+        >
+          Get Pitfall Intel — From $2.99
+        </a>
+      </div>
     </div>
   );
 }
