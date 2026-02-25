@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { getPitfallById } from "@/lib/pitfalls-data";
 import { getSignalById } from "@/lib/signals-data";
+import { logVisit } from "@/lib/visit-log";
 
 async function handleCheckout(request: NextRequest, pitfallId?: string, signalId?: string) {
   const stripe = getStripe();
@@ -100,6 +101,10 @@ async function handleCheckout(request: NextRequest, pitfallId?: string, signalId
 
 export async function GET(request: NextRequest) {
   try {
+    const ua = request.headers.get("user-agent") || "";
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    logVisit("/api/checkout", ua, ip, true);
+
     const pitfallId = request.nextUrl.searchParams.get("pitfallId");
     const signalId = request.nextUrl.searchParams.get("signalId");
     if (!pitfallId && !signalId) {
@@ -119,6 +124,10 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const ua = request.headers.get("user-agent") || "";
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    logVisit("/api/checkout", ua, ip, true);
+
     const body = await request.json();
     const { pitfallId, signalId } = body as { pitfallId?: string; signalId?: string };
     if (!pitfallId && !signalId) {

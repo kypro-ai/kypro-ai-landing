@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { searchPitfalls } from "@/lib/pitfalls-data";
 import { trackRequest } from "@/lib/analytics";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { logVisit } from "@/lib/visit-log";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -34,6 +35,11 @@ export function GET(request: NextRequest) {
   }
 
   trackRequest(request);
+
+  // Persistent Redis logging
+  const ua = request.headers.get("user-agent") || "";
+  const isAgent = !ua.includes("Chrome") && !ua.includes("Firefox") && !ua.includes("Safari");
+  logVisit("/api/pitfalls", ua, ip, isAgent);
 
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("q") || "";

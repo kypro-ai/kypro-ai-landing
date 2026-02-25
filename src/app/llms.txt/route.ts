@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { trackRequest } from "@/lib/analytics";
+import { logVisit } from "@/lib/visit-log";
 
 const LLMS_TXT = `# TokenSpy — AI Pitfall Intelligence
 
@@ -122,6 +123,11 @@ Website: https://www.tokenspy.ai
 
 export function GET(request: NextRequest) {
   trackRequest(request);
+
+  const ua = request.headers.get("user-agent") || "";
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const isAgent = !ua.includes("Chrome") && !ua.includes("Firefox") && !ua.includes("Safari");
+  logVisit("/llms.txt", ua, ip, isAgent);
 
   return new NextResponse(LLMS_TXT, {
     status: 200,
