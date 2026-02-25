@@ -92,6 +92,7 @@ export default function PitfallDetailPage({
   if (!p) notFound();
 
   const contentHtml = renderMarkdown(p.fullContent);
+  const isPaid = p.price > 0;
 
   return (
     <main className="min-h-screen">
@@ -142,6 +143,12 @@ export default function PitfallDetailPage({
               </span>
               {Math.round(p.confidence * 100)}%
             </span>
+
+            {isPaid && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-yellow-500/10 px-3 py-1.5 text-yellow-400 font-semibold">
+                🔒 Premium
+              </span>
+            )}
           </div>
 
           {/* ── Summary ────────────────────────────────────── */}
@@ -151,11 +158,45 @@ export default function PitfallDetailPage({
 
           <div className="my-10 border-t border-emerald-500/10" />
 
-          {/* ── Full content (rendered MD) ──────────────────── */}
-          <div
-            className="prose-custom"
-            dangerouslySetInnerHTML={{ __html: contentHtml }}
-          />
+          {/* ── Full content — paywalled or free ────────────── */}
+          {isPaid ? (
+            <div className="relative">
+              {/* Blurred preview */}
+              <div
+                className="prose-custom blur-sm select-none pointer-events-none max-h-[300px] overflow-hidden"
+                dangerouslySetInnerHTML={{ __html: contentHtml }}
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/80 to-[#0a0a0a] flex flex-col items-center justify-end pb-8">
+                <div className="glass-card rounded-2xl p-8 text-center max-w-md border border-brand-500/20">
+                  <span className="text-3xl mb-3 block">🔒</span>
+                  <h3 className="text-xl font-bold text-white font-mono mb-2">
+                    Unlock Full Playbook
+                  </h3>
+                  <p className="text-dark-300 text-sm mb-1">
+                    {p.estimatedTimeSaved && `Save ${p.estimatedTimeSaved} of trial and error.`}
+                  </p>
+                  <p className="text-dark-400 text-xs mb-4">
+                    {p.estimatedCostSaved && `Estimated savings: ${p.estimatedCostSaved}`}
+                  </p>
+                  <a
+                    href={`/api/checkout?pitfallId=${p.id}`}
+                    className="inline-block rounded-full bg-brand-500 hover:bg-brand-400 text-black font-bold font-mono px-8 py-3 text-sm transition-colors"
+                  >
+                    Unlock for ${p.price}
+                  </a>
+                  <p className="text-dark-500 text-xs mt-3">
+                    One-time purchase · Instant access · API key included
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div
+              className="prose-custom"
+              dangerouslySetInnerHTML={{ __html: contentHtml }}
+            />
+          )}
 
           <div className="my-10 border-t border-emerald-500/10" />
 
