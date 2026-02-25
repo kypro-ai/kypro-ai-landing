@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPitfallById } from "@/lib/pitfalls-data";
-import { getApiKey } from "@/lib/api-keys";
+import { getApiKey, trackKeyUsage, isAbusingKey } from "@/lib/api-keys";
 import { trackRequest } from "@/lib/analytics";
+import { checkRateLimit } from "@/lib/rate-limit";
+import { fingerprintContent } from "@/lib/fingerprint";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -17,6 +19,25 @@ export function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // Rate limiting
+  const ip = request.headers.get("x-forwarded-for") || "unknown";
+  const hasKey = request.nextUrl.searchParams.has("key") || request.headers.has("authorization");
+  const rl = checkRateLimit(ip, hasKey);
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded", retryAfterMs: rl.resetMs },
+      {
+        status: 429,
+        headers: {
+          ...corsHeaders,
+          "Retry-After": String(Math.ceil(rl.resetMs / 1000)),
+          "X-RateLimit-Remaining": "0",
+          "X-TokenSpy-Protected": "true",
+        },
+      }
+    );
+  }
+
   trackRequest(request);
 
   const pitfall = getPitfallById(params.id);
@@ -24,7 +45,14 @@ export function GET(
   if (!pitfall) {
     return NextResponse.json(
       { error: "Pitfall not found", id: params.id },
-      { status: 404, headers: corsHeaders }
+      {
+        status: 404,
+        headers: {
+          ...corsHeaders,
+          "X-RateLimit-Remaining": String(rl.remaining),
+          "X-TokenSpy-Protected": "true",
+        },
+      }
     );
   }
 
@@ -41,16 +69,40 @@ export function GET(
   if (apiKey && !hasAccess) {
     const keyRecord = getApiKey(apiKey);
     if (keyRecord && keyRecord.pitfallIds.includes(pitfall.id)) {
+      // Track usage
+      trackKeyUsage(apiKey, `/api/pitfalls/${params.id}`, pitfall.id);
+
+      // Check for abuse
+      if (isAbusingKey(apiKey)) {
+        return NextResponse.json(
+          { error: "API key suspended due to unusual activity. Contact support." },
+          {
+            status: 403,
+            headers: {
+              ...corsHeaders,
+              "X-RateLimit-Remaining": String(rl.remaining),
+              "X-TokenSpy-Protected": "true",
+            },
+          }
+        );
+      }
+
       hasAccess = true;
     }
   }
+
+  const responseHeaders = {
+    ...corsHeaders,
+    "X-RateLimit-Remaining": String(rl.remaining),
+    "X-TokenSpy-Protected": "true",
+  };
 
   const response: Record<string, unknown> = {
     id: pitfall.id,
     title: pitfall.title,
     summary: pitfall.summary,
     fullContent: hasAccess
-      ? pitfall.fullContent
+      ? (apiKey ? fingerprintContent(pitfall.fullContent, apiKey) : pitfall.fullContent)
       : `Purchase required. $${pitfall.price} to unlock the full analysis, code examples, and detailed walkthrough.`,
     steps: pitfall.steps,
     gotchas: pitfall.gotchas,
@@ -72,5 +124,5 @@ export function GET(
     response.unlockMethod = `POST /api/checkout with {pitfallId: '${pitfall.id}'}`;
   }
 
-  return NextResponse.json(response, { headers: corsHeaders });
+  return NextResponse.json(response, { headers: responseHeaders });
 }

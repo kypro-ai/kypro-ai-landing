@@ -76,7 +76,7 @@ Tested on TSLA daily bars from Jan 2020 to Dec 2024. Includes commission of $0.0
       lastUpdated: "2025-02-25",
       note: "TSLA consolidating below 20-day high. No breakout trigger yet.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["TSLA", "momentum", "swing", "breakout"],
   },
   {
@@ -123,7 +123,7 @@ Tested on TSLA 5-minute bars from Jan 2023 to Dec 2024. Commission: $0.005/share
       lastUpdated: "2025-02-25",
       note: "Market closed. Signal generated during trading hours only.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["TSLA", "momentum", "intraday", "short"],
   },
   {
@@ -170,7 +170,7 @@ Tested on TSLA 5-minute bars from Jun 2022 to Dec 2024. Pattern detection is alg
       lastUpdated: "2025-02-25",
       note: "Market closed. No triple-top pattern detected in last session.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["TSLA", "mean-reversion", "intraday", "pattern", "short"],
   },
   {
@@ -217,7 +217,7 @@ Tested on SPY daily bars from Jan 2015 to Dec 2024. This is a counter-trend stra
       lastUpdated: "2025-02-25",
       note: "SPY RSI at 58 — not yet in overbought territory. Monitoring.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["SPY", "mean-reversion", "swing", "overbought"],
   },
   {
@@ -264,7 +264,7 @@ Tested on QQQ daily bars from Jan 2005 to Dec 2024. Only 14 round-trip signals i
       lastUpdated: "2025-02-25",
       note: "Golden cross active since Nov 2023. Position is HOLD. No new entry signal.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["QQQ", "momentum", "long-term", "golden-cross"],
   },
   {
@@ -313,7 +313,7 @@ Tested on NVDA daily bars from Jan 2020 to Dec 2024. NVDA's AI-driven regime (20
       lastUpdated: "2025-02-25",
       note: "NVDA volatility is elevated — no squeeze detected. Waiting for contraction phase.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["NVDA", "volatility", "swing", "breakout", "squeeze"],
   },
   {
@@ -361,7 +361,7 @@ Tested on BTC/USD daily bars from Jan 2018 to Dec 2024. Captures the 2020–2021
       lastUpdated: "2025-02-25",
       note: "BTC above 50-day MA. Existing position HOLD. No new entry trigger.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["BTC", "momentum", "trend", "crypto", "daily"],
   },
   {
@@ -412,7 +412,7 @@ Tested on GLD/VIX daily data from Jan 2010 to Dec 2024. Triggers 3–5 times per
       lastUpdated: "2025-02-25",
       note: "VIX at normal levels. No risk-off signal detected.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["GLD", "gold", "multi-asset", "safe-haven", "VIX", "hedge"],
   },
   {
@@ -465,7 +465,7 @@ Tested on VIX/VIX futures data from Jan 2012 to Dec 2024. Excludes the Feb 2018 
       lastUpdated: "2025-02-25",
       note: "VIX below 25. No fear spike detected. Strategy inactive.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["VIX", "mean-reversion", "volatility", "swing", "short-vol"],
   },
   {
@@ -518,7 +518,7 @@ Tested from Jan 2015 to Dec 2024 (BTC available from 2015). 120 monthly observat
       lastUpdated: "2025-02-25",
       note: "Current allocation: QQQ, BTC, SPY. Next rebalance Mar 1. GLD ranked 4th.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["multi-asset", "momentum", "rotation", "monthly", "SPY", "QQQ", "BTC", "GLD"],
   },
 
@@ -572,7 +572,7 @@ Tested on AAPL daily bars from Jan 2018 to Dec 2024. Commission: $0.005/share. S
       lastUpdated: "2025-02-25",
       note: "AAPL trading mid-range. RSI at 52 — not oversold. No support bounce setup.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["aapl", "support", "swing"],
   },
   {
@@ -624,7 +624,7 @@ Tested on AMZN earnings events from Q1 2018 to Q4 2024 (28 earnings reports). In
       lastUpdated: "2025-02-25",
       note: "Next AMZN earnings expected late April. No active signal.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["amzn", "earnings", "momentum"],
   },
   {
@@ -675,7 +675,7 @@ Tested on META daily/intraday bars from Jan 2019 to Dec 2024. Gaps are filtered 
       lastUpdated: "2025-02-25",
       note: "No qualifying gap detected on META. Last session opened within 0.5% of prior close.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["meta", "gap", "mean-reversion"],
   },
   {
@@ -728,7 +728,7 @@ Tested on MSFT daily bars from Jan 2016 to Dec 2024. Low trade frequency — onl
       lastUpdated: "2025-02-25",
       note: "MSFT above 50-day SMA. ADX at 22 — trend not yet strong enough for entry.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["msft", "trend", "position"],
   },
   {
@@ -781,7 +781,7 @@ Tested on AMD daily bars from Jan 2020 to Dec 2024. AMD's massive AI rally in 20
       lastUpdated: "2025-02-25",
       note: "AMD in mid-range. No Keltner squeeze detected. Waiting for volatility contraction.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["amd", "volatility", "breakout"],
   },
 
@@ -835,7 +835,7 @@ Tested on IWM/SPY monthly data from Jan 2010 to Dec 2024. 180 monthly observatio
       lastUpdated: "2025-02-25",
       note: "SPY currently leading IWM in 3-month relative strength. Allocated to SPY. Next rebalance Mar 1.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["iwm", "rotation", "etf"],
   },
   {
@@ -891,7 +891,7 @@ Tested on DIA daily bars from Jan 2012 to Dec 2024. Breadth data from Dow 30 com
       lastUpdated: "2025-02-25",
       note: "DIA 20-day MA above 50-day MA. Breadth at 63%. Bullish trend intact — holding.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["dia", "moving-average", "etf"],
   },
   {
@@ -947,7 +947,7 @@ Tested on XLF daily bars + yield curve data from Jan 2015 to Dec 2024. Yield cur
       lastUpdated: "2025-02-25",
       note: "Yield curve modestly positive but flattening. Waiting for steepening confirmation.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["xlf", "financials", "sector"],
   },
   {
@@ -1000,7 +1000,7 @@ Tested on XLE/CL daily data from Jan 2016 to Dec 2024. Oil correlation data ensu
       lastUpdated: "2025-02-25",
       note: "XLE/oil correlation at 0.65 — below threshold. Waiting for stronger coupling.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["xle", "energy", "commodity-correlated"],
   },
   {
@@ -1053,7 +1053,7 @@ Tested on TLT daily bars + Fed funds futures data from Jan 2015 to Dec 2024. The
       lastUpdated: "2025-02-25",
       note: "TLT RSI at 44. Not oversold. No reversal setup present.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["tlt", "bonds", "mean-reversion"],
   },
 
@@ -1110,7 +1110,7 @@ Tested on ETH/USD daily bars from Jan 2020 to Dec 2024. The 21-EMA was chosen ov
       lastUpdated: "2025-02-25",
       note: "ETH above 21-EMA. BTC above 50-SMA. Trend intact — monitoring for pullback entry.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["eth", "crypto", "trend"],
   },
   {
@@ -1164,7 +1164,7 @@ Tested on SOL/USD daily bars from Jan 2021 to Dec 2024. SOL's massive rally in l
       lastUpdated: "2025-02-25",
       note: "SOL consolidating below 14-day high. No breakout trigger yet.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["sol", "crypto", "momentum"],
   },
   {
@@ -1218,7 +1218,7 @@ Tested on BTC/ETH ratio daily data from Jan 2020 to Dec 2024. Weekly rebalancing
       lastUpdated: "2025-02-25",
       note: "BTC/ETH ratio Z-score at +0.8. Approaching but not yet at +2.0 threshold.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["btc", "eth", "crypto", "pairs"],
   },
 
@@ -1280,7 +1280,7 @@ Tested on CL/USO daily data + EIA inventory reports from Jan 2017 to Dec 2024. E
       lastUpdated: "2025-02-25",
       note: "Oil ATR in normal range. Last EIA report was in-line with expectations. No signal.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["oil", "commodity", "volatility"],
   },
   {
@@ -1335,7 +1335,7 @@ Tested on Gold/Silver ratio monthly data from Jan 2010 to Dec 2024. Very low tra
       lastUpdated: "2025-02-25",
       note: "Gold/Silver ratio at 88. Z-score at +1.1. Approaching long-silver threshold but not yet triggered.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["silver", "gold", "commodity", "pairs"],
   },
   {
@@ -1396,7 +1396,7 @@ Tested on NG/UNG daily data + NOAA weather data from Jan 2015 to Dec 2024. Weath
       lastUpdated: "2025-02-25",
       note: "Late February — heating season winding down. No strong weather anomaly. Waiting for next seasonal window.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["natgas", "commodity", "seasonal"],
   },
 
@@ -1458,7 +1458,7 @@ Tested on DXY daily bars + Fed funds futures from Jan 2015 to Dec 2024. The rate
       lastUpdated: "2025-02-25",
       note: "DXY in mid-range. RSI at 55. No overbought/oversold extreme detected.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["dxy", "forex", "macro"],
   },
   {
@@ -1510,7 +1510,7 @@ Tested on XLU/XLF/TLT + 10Y Treasury yield monthly data from Jan 2012 to Dec 202
       lastUpdated: "2025-02-25",
       note: "Rate regime: falling rates, decelerating. Equal-weight allocation. Next rebalance Mar 1.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["rates", "rotation", "macro"],
   },
   {
@@ -1566,7 +1566,7 @@ Tested on SPY daily bars + CNN Fear & Greed Index from Jan 2012 to Dec 2024. Ext
       lastUpdated: "2025-02-25",
       note: "Fear & Greed Index at 42 (fear). Not yet at extreme fear threshold of 15. Monitoring.",
     },
-    price: 3,
+    price: 2.99,
     tags: ["sentiment", "contrarian", "macro"],
   },
   {
@@ -1629,7 +1629,7 @@ Tested on all 8 assets monthly data from Jan 2015 to Dec 2024 (120 monthly obser
       lastUpdated: "2025-02-25",
       note: "Current top 3: SPY, BTC, GLD. Next rebalance Mar 1. EFA close to replacing GLD.",
     },
-    price: 5,
+    price: 4.99,
     tags: ["global", "rotation", "multi-asset"],
   },
 ];

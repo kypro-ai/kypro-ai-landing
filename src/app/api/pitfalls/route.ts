@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { searchPitfalls } from "@/lib/pitfalls-data";
 import { trackRequest } from "@/lib/analytics";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -13,6 +14,25 @@ export function OPTIONS() {
 }
 
 export function GET(request: NextRequest) {
+  // Rate limiting
+  const ip = request.headers.get("x-forwarded-for") || "unknown";
+  const hasKey = request.nextUrl.searchParams.has("key") || request.headers.has("authorization");
+  const rl = checkRateLimit(ip, hasKey);
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded", retryAfterMs: rl.resetMs },
+      {
+        status: 429,
+        headers: {
+          ...corsHeaders,
+          "Retry-After": String(Math.ceil(rl.resetMs / 1000)),
+          "X-RateLimit-Remaining": "0",
+          "X-TokenSpy-Protected": "true",
+        },
+      }
+    );
+  }
+
   trackRequest(request);
 
   const { searchParams } = new URL(request.url);
@@ -38,6 +58,12 @@ export function GET(request: NextRequest) {
       query: query || null,
       tier: "free",
     },
-    { headers: corsHeaders }
+    {
+      headers: {
+        ...corsHeaders,
+        "X-RateLimit-Remaining": String(rl.remaining),
+        "X-TokenSpy-Protected": "true",
+      },
+    }
   );
 }

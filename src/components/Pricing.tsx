@@ -18,7 +18,7 @@ const tiers = [
   },
   {
     name: 'Per Pitfall',
-    price: '$3-8',
+    price: '$2.99-7.99',
     period: '/each',
     description: 'Pay only for what you need',
     features: [
@@ -34,7 +34,7 @@ const tiers = [
   },
   {
     name: 'Signals',
-    price: '$5',
+    price: '$4.99',
     period: '/mo each',
     description: '30 AI-powered trading strategies',
     features: [
@@ -75,7 +75,7 @@ export default function Pricing() {
             Invest Cents, Save Dollars
           </h2>
           <p className="mt-4 text-lg text-dark-300 max-w-xl mx-auto">
-            12 pitfalls · 30 trading signals · One API. Pay $3-8 per pitfall, save $200+ in wasted time.
+            12 pitfalls · 30 trading signals · One API. Pay $2.99-7.99 per pitfall, save $200+ in wasted time.
           </p>
         </div>
 
