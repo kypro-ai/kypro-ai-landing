@@ -36,8 +36,13 @@ export async function POST(request: NextRequest) {
       if (stripe) {
         try {
           const session = await stripe.checkout.sessions.retrieve(sessionId);
-          if (session.payment_status === "paid" && session.metadata?.pitfallId) {
-            const keyRecord = await createApiKey([session.metadata.pitfallId], sessionId);
+          const isPaid = session.payment_status === "paid";
+          const pitfallId = session.metadata?.pitfallId;
+          const signalId = session.metadata?.signalId;
+
+          if (isPaid && (pitfallId || signalId)) {
+            const productIds = pitfallId ? [pitfallId] : signalId ? [signalId] : [];
+            const keyRecord = await createApiKey(productIds, sessionId);
             return NextResponse.json(
               { key: keyRecord.key, pitfallIds: keyRecord.pitfallIds, createdAt: keyRecord.createdAt },
               { status: 201, headers: corsHeaders }
