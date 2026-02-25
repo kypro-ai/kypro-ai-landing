@@ -18,7 +18,7 @@ export function OPTIONS() {
   return new NextResponse(null, { status: 204, headers: corsHeaders });
 }
 
-export function GET(
+export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
@@ -71,7 +71,7 @@ export function GET(
   let hasAccess = false;
 
   if (apiKey) {
-    const keyRecord = getApiKey(apiKey);
+    const keyRecord = await getApiKey(apiKey);
     if (keyRecord) {
       // API key grants access to signals if the signal ID is in the pitfallIds array
       // (reusing the same key system — pitfallIds includes signal IDs too)
@@ -79,10 +79,10 @@ export function GET(
 
       if (hasAccess) {
         // Track usage
-        trackKeyUsage(apiKey, `/api/signals/${params.id}`, signal.id);
+        await trackKeyUsage(apiKey, `/api/signals/${params.id}`, signal.id);
 
         // Check for abuse
-        if (isAbusingKey(apiKey)) {
+        if (await isAbusingKey(apiKey)) {
           return NextResponse.json(
             { error: "API key suspended due to unusual activity. Contact support." },
             {

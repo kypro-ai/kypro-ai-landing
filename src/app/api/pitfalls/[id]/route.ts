@@ -15,7 +15,7 @@ export function OPTIONS() {
   return new NextResponse(null, { status: 204, headers: corsHeaders });
 }
 
-export function GET(
+export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
@@ -67,13 +67,13 @@ export function GET(
   let hasAccess = pitfall.price === 0; // free pitfalls always accessible
 
   if (apiKey && !hasAccess) {
-    const keyRecord = getApiKey(apiKey);
+    const keyRecord = await getApiKey(apiKey);
     if (keyRecord && keyRecord.pitfallIds.includes(pitfall.id)) {
       // Track usage
-      trackKeyUsage(apiKey, `/api/pitfalls/${params.id}`, pitfall.id);
+      await trackKeyUsage(apiKey, `/api/pitfalls/${params.id}`, pitfall.id);
 
       // Check for abuse
-      if (isAbusingKey(apiKey)) {
+      if (await isAbusingKey(apiKey)) {
         return NextResponse.json(
           { error: "API key suspended due to unusual activity. Contact support." },
           {

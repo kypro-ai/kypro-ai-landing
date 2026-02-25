@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     // If a Stripe session ID is provided, verify payment and create/return key
     if (sessionId) {
       // Check if we already created a key for this session
-      const existing = findKeyBySession(sessionId);
+      const existing = await findKeyBySession(sessionId);
       if (existing) {
         return NextResponse.json(
           { key: existing.key, pitfallIds: existing.pitfallIds, createdAt: existing.createdAt },
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
         try {
           const session = await stripe.checkout.sessions.retrieve(sessionId);
           if (session.payment_status === "paid" && session.metadata?.pitfallId) {
-            const keyRecord = createApiKey([session.metadata.pitfallId], sessionId);
+            const keyRecord = await createApiKey([session.metadata.pitfallId], sessionId);
             return NextResponse.json(
               { key: keyRecord.key, pitfallIds: keyRecord.pitfallIds, createdAt: keyRecord.createdAt },
               { status: 201, headers: corsHeaders }
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const record = createApiKey(pitfallIds, sessionId);
+    const record = await createApiKey(pitfallIds, sessionId);
 
     return NextResponse.json(
       { key: record.key, pitfallIds: record.pitfallIds, createdAt: record.createdAt },

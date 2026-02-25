@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getRedis } from "@/lib/redis";
 
-// In-memory waitlist (resets on redeploy — fine for now)
-const waitlistEmails: Set<string> = new Set();
+const WAITLIST_KEY = "waitlist:emails";
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,23 +15,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (waitlistEmails.has(email)) {
+    const redis = getRedis();
+    if (!redis) {
+      return NextResponse.json(
+        { error: "Database not configured." },
+        { status: 503 }
+      );
+    }
+
+    // Check if already on waitlist
+    const isMember = await redis.sismember(WAITLIST_KEY, email);
+    if (isMember) {
       return NextResponse.json(
         { message: "You're already on the waitlist! We'll be in touch soon." },
         { status: 200 }
       );
     }
 
-    waitlistEmails.add(email);
+    // Add to waitlist
+    await redis.sadd(WAITLIST_KEY, email);
+    const count = await redis.scard(WAITLIST_KEY);
 
     return NextResponse.json(
       {
         message: "Welcome to the waitlist! We'll send you our research for free.",
-        count: waitlistEmails.size,
+        count,
       },
       { status: 201 }
     );
-  } catch {
+  } catch (err: unknown) {
+    console.error("[waitlist] Error:", err);
     return NextResponse.json(
       { error: "Something went wrong. Please try again." },
       { status: 500 }
@@ -40,7 +53,8 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  return NextResponse.json({
-    count: waitlistEmails.size,
-  });
+  const redis = getRedis();
+  if (!redis) return NextResponse.json({ count: 0 });
+  const count = await redis.scard(WAITLIST_KEY);
+  return NextResponse.json({ count });
 }

@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
 
       // Auto-generate an API key for this purchase
       if (pitfallId) {
-        const keyRecord = createApiKey([pitfallId], session.id);
+        const keyRecord = await createApiKey([pitfallId], session.id);
         console.log("[webhook] 🔑 API key created:", keyRecord.key, "for pitfall:", pitfallId);
       }
     }
