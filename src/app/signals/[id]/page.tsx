@@ -312,7 +312,7 @@ export default function SignalDetailPage({
               Fetch this signal programmatically:
             </p>
             <pre className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 overflow-x-auto text-sm font-mono text-emerald-300 leading-relaxed">
-              <code>{`curl -X GET "https://api.tokenspy.com/v1/signals/${s.id}" \\
+              <code>{`curl -X GET "https://www.tokenspy.ai/api/signals/${s.id}" \\
   -H "Authorization: Bearer YOUR_API_KEY"`}</code>
             </pre>
           </section>

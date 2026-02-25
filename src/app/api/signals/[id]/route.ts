@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSignalById } from "@/lib/signals-data";
-import { getApiKey } from "@/lib/api-keys";
+import { getApiKey, trackKeyUsage, isAbusingKey } from "@/lib/api-keys";
 import { trackRequest } from "@/lib/analytics";
+import { checkRateLimit } from "@/lib/rate-limit";
+import { fingerprintContent } from "@/lib/fingerprint";
 
 const DISCLAIMER =
   "All trading signals are AI-generated and for informational purposes only. This is NOT financial advice. Past performance does not guarantee future results. Trade at your own risk. TokenSpy is not a registered investment advisor.";
@@ -20,6 +22,25 @@ export function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // Rate limiting
+  const ip = request.headers.get("x-forwarded-for") || "unknown";
+  const hasKey = request.nextUrl.searchParams.has("key") || request.headers.has("authorization");
+  const rl = checkRateLimit(ip, hasKey);
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded", retryAfterMs: rl.resetMs },
+      {
+        status: 429,
+        headers: {
+          ...corsHeaders,
+          "Retry-After": String(Math.ceil(rl.resetMs / 1000)),
+          "X-RateLimit-Remaining": "0",
+          "X-TokenSpy-Protected": "true",
+        },
+      }
+    );
+  }
+
   trackRequest(request);
 
   const signal = getSignalById(params.id);
@@ -27,7 +48,14 @@ export function GET(
   if (!signal) {
     return NextResponse.json(
       { error: "Signal not found", id: params.id },
-      { status: 404, headers: corsHeaders }
+      {
+        status: 404,
+        headers: {
+          ...corsHeaders,
+          "X-RateLimit-Remaining": String(rl.remaining),
+          "X-TokenSpy-Protected": "true",
+        },
+      }
     );
   }
 
@@ -48,8 +76,34 @@ export function GET(
       // API key grants access to signals if the signal ID is in the pitfallIds array
       // (reusing the same key system — pitfallIds includes signal IDs too)
       hasAccess = keyRecord.pitfallIds.includes(signal.id);
+
+      if (hasAccess) {
+        // Track usage
+        trackKeyUsage(apiKey, `/api/signals/${params.id}`, signal.id);
+
+        // Check for abuse
+        if (isAbusingKey(apiKey)) {
+          return NextResponse.json(
+            { error: "API key suspended due to unusual activity. Contact support." },
+            {
+              status: 403,
+              headers: {
+                ...corsHeaders,
+                "X-RateLimit-Remaining": String(rl.remaining),
+                "X-TokenSpy-Protected": "true",
+              },
+            }
+          );
+        }
+      }
     }
   }
+
+  const responseHeaders = {
+    ...corsHeaders,
+    "X-RateLimit-Remaining": String(rl.remaining),
+    "X-TokenSpy-Protected": "true",
+  };
 
   const response: Record<string, unknown> = {
     id: signal.id,
@@ -79,7 +133,7 @@ export function GET(
           totalTrades: "🔒 Premium",
         },
     methodology: hasAccess
-      ? signal.methodology
+      ? (apiKey ? fingerprintContent(signal.methodology, apiKey) : signal.methodology)
       : `🔒 Premium — subscribe for $${signal.price}/mo or use API key to access the full methodology, entry/exit rules, and position sizing.`,
     tier: hasAccess ? "premium" : "free",
     locked: !hasAccess,
@@ -97,5 +151,5 @@ export function GET(
     response.subscribeMethod = `POST /api/checkout with {signalId: '${signal.id}'}`;
   }
 
-  return NextResponse.json(response, { headers: corsHeaders });
+  return NextResponse.json(response, { headers: responseHeaders });
 }

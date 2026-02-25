@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { filterSignals } from "@/lib/signals-data";
 import { trackRequest } from "@/lib/analytics";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 const DISCLAIMER =
   "All trading signals are AI-generated and for informational purposes only. This is NOT financial advice. Past performance does not guarantee future results. Trade at your own risk. TokenSpy is not a registered investment advisor.";
@@ -16,6 +17,25 @@ export function OPTIONS() {
 }
 
 export function GET(request: NextRequest) {
+  // Rate limiting
+  const ip = request.headers.get("x-forwarded-for") || "unknown";
+  const hasKey = request.nextUrl.searchParams.has("key") || request.headers.has("authorization");
+  const rl = checkRateLimit(ip, hasKey);
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded", retryAfterMs: rl.resetMs },
+      {
+        status: 429,
+        headers: {
+          ...corsHeaders,
+          "Retry-After": String(Math.ceil(rl.resetMs / 1000)),
+          "X-RateLimit-Remaining": "0",
+          "X-TokenSpy-Protected": "true",
+        },
+      }
+    );
+  }
+
   trackRequest(request);
 
   const { searchParams } = new URL(request.url);
@@ -60,6 +80,12 @@ export function GET(request: NextRequest) {
       tier: "free",
       disclaimer: DISCLAIMER,
     },
-    { headers: corsHeaders }
+    {
+      headers: {
+        ...corsHeaders,
+        "X-RateLimit-Remaining": String(rl.remaining),
+        "X-TokenSpy-Protected": "true",
+      },
+    }
   );
 }

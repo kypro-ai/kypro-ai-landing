@@ -22,7 +22,7 @@ More pitfalls added regularly.
 
 ## API Endpoints
 
-Base URL: https://tokenspy.co
+Base URL: https://www.tokenspy.ai
 
 ### Search Pitfalls
 GET /api/pitfalls?q=shopify+seo
@@ -44,7 +44,7 @@ Returns all available pitfalls (no query filter).
 ## MCP Integration
 
 TokenSpy supports Model Context Protocol (MCP). Server spec available at:
-https://tokenspy.co/api-docs
+https://www.tokenspy.ai/api-docs
 
 Tools: search_pitfalls(query), get_pitfall(id), list_pitfalls()
 
@@ -83,8 +83,8 @@ Trade at your own risk. TokenSpy is not a registered investment advisor.
 
 ## Contact
 
-Website: https://tokenspy.co
-API Docs: https://tokenspy.co/api-docs
+Website: https://www.tokenspy.ai
+API Docs: https://www.tokenspy.ai/api-docs
 `;
 
 export function GET(request: NextRequest) {

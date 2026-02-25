@@ -118,7 +118,7 @@ export default function ApiDocsPage() {
 
           <p className="text-sm text-dark-400 mb-12 font-mono">
             Base URL:{" "}
-            <code className="text-brand-400">https://tokenspy.co</code> ·
+            <code className="text-brand-400">https://www.tokenspy.ai</code> ·
             CORS enabled · No auth required (free tier)
           </p>
 
@@ -156,7 +156,7 @@ export default function ApiDocsPage() {
                 desc: "Search query. Matches title, summary, tags, gotchas. Omit to list all.",
               },
             ]}
-            example={`curl "https://tokenspy.co/api/pitfalls?q=shopify+seo"`}
+            example={`curl "https://www.tokenspy.ai/api/pitfalls?q=shopify+seo"`}
             response={`{
   "results": [
     {
@@ -186,7 +186,7 @@ export default function ApiDocsPage() {
                 required: true,
               },
             ]}
-            example={`curl "https://tokenspy.co/api/pitfalls/shopify-seo-0-to-100"`}
+            example={`curl "https://www.tokenspy.ai/api/pitfalls/shopify-seo-0-to-100"`}
             response={`{
   "id": "shopify-seo-0-to-100",
   "title": "Shopify SEO 0→100: Full Playbook in One Day",
@@ -216,7 +216,7 @@ export default function ApiDocsPage() {
             method="GET"
             path="/api/llms.txt"
             description="Machine-readable description of TokenSpy's offerings for AI crawlers and LLM agents. Also available at /llms.txt."
-            example={`curl "https://tokenspy.co/llms.txt"`}
+            example={`curl "https://www.tokenspy.ai/llms.txt"`}
             response={`# TokenSpy — AI Pitfall Intelligence
 > We go undercover inside AI tools so you don't get burned.
 
@@ -301,7 +301,7 @@ GET /api/pitfalls/{id}
                 </p>
                 <CodeBlock>
                   {`# Quick check before recommending Shopify SEO tools
-curl -s "https://tokenspy.co/api/pitfalls?q=shopify+seo" | jq '.results[0].summary'`}
+curl -s "https://www.tokenspy.ai/api/pitfalls?q=shopify+seo" | jq '.results[0].summary'`}
                 </CodeBlock>
               </div>
             </div>

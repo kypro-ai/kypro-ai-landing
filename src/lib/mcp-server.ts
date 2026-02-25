@@ -30,7 +30,7 @@ export const MCP_SERVER_INFO = {
   description:
     "TokenSpy Pitfall Intelligence — search and retrieve tested AI pitfalls and playbooks. We test AI tools and strategies so you don't get burned.",
   vendor: "TokenSpy",
-  homepage: "https://tokenspy.co",
+  homepage: "https://www.tokenspy.ai",
 } as const;
 
 export const MCP_TOOLS: MCPToolDefinition[] = [
