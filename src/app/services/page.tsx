@@ -238,6 +238,56 @@ export default function ServicesPage() {
             ))}
           </div>
 
+          {/* Available Skills */}
+          <div className="mt-16">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl font-bold text-white font-mono">
+                🧰 Available Skills
+              </h2>
+              <p className="mt-2 text-dark-300 text-sm max-w-xl mx-auto">
+                Choose from 50+ skills for your AI assistant. Pick any 3 with the Full Setup, or request custom ones.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
+              {[
+                {
+                  cat: "💬 Communication",
+                  skills: ["Discord", "Slack", "iMessage", "Voice Call (Twilio)", "Telegram", "Signal"],
+                },
+                {
+                  cat: "📋 Productivity",
+                  skills: ["Apple Notes", "Apple Reminders", "Things (Mac)", "Notion", "Obsidian", "Trello", "Bear Notes", "GitHub"],
+                },
+                {
+                  cat: "🎨 Media & AI",
+                  skills: ["AI Image Generation (DALL·E)", "Text-to-Speech (ElevenLabs)", "Speech-to-Text (Whisper)", "Spotify Player", "Camera Snap", "Video Frames"],
+                },
+                {
+                  cat: "🔧 Utilities",
+                  skills: ["Weather", "Web Summarizer", "Coding Agent", "Health Check", "1Password", "Smart Lights (Hue)", "Sonos Audio", "Custom Workflows"],
+                },
+              ].map((group) => (
+                <div key={group.cat} className="glass-card rounded-xl p-5">
+                  <h3 className="text-sm font-bold text-brand-400 font-mono mb-3">
+                    {group.cat}
+                  </h3>
+                  <ul className="space-y-1.5">
+                    {group.skills.map((s) => (
+                      <li key={s} className="text-xs text-dark-300 flex items-center gap-1.5">
+                        <span className="text-brand-500/60">›</span> {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-center mt-6 text-xs text-dark-500">
+              Some skills require external accounts (e.g., Spotify, 1Password, Twilio). We&apos;ll help you set everything up.
+            </p>
+          </div>
+
           {/* Bottom CTA */}
           <div className="mt-16 text-center">
             <div className="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
