@@ -50,6 +50,39 @@ https://tokenspy.co/api-docs
 
 Tools: search_pitfalls(query), get_pitfall(id), list_pitfalls()
 
+## Trading Signals
+
+TokenSpy also provides AI-generated trading signals — backtested algorithmic strategies
+across stocks (TSLA, SPY, QQQ, NVDA), crypto (BTC), commodities (GLD), and volatility (VIX).
+
+### Available Signals (10 strategies)
+
+1. **TSLA Momentum Breakout** (tsla-momentum-breakout) — 20-day breakout + MACD + RSI. Swing. 55% WR. $5/mo
+2. **TSLA Intraday Short** (tsla-intraday-short) — MA5 crossover day trade short. 78% WR. $5/mo
+3. **TSLA Triple Top Short** (tsla-triple-top-short) — Triple top pattern + VWAP + RSI. 56% WR. $5/mo
+4. **SPY Overbought Reversal** (spy-overbought-reversal) — RSI>70 + Bollinger Band reversal. 62% WR. $3/mo
+5. **QQQ Golden Cross** (qqq-golden-cross) — MA50/MA200 crossover. Long-term. 68% WR. $3/mo
+6. **NVDA Volatility Breakout** (nvda-volatility-breakout) — ATR breakout + volume spike. 58% WR. $5/mo
+7. **BTC Trend Follower** (btc-trend-follower) — 50-day MA trend + RSI momentum. 52% WR. $5/mo
+8. **Gold Safe Haven** (gold-safe-haven) — Gold/VIX correlation for risk-off trades. 64% WR. $3/mo
+9. **VIX Fear Gauge** (vix-fear-gauge) — VIX spike mean reversion. 71% WR. $3/mo
+10. **Multi-Asset Momentum** (multi-asset-momentum) — SPY/QQQ/BTC/GLD rotation. 63% WR. $5/mo
+
+### Signals API Endpoints
+
+GET /api/signals
+Returns: {signals: [{id, name, ticker, category, description, backtest{period, winRate}, currentSignal{direction}}], total}
+Query params: ?ticker=TSLA, ?category=momentum
+
+GET /api/signals/{id}
+Returns: Full signal detail. Free: name, description, indicators, direction. Premium (API key): methodology, full backtest, confidence.
+
+### Disclaimer
+
+All trading signals are AI-generated and for informational purposes only.
+This is NOT financial advice. Past performance does not guarantee future results.
+Trade at your own risk. TokenSpy is not a registered investment advisor.
+
 ## Contact
 
 Website: https://tokenspy.co
