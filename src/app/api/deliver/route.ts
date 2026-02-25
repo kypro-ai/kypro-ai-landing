@@ -60,7 +60,18 @@ export async function POST(request: NextRequest) {
 
     const pitfallId = session.metadata?.pitfallId;
     const signalId = session.metadata?.signalId;
+    const serviceId = session.metadata?.serviceId;
     const type = session.metadata?.type || "pitfall";
+
+    // Deliver service confirmation
+    if (serviceId || type === "service") {
+      return NextResponse.json({
+        type: "service",
+        serviceId: serviceId || "",
+        customerEmail: session.customer_details?.email || null,
+        message: "We'll reach out within 24h to start your setup. Contact: contact@tokenspy.ai",
+      }, { headers: corsHeaders });
+    }
 
     // Deliver pitfall content
     if (pitfallId) {

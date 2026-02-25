@@ -51,7 +51,14 @@ interface SignalContent {
   customerEmail: string | null;
 }
 
-type DeliveryData = PitfallContent | SignalContent;
+interface ServiceContent {
+  type: "service";
+  serviceId: string;
+  customerEmail: string | null;
+  message: string;
+}
+
+type DeliveryData = PitfallContent | SignalContent | ServiceContent;
 
 function SuccessContent() {
   const searchParams = useSearchParams();
@@ -314,6 +321,50 @@ function SuccessContent() {
 
               {apiKey && <ApiKeyCard apiKey={apiKey} endpoint={`/api/signals/${data.id}`} />}
               <NavLinks />
+            </div>
+          )}
+
+          {/* SERVICE DELIVERY */}
+          {status === "success" && data?.type === "service" && (
+            <div>
+              <div className="text-center mb-10">
+                <div className="text-5xl mb-4">🎉</div>
+                <h1 className="text-3xl font-extrabold text-white font-mono">
+                  Purchase Complete!
+                </h1>
+                <p className="mt-2 text-dark-300">
+                  Thank you for your purchase. We&apos;re on it.
+                </p>
+              </div>
+
+              <div className="glass-card rounded-2xl p-8 border border-brand-500/30 mb-8 text-center">
+                <div className="text-4xl mb-4">🤖</div>
+                <h2 className="text-xl font-bold text-white font-mono mb-4">
+                  What Happens Next
+                </h2>
+                <p className="text-dark-200 leading-relaxed mb-6">
+                  We&apos;ll reach out within <span className="text-brand-400 font-semibold">24 hours</span> to start your setup.
+                  Check your email for a confirmation.
+                </p>
+                <div className="bg-white/[0.04] rounded-xl p-4 border border-white/[0.08] inline-block">
+                  <p className="text-sm text-dark-400 font-mono mb-1">Questions? Contact us:</p>
+                  <a
+                    href="mailto:contact@tokenspy.ai"
+                    className="text-brand-400 font-mono font-semibold hover:underline"
+                  >
+                    contact@tokenspy.ai
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/services" className="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white font-mono text-sm text-center hover:bg-brand-500 transition-colors">
+                  Back to Services
+                </Link>
+                <Link href="/" className="rounded-xl bg-white/5 border border-white/10 px-6 py-3 font-semibold text-white font-mono text-sm text-center hover:bg-white/10 transition-colors">
+                  Go Home
+                </Link>
+              </div>
             </div>
           )}
 
