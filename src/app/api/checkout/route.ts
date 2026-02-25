@@ -47,7 +47,7 @@ async function handleCheckout(request: NextRequest, pitfallId: string) {
     metadata: {
       pitfallId: pitfall.id,
     },
-    success_url: `${origin}/pitfalls/${pitfall.id}?paid=true&session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${origin}/purchase/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${origin}/pitfalls/${pitfall.id}`,
   });
 
