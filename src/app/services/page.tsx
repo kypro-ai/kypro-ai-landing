@@ -10,6 +10,7 @@ const services = [
     name: "Full AI Assistant Setup",
     price: 99,
     period: null,
+    from: true,
     description:
       "Complete OpenClaw installation + Telegram/Signal connection + custom personality (SOUL.md) + memory system + 3 skills of your choice. Ready to use in 24h.",
     features: [
@@ -27,6 +28,7 @@ const services = [
     name: "Custom Skill Development",
     price: 149,
     period: null,
+    from: true,
     description:
       "We build a custom skill for your AI assistant. Anything from web scraping to API integrations to automated workflows. Includes testing + documentation.",
     features: [
@@ -44,6 +46,7 @@ const services = [
     name: "Node Connection (Mac/Phone)",
     price: 39,
     period: null,
+    from: false,
     description:
       "Connect your MacBook or phone to your AI assistant. Remote access, camera, screen, file management. Full walkthrough + troubleshooting.",
     features: [
@@ -61,6 +64,7 @@ const services = [
     name: "Trading Signal Setup",
     price: 79,
     period: null,
+    from: true,
     description:
       "Automated TSLA/SPY/QQQ trading signals delivered to your Telegram. Includes backtested strategies, cron scheduling, and position sizing guidance.",
     features: [
@@ -78,6 +82,7 @@ const services = [
     name: "Agent Memory & Personality",
     price: 49,
     period: null,
+    from: true,
     description:
       "Professional SOUL.md, AGENTS.md, and MEMORY.md configuration. Make your AI actually useful — custom personality, workflows, and long-term memory.",
     features: [
@@ -95,6 +100,7 @@ const services = [
     name: "Monthly AI Maintenance",
     price: 29,
     period: "/mo",
+    from: false,
     description:
       "Ongoing maintenance: skill updates, memory cleanup, config optimization, priority support via Telegram.",
     features: [
@@ -179,6 +185,9 @@ export default function ServicesPage() {
                 </h3>
 
                 <div className="mt-4 flex items-baseline gap-1">
+                  {service.from && (
+                    <span className="text-sm text-dark-400 mr-1">From</span>
+                  )}
                   <span className="text-4xl font-extrabold font-mono text-brand-400">
                     ${service.price}
                   </span>
