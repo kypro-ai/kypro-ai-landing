@@ -196,8 +196,8 @@ export default function AiMoneyMethodsContent() {
             <p className="text-sm text-dark-300 font-mono mb-3">
               🔒 Detailed scores, income data, Reddit验证, and step-by-step playbooks for all 15 methods
             </p>
-            <a href="/#pricing" className="inline-block rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] font-mono">
-              Unlock Full Research — From $2.99
+            <a href="/pitfalls" className="inline-block rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] font-mono">
+              Browse All Pitfalls — From $2.99
             </a>
           </div>
         </div>
@@ -223,7 +223,7 @@ export default function AiMoneyMethodsContent() {
 
       <div className="mt-10 text-center">
         <a
-          href="/#pricing"
+          href="/pitfalls"
           className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
         >
           Get Pitfall Intel — From $2.99

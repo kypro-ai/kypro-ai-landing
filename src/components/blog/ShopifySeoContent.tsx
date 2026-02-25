@@ -200,7 +200,7 @@ export default function ShopifySeoContent() {
       {/* Bottom CTA */}
       <div className="mt-10 text-center">
         <a
-          href="/#pricing"
+          href="/pitfalls"
           className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
         >
           Get Pitfall Intel — From $2.99
