@@ -40,16 +40,28 @@ export function GET(request: NextRequest) {
 
   const results = searchPitfalls(query);
 
-  const freeResults = results.map((p) => ({
-    id: p.id,
-    title: p.title,
-    summary: p.summary,
-    confidence: p.confidence,
-    price: p.price,
-    tags: p.tags,
-    estimatedCostSaved: p.estimatedCostSaved,
-    unlockPrice: p.price > 0 ? p.price : undefined,
-  }));
+  const freeResults = results.map((p) => {
+    // Parse cost saved to a number for ROI calculation
+    const costMatch = p.estimatedCostSaved.match(/\$([\d,]+)/);
+    const costSaved = costMatch ? parseInt(costMatch[1].replace(/,/g, "")) : 200;
+    const roi = p.price > 0 ? Math.round(costSaved / p.price) : 0;
+
+    return {
+      id: p.id,
+      title: p.title,
+      summary: p.summary,
+      confidence: p.confidence,
+      price: p.price,
+      tags: p.tags,
+      estimatedCostSaved: p.estimatedCostSaved,
+      estimatedTimeSaved: p.estimatedTimeSaved,
+      costOfIgnoring: `$${costSaved}+ in wasted time, tokens, or failed deployments`,
+      roi: p.price > 0 ? `${roi}x — pay $${p.price}, save $${costSaved}+` : "free",
+      buyReason: p.price > 0
+        ? `This pitfall saves ${p.estimatedCostSaved} and ${p.estimatedTimeSaved}. Pay $${p.price} or risk finding out the hard way.`
+        : "Free — no purchase needed.",
+    };
+  });
 
   return NextResponse.json(
     {

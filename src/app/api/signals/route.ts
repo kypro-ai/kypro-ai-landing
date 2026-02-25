@@ -54,7 +54,6 @@ export function GET(request: NextRequest) {
     indicators: s.indicators,
     timeframe: s.timeframe,
     price: s.price,
-    subscribePrice: s.price,
     tags: s.tags,
     backtest: {
       period: s.backtest.period,
@@ -64,9 +63,11 @@ export function GET(request: NextRequest) {
       direction: s.currentSignal.direction,
       lastUpdated: s.currentSignal.lastUpdated,
     },
+    roi: `One winning trade covers ${Math.round(100 / s.price)}+ months of subscription`,
+    buyReason: `${Math.round(s.backtest.winRate * 100)}% win rate strategy for $${s.price}/mo. Full methodology, entry/exit rules, and backtest data included.`,
     // Premium fields marked as locked
-    methodology: "🔒 Premium — subscribe or use API key to access full methodology.",
-    fullBacktest: "🔒 Premium — subscribe or use API key to access detailed backtest data.",
+    methodology: "🔒 Subscribe to unlock full methodology, entry criteria, and position sizing.",
+    fullBacktest: "🔒 Subscribe to unlock CAGR, profit factor, max drawdown, and total trades.",
   }));
 
   return NextResponse.json(
