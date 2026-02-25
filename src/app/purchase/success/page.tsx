@@ -27,9 +27,9 @@ function SuccessContent() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.apiKey) {
-          setApiKey(data.apiKey);
-          setPitfallId(data.pitfallId || null);
+        if (data.key) {
+          setApiKey(data.key);
+          setPitfallId(data.pitfallIds?.[0] || null);
           setStatus("success");
         } else {
           setStatus("error");
