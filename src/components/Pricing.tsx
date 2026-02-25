@@ -2,21 +2,6 @@ import Link from "next/link";
 
 const tiers = [
   {
-    name: 'Free',
-    price: '$0',
-    period: '',
-    description: 'Browse summaries, see what we test',
-    features: [
-      'All pitfall summaries',
-      'All signal directions (LONG/SHORT/WAIT)',
-      'API access (summaries only)',
-      'llms.txt for AI crawlers',
-    ],
-    cta: 'Browse Pitfalls',
-    href: '/pitfalls',
-    highlight: false,
-  },
-  {
     name: 'Per Pitfall',
     price: '$2.99-7.99',
     period: '/each',
@@ -28,40 +13,40 @@ const tiers = [
       'API key for programmatic access',
       'One-time purchase, forever access',
     ],
-    cta: 'View Pitfalls',
+    cta: 'Browse Pitfalls',
     href: '/pitfalls',
     highlight: false,
   },
   {
-    name: 'Signals',
-    price: '$4.99',
+    name: 'Trading Signals',
+    price: '$2.99-4.99',
     period: '/mo each',
-    description: '30 AI-powered trading strategies',
+    description: '43 AI-powered trading strategies',
     features: [
       'Full methodology & backtest data',
       'Daily signal updates',
-      'Entry/exit rules',
-      'Position sizing guidance',
+      'Entry/exit rules & position sizing',
       'API access for agents',
+      'Cancel anytime',
     ],
-    cta: 'View Signals',
+    cta: 'Browse Signals',
     href: '/signals',
     highlight: true,
   },
   {
-    name: 'API Access',
-    price: 'Pay per use',
+    name: 'AI Setup Services',
+    price: 'From $29',
     period: '',
-    description: 'For AI agents & developers',
+    description: 'We set it up, you sit back',
     features: [
-      'RESTful JSON API',
-      'MCP Server for Claude/Cursor',
-      'Search & filter pitfalls',
-      'Real-time signal queries',
-      'CORS enabled, agent-friendly',
+      'Full AI assistant setup',
+      'Custom skill development',
+      'Device & node connection',
+      'Trading signal configuration',
+      'Done-for-you, not DIY',
     ],
-    cta: 'API Docs',
-    href: '/api-docs',
+    cta: 'View Services',
+    href: '/services',
     highlight: false,
   },
 ];
@@ -75,11 +60,11 @@ export default function Pricing() {
             Invest Cents, Save Dollars
           </h2>
           <p className="mt-4 text-lg text-dark-300 max-w-xl mx-auto">
-            20 pitfalls · 30 trading signals · One API. Pay $2.99-7.99 per pitfall, save $200+ in wasted time.
+            20 pitfall playbooks · 43 trading signals · AI setup services. Skip the trial-and-error.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {tiers.map((tier) => (
             <div
               key={tier.name}
