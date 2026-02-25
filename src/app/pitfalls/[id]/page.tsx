@@ -200,13 +200,13 @@ export default function PitfallDetailPage({
 
           <div className="my-10 border-t border-emerald-500/10" />
 
-          {/* ── Steps ──────────────────────────────────────── */}
+          {/* ── Steps (show first 2 free, rest locked) ─────── */}
           <section className="mb-12">
             <h2 className="text-xl font-bold text-white font-mono mb-5">
-              Steps
+              Steps ({p.steps.length})
             </h2>
             <ol className="space-y-3">
-              {p.steps.map((step, i) => (
+              {p.steps.slice(0, isPaid ? 2 : p.steps.length).map((step, i) => (
                 <li key={i} className="flex gap-3 text-dark-200 leading-relaxed">
                   <span className="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-brand-500/10 text-brand-400 text-xs font-bold font-mono">
                     {i + 1}
@@ -214,16 +214,24 @@ export default function PitfallDetailPage({
                   <span>{step}</span>
                 </li>
               ))}
+              {isPaid && p.steps.length > 2 && (
+                <li className="flex gap-3 text-dark-500 leading-relaxed italic">
+                  <span className="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-white/5 text-dark-500 text-xs font-bold font-mono">
+                    🔒
+                  </span>
+                  <span>+{p.steps.length - 2} more steps — unlock to see all</span>
+                </li>
+              )}
             </ol>
           </section>
 
-          {/* ── Gotchas ────────────────────────────────────── */}
+          {/* ── Gotchas (show first 1 free, rest locked) ───── */}
           <section className="mb-12">
             <h2 className="text-xl font-bold text-white font-mono mb-5">
-              ⚠️ Gotchas
+              ⚠️ Gotchas ({p.gotchas.length})
             </h2>
             <div className="space-y-3">
-              {p.gotchas.map((g, i) => (
+              {p.gotchas.slice(0, isPaid ? 1 : p.gotchas.length).map((g, i) => (
                 <div
                   key={i}
                   className="flex gap-3 rounded-xl border border-yellow-500/20 bg-yellow-500/[0.04] px-5 py-4"
@@ -234,10 +242,18 @@ export default function PitfallDetailPage({
                   </p>
                 </div>
               ))}
+              {isPaid && p.gotchas.length > 1 && (
+                <div className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-5 py-4">
+                  <span className="shrink-0 text-dark-500 text-lg">🔒</span>
+                  <p className="text-dark-500 text-sm leading-relaxed italic">
+                    +{p.gotchas.length - 1} more gotchas — unlock to see all
+                  </p>
+                </div>
+              )}
             </div>
           </section>
 
-          {/* ── Results ────────────────────────────────────── */}
+          {/* ── Results (always show — it's the teaser) ────── */}
           <section className="mb-12">
             <h2 className="text-xl font-bold text-white font-mono mb-5">
               Results
