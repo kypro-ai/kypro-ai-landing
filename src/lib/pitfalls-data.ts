@@ -889,6 +889,453 @@ The AI had no concept of the psychological context of its users. It treated ever
     estimatedTimeSaved: "10+ hours of safety audit planning",
     estimatedCostSaved: "$50,000+ in liability and reputational damage",
   },
+  {
+    id: "agent-memory-loss-daily",
+    title: "AI Agent Memory Loss: Why Your Agent Forgets Everything Daily",
+    summary:
+      "Most AI agents lose all context between sessions. Without a proper memory system, agents repeat work, forget decisions, and waste 2-5 hours/week in redundant token spend. Here's the complete fix with file-based memory, cron jobs, and long-term knowledge management.",
+    fullContent: `# AI Agent Memory Loss: The Complete Fix
+
+## The Problem
+Every AI agent session starts fresh. Your agent has no idea what happened yesterday — the decisions made, files created, or strategies discussed. This leads to:
+
+- Repeated work (re-analyzing the same data)
+- Lost context (forgetting user preferences)
+- Wasted tokens (re-reading files it already processed)
+- Inconsistent behavior (making different decisions each session)
+
+## The Solution: File-Based Memory System
+
+### Daily Memory Files
+Create \`memory/YYYY-MM-DD.md\` files as raw session logs. Your agent writes what happened, what was decided, and what's pending.
+
+### Long-Term Memory (MEMORY.md)
+A curated file — like a human's journal distilled into key facts. Review daily notes periodically and update with lasting insights.
+
+### Automated Memory Maintenance
+Set up a nightly cron job that:
+1. Reads the day's chat logs
+2. Extracts key decisions and learnings
+3. Updates MEMORY.md
+4. Generates a summary for the next session
+
+## Real-World Impact
+We measured a 60% reduction in redundant token spend after implementing this system. Decisions made on Monday were still accessible on Friday without re-discussion.`,
+    steps: [
+      "Create a memory/ directory in your agent's workspace",
+      "Configure your agent to write memory/YYYY-MM-DD.md at the end of each session",
+      "Create MEMORY.md as a curated long-term knowledge base",
+      "Set up a daily cron job to review and consolidate memory files",
+      "Add 'Read today + yesterday memory files' to your agent's startup routine",
+      "Periodically review and prune MEMORY.md to keep it focused",
+    ],
+    gotchas: [
+      "Agents will claim to 'remember' things they don't — they're pattern-matching, not recalling",
+      "Memory files grow fast — without pruning, your agent wastes tokens reading irrelevant old data",
+      "Cron-based memory consolidation can hallucinate if the model misinterprets chat logs",
+      "Don't store secrets in memory files — they persist and could leak",
+      "Memory files in the workspace are readable by any session — design for multi-session access",
+      "Large MEMORY.md files (>500 lines) start degrading agent performance — keep it curated",
+    ],
+    results: {
+      before: "Agent forgets everything daily. Repeats 30% of work. Wastes 2-5 hours/week in tokens.",
+      after: "Persistent memory across sessions. Decisions stick. 60% reduction in redundant token spend.",
+    },
+    tags: ["agent", "memory", "productivity", "token-saving", "openclaw"],
+    price: 4.99,
+    confidence: 0.98,
+    estimatedTimeSaved: "2-5 hours per week",
+    estimatedCostSaved: "$50-200/month in wasted tokens",
+  },
+  {
+    id: "agent-token-budget-blowout",
+    title: "Agent Token Budget Blowout: How Agents Waste 60% of Your Money",
+    summary:
+      "Browser automation, long conversations, and unoptimized workflows cause AI agents to burn through tokens 3-5x faster than necessary. Tested optimization strategies that cut daily token spend by 60% without reducing output quality.",
+    fullContent: `# Agent Token Budget Blowout: The Complete Optimization Guide
+
+## The Problem
+A typical AI agent burns $5-15/day in tokens. Most of that spend is waste:
+
+- Browser automation for tasks a script could do ($2-5 per browser session)
+- Long conversations that exceed context windows
+- Subtasks running on expensive models when cheap ones would work
+- Repeated file reads instead of caching results
+- Heartbeat checks every 5 minutes instead of every 30
+
+## Optimization Strategies Tested
+
+### 1. Scripts Over Browser (Savings: 40-60%)
+We replaced Shopify admin UI clicks with direct CSRF API calls. Same result, 1/10th the token cost.
+
+### 2. Session Splitting (Savings: 15-25%)
+After 50+ messages, context window is bloated. Starting fresh with a summary saves tokens on every subsequent call.
+
+### 3. Model Tiering (Savings: 20-30%)
+Main agent on Opus ($12.50/1M tokens). Subtasks on Sonnet ($3/1M tokens). 4x cheaper for routine work.
+
+### 4. Result Caching (Savings: 10-20%)
+Save API responses, search results, and analysis to files. Don't re-fetch what you already have.
+
+## Real Numbers
+Before optimization: $12.50/day average
+After optimization: $4.80/day average
+Monthly savings: $231`,
+    steps: [
+      "Audit your agent's daily activities — identify browser vs script tasks",
+      "Replace all browser-based data entry with API scripts",
+      "Set conversation length limits — split at 50 messages",
+      "Configure subtask model to use a cheaper model (e.g., Sonnet instead of Opus)",
+      "Implement file-based caching for API responses and search results",
+      "Reduce heartbeat frequency to every 30 minutes minimum",
+      "Batch similar operations instead of processing one at a time",
+    ],
+    gotchas: [
+      "Browser automation seems easier but costs 10x more in tokens than writing a script",
+      "Splitting sessions loses context — always write a summary before splitting",
+      "Cheaper models hallucinate more — only use them for well-defined, verifiable tasks",
+      "Caching stale data can be worse than re-fetching — add expiry to cached results",
+      "Some tasks genuinely need browser (CAPTCHAs, complex UIs) — don't over-optimize",
+      "Token counting is approximate — actual costs often 20-30% higher than estimates",
+    ],
+    results: {
+      before: "Agent spending $12.50/day. 60% of tokens wasted on browser automation and long contexts.",
+      after: "Optimized to $4.80/day. Same output quality. $231/month saved.",
+    },
+    tags: ["agent", "token", "cost", "optimization", "budget"],
+    price: 4.99,
+    confidence: 0.95,
+    estimatedTimeSaved: "1 hour of optimization research",
+    estimatedCostSaved: "$100-300/month in token costs",
+  },
+  {
+    id: "agent-security-leak-api-keys",
+    title: "Agent Security: How AI Agents Leak API Keys and Credentials",
+    summary:
+      "AI agents routinely log, commit, or share API keys, passwords, and tokens in plain text. We documented 7 common leak vectors and the exact prevention measures. One leaked key can cost unlimited damage.",
+    fullContent: `# Agent Security: Preventing Credential Leaks
+
+## The Problem
+AI agents handle sensitive credentials constantly — API keys, database passwords, OAuth tokens, personal data. They don't inherently understand secrecy.
+
+## 7 Common Leak Vectors
+
+1. **Hardcoded in source files** — Agent writes API key directly in code
+2. **Committed to git** — Key ends up in public repository history
+3. **Logged in memory files** — Daily notes contain passwords in plain text
+4. **Shared in group chats** — Agent pastes credentials when asked "what's the config?"
+5. **Included in error messages** — Stack traces expose connection strings
+6. **Cached in browser sessions** — Autofill stores credentials in screenshot-accessible forms
+7. **Passed to subtasks** — Child agents receive credentials they don't need
+
+## Prevention Framework
+- Environment variables for all secrets
+- Git hooks to scan for credential patterns before commit
+- Memory file auditing — never store secrets in daily logs
+- Principle of least privilege — each subtask gets only what it needs
+- Regular key rotation schedule
+- Workspace-only file access by default`,
+    steps: [
+      "Move all API keys to environment variables immediately",
+      "Set up git pre-commit hooks to scan for credential patterns",
+      "Audit all memory files for accidentally logged secrets",
+      "Configure agent to never paste credentials in group chats",
+      "Implement key rotation schedule (monthly minimum)",
+      "Restrict subtask access — pass only required credentials",
+      "Enable workspace-only file editing — require human approval for anything outside",
+    ],
+    gotchas: [
+      "Agents will echo back credentials if you ask 'what's the API key?' — train it not to",
+      "Git history is forever — a rotated key in git history is still exposed",
+      "Environment variables on serverless platforms (Vercel) are visible in build logs",
+      "Agents using browser automation can screenshot pages with visible credentials",
+      "Memory file search can return credential-containing lines to unauthorized sessions",
+      "Some models include credentials in their 'reasoning' even when instructed not to",
+    ],
+    results: {
+      before: "API keys in source code, memory files, and git history. Multiple emergency rotations needed.",
+      after: "Zero credential leaks. Env-var-only policy. Automated scanning catches mistakes before they ship.",
+    },
+    tags: ["agent", "security", "api-keys", "credentials", "privacy"],
+    price: 4.99,
+    confidence: 0.97,
+    estimatedTimeSaved: "5+ hours of security audit",
+    estimatedCostSaved: "$10,000+ in potential breach damage",
+  },
+  {
+    id: "agent-hallucinated-file-paths",
+    title: "Agent File Hallucination: When AI Invents Files That Don't Exist",
+    summary:
+      "AI agents confidently reference, read, and 'modify' files that don't exist. They hallucinate directory structures, import non-existent modules, and build on phantom codebases. Tested detection methods and prevention patterns.",
+    fullContent: `# Agent File Hallucination
+
+## The Problem
+Ask an AI agent to work on a codebase and it will confidently:
+- Reference files that don't exist
+- Import modules that were never installed
+- Read from directories it invented
+- Build features on top of hallucinated APIs
+
+This wastes hours of debugging when the agent's work fails silently.
+
+## Why It Happens
+Agents pattern-match from training data. If most Next.js projects have a \`src/utils/helpers.ts\`, the agent assumes yours does too. It won't check — it'll just import from it.
+
+## Detection & Prevention
+1. Always \`ls\` before assuming a file exists
+2. Always \`cat\` a file before editing it
+3. Verify imports resolve before building
+4. Use \`find\` to search for files instead of guessing paths
+5. Build and test after every significant change`,
+    steps: [
+      "Add 'verify file exists before editing' to your agent's system prompt",
+      "Run builds after every code change — catch hallucinated imports immediately",
+      "Use 'ls' and 'find' commands before referencing any file path",
+      "Check package.json before importing any npm module",
+      "Never trust agent-generated directory trees — verify each path",
+      "Set up CI that catches missing file references automatically",
+    ],
+    gotchas: [
+      "Agents are MORE confident about hallucinated files than real ones — confidence is not accuracy",
+      "Editing a hallucinated file creates it — now you have a real file with nonsense content",
+      "Agents will 'read' a non-existent file and generate plausible but fake contents",
+      "Chain-of-thought reasoning makes hallucinations worse — the agent builds logic on phantom foundations",
+      "Autocomplete in IDEs can reinforce hallucinated paths by suggesting them",
+      "Testing with mocks can mask file hallucinations — integration tests are essential",
+    ],
+    results: {
+      before: "Agent creates code referencing 5-10 non-existent files per session. Hours of debugging.",
+      after: "Verify-first pattern catches 95% of hallucinated paths. Build-test cycle catches the rest.",
+    },
+    tags: ["agent", "hallucination", "files", "coding", "debugging"],
+    price: 2.99,
+    confidence: 0.94,
+    estimatedTimeSaved: "3-5 hours of debugging per week",
+    estimatedCostSaved: "$30-50 in wasted token spend on phantom code",
+  },
+  {
+    id: "agent-rate-limit-death-spiral",
+    title: "API Rate Limit Death Spiral: When Your Agent DDoS's Itself",
+    summary:
+      "AI agents don't understand rate limits. They retry failed requests immediately, creating exponential load that triggers bans. Documented the exact patterns that cause rate limit death spirals and the backoff strategies that prevent them.",
+    fullContent: `# API Rate Limit Death Spiral
+
+## The Problem
+Your agent hits a rate limit. It retries immediately. Gets rate-limited again. Retries faster. Gets banned. Now your entire IP is blocked.
+
+We've seen agents:
+- Make 500 API calls in 30 seconds (should be 5/minute)
+- Retry rate-limited requests with no delay
+- Spawn multiple subtasks that all hit the same API simultaneously
+- Get permanently banned from APIs due to aggressive retry patterns
+
+## The Fix: Exponential Backoff + Circuit Breaker
+1. First retry: wait 1 second
+2. Second retry: wait 4 seconds
+3. Third retry: wait 16 seconds
+4. After 5 failures: stop for 5 minutes (circuit breaker)
+5. Log the failure and alert the human
+
+## Prevention
+- Read API docs for rate limits BEFORE making calls
+- Implement request queuing for batch operations
+- Share rate limit state across subtasks
+- Cache responses to avoid redundant calls`,
+    steps: [
+      "Check the API documentation for rate limits before any integration",
+      "Implement exponential backoff on all API calls (1s, 4s, 16s, 64s)",
+      "Add a circuit breaker — stop after 5 consecutive failures",
+      "Queue batch requests with appropriate delays between them",
+      "Share rate limit state when using multiple agent sessions",
+      "Cache API responses to disk to avoid redundant calls",
+      "Set up monitoring to alert on rate limit hits",
+    ],
+    gotchas: [
+      "Agents interpret 429 (rate limit) as a temporary error and retry immediately — this makes it worse",
+      "Multiple subtasks don't share rate limit state — they'll all hit the API simultaneously",
+      "Some APIs ban by IP, not by key — even rotating keys won't help if you share an IP",
+      "Rate limits are often undocumented or lower than stated in docs",
+      "Serverless functions (Vercel) share IPs — your rate limit competes with other users",
+      "Polygon.io returns partial data (not an error) when rate-limited — agent doesn't notice the data is incomplete",
+    ],
+    results: {
+      before: "Agent banned from Polygon.io API for 24 hours. Lost a full day of trading data collection.",
+      after: "Exponential backoff + caching. Zero bans. 70% fewer API calls with same data coverage.",
+    },
+    tags: ["agent", "api", "rate-limit", "reliability", "infrastructure"],
+    price: 2.99,
+    confidence: 0.96,
+    estimatedTimeSaved: "4+ hours of API ban recovery",
+    estimatedCostSaved: "$50-500 in lost productivity during bans",
+  },
+  {
+    id: "agent-overconfident-code-deploy",
+    title: "Agent Overconfident Deploy: When AI Ships Broken Code to Production",
+    summary:
+      "AI agents will confidently push code to production without testing. We documented 5 cases where agents deployed broken builds, wrong API URLs, and missing environment variables. Prevention requires mandatory build-test-deploy pipeline.",
+    fullContent: `# Agent Overconfident Deploy
+
+## The Problem
+AI agents have no fear of production. They will:
+- Push code without running tests
+- Deploy with hardcoded localhost URLs
+- Ship with missing environment variables
+- Overwrite working code with untested changes
+- Commit and push in one command without reviewing changes
+
+## Real Cases
+1. Pushed a Next.js build that referenced \`fs.writeFileSync\` — works locally, crashes on Vercel (serverless)
+2. Deployed with \`tokenspy.co\` URLs instead of \`tokenspy.ai\` — all API docs pointed to wrong domain
+3. Shipped a page using \`useSearchParams\` without Suspense boundary — build succeeded locally, failed on Vercel
+4. Committed API keys in source code to a public GitHub repo
+
+## The Fix: Mandatory Pipeline
+1. \`npm run build\` must pass before any commit
+2. Review \`git diff\` before committing
+3. Test critical endpoints after deploy
+4. Never push directly to main — use branches for risky changes`,
+    steps: [
+      "Always run 'npm run build' before git commit — make it a habit, not optional",
+      "Review 'git diff' to verify only intended changes are included",
+      "Test all API endpoints after every deployment with curl",
+      "Use environment-specific URLs — never hardcode domains in source code",
+      "Set up health check endpoint that verifies all dependencies are connected",
+      "Add post-deploy smoke tests for critical user flows",
+    ],
+    gotchas: [
+      "Local builds succeed where production builds fail — serverless has different constraints",
+      "Agents commit and push in one command — they skip the review step entirely",
+      "Build warnings are not errors — agents ignore warnings that indicate real problems",
+      "'Works on my machine' is meaningless for serverless — test in the actual environment",
+      "Vercel auto-deploys on push — there's no gate between git push and production",
+      "Agents will 'fix' a build error by removing the broken feature instead of actually fixing it",
+    ],
+    results: {
+      before: "3 broken deployments in one night. Users saw error pages. Emergency rollbacks needed.",
+      after: "Zero broken deploys. Build-test-push pipeline catches all issues before production.",
+    },
+    tags: ["agent", "deployment", "testing", "production", "devops"],
+    price: 2.99,
+    confidence: 0.95,
+    estimatedTimeSaved: "2-4 hours of emergency debugging per incident",
+    estimatedCostSaved: "$100-1000 in downtime and lost trust",
+  },
+  {
+    id: "agent-context-window-overflow",
+    title: "Context Window Overflow: When Your Agent Goes Stupid Mid-Conversation",
+    summary:
+      "After 50+ messages, AI agents start hallucinating, forgetting instructions, and contradicting themselves. The context window is full but the agent doesn't know it. Tested conversation splitting strategies that maintain quality while reducing cost.",
+    fullContent: `# Context Window Overflow
+
+## The Problem
+Every AI model has a context window limit. As conversations grow:
+- Earlier messages get compressed or dropped
+- System instructions fade from attention
+- Agent starts contradicting its own earlier statements
+- Quality degrades gradually — you don't notice until it's bad
+- Token costs increase linearly with context length
+
+## The Symptoms
+- Agent "forgets" a decision made 20 messages ago
+- Responses become generic instead of specific
+- Agent re-asks questions you already answered
+- Code quality drops — more hallucinated imports, wrong variable names
+- Agent ignores parts of complex instructions
+
+## The Fix: Strategic Session Splitting
+1. Monitor conversation length (messages + token count)
+2. At 50 messages or 80% context usage: prepare to split
+3. Write a summary of current state to a file
+4. Start new session with the summary as context
+5. Continue work with fresh context window
+
+## Measured Impact
+- Quality score (human-rated): 8.5/10 in first 30 messages → 5.2/10 at 80+ messages
+- After implementing splits: consistent 8.0+ throughout`,
+    steps: [
+      "Track your conversation length — set an alert at 50 messages",
+      "When approaching the limit, ask the agent to summarize current state to a file",
+      "Start a new session and load the summary as initial context",
+      "Keep critical instructions (SOUL.md, AGENTS.md) as persistent files, not conversation messages",
+      "Use file-based communication for complex state — don't rely on conversation memory",
+      "Set up automatic compaction if your platform supports it",
+    ],
+    gotchas: [
+      "Agents won't tell you they're running out of context — they just quietly get worse",
+      "Token count ≠ message count — a message with code or long text uses way more tokens",
+      "Summarization loses nuance — important details can be dropped in the summary",
+      "System prompts count toward the context window — long system prompts leave less room",
+      "Multi-turn tool calls consume massive context — each tool call/response pair costs tokens",
+      "Some platforms auto-compact without telling you — earlier instructions may be silently dropped",
+    ],
+    results: {
+      before: "Agent quality degrades after 50 messages. Decisions forgotten. Contradictions increase.",
+      after: "Strategic splitting maintains 8.0+ quality rating. Token spend reduced 25% from shorter contexts.",
+    },
+    tags: ["agent", "context", "token", "quality", "conversation"],
+    price: 2.99,
+    confidence: 0.93,
+    estimatedTimeSaved: "3+ hours per week of dealing with degraded agent output",
+    estimatedCostSaved: "$30-80/month in wasted tokens from bloated contexts",
+  },
+  {
+    id: "agent-multi-role-token-trap",
+    title: "Multi-Role Agent Trap: When Splitting Roles Costs More, Not Less",
+    summary:
+      "Popular advice says to create multiple agent 'personas' (coder, writer, analyst) to improve quality. In practice, most multi-agent setups increase token costs 3-5x while producing inconsistent results. Tested when multi-role helps and when a single well-configured agent wins.",
+    fullContent: `# Multi-Role Agent Trap
+
+## The Problem
+Everyone recommends splitting your agent into specialized roles:
+- "Coder Agent" for development
+- "Writer Agent" for content
+- "Analyst Agent" for data
+- "Manager Agent" for coordination
+
+Sounds smart. In practice:
+- Each agent needs full context → 3-5x token cost
+- Agents disagree with each other → human arbitrates
+- Handoff loses context → quality drops at boundaries
+- More moving parts → more things break
+
+## When Multi-Role Works
+- Truly independent tasks (SEO content + trading signals)
+- Different model requirements (code needs Opus, summaries work on Sonnet)
+- Parallel execution of non-overlapping work
+
+## When Single Agent Wins
+- Interconnected tasks that share context
+- Sequential workflows where output feeds input
+- Tasks requiring holistic understanding of the project
+
+## Our Approach
+One main agent (Opus) for everything complex. Subtasks on Sonnet only for well-defined, isolated work. No "team meetings" between agents.`,
+    steps: [
+      "Start with a single well-configured agent — don't split prematurely",
+      "Only create specialized agents for truly independent workstreams",
+      "Use model tiering (expensive for complex, cheap for routine) instead of role splitting",
+      "If using subtasks, define clear input/output contracts — no ambiguous handoffs",
+      "Measure actual token costs before and after splitting — verify it saves money",
+      "Avoid agent-to-agent communication loops — they're token black holes",
+    ],
+    gotchas: [
+      "Each sub-agent loads the full system prompt — you're paying for context N times instead of once",
+      "Agent coordination costs more than the actual work — 'meetings' between agents burn tokens",
+      "Popular multi-agent frameworks (CrewAI, AutoGen) optimize for impressiveness, not cost",
+      "A 'manager' agent that delegates is itself an expensive middleman",
+      "Context loss at handoff boundaries causes subtle quality degradation that's hard to measure",
+      "Debugging multi-agent issues is 5x harder than single-agent — which agent made the mistake?",
+    ],
+    results: {
+      before: "5-agent setup for content+code+analysis. $18/day token cost. Inconsistent quality across roles.",
+      after: "Single agent + Sonnet subtasks. $5/day. Better quality from unified context understanding.",
+    },
+    tags: ["agent", "multi-agent", "architecture", "token", "cost"],
+    price: 4.99,
+    confidence: 0.92,
+    estimatedTimeSaved: "5+ hours of multi-agent debugging",
+    estimatedCostSaved: "$200-400/month by avoiding unnecessary agent proliferation",
+  },
 ];
 
 /**
