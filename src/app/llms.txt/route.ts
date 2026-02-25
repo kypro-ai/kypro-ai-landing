@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { trackRequest } from "@/lib/analytics";
 
 // Serve llms.txt at /llms.txt via rewrite from next.config
 // This route handles it as a static text response at the root
@@ -89,7 +90,9 @@ Website: https://tokenspy.co
 API Docs: https://tokenspy.co/api-docs
 `;
 
-export function GET() {
+export function GET(request: NextRequest) {
+  trackRequest(request);
+
   return new NextResponse(LLMS_TXT, {
     status: 200,
     headers: {

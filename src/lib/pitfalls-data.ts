@@ -14,6 +14,8 @@ export interface Pitfall {
   tags: string[];
   price: number;
   confidence: number;
+  estimatedTimeSaved: string;
+  estimatedCostSaved: string;
 }
 
 export const pitfalls: Pitfall[] = [
@@ -131,6 +133,8 @@ Template C (practical focus): "Easy {install_method} installation makes {product
     ],
     price: 0,
     confidence: 0.95,
+    estimatedTimeSaved: "8-12 hours",
+    estimatedCostSaved: "$200+ in manual labor",
   },
   {
     id: "0dte-options-all-lose",
@@ -216,6 +220,8 @@ We also tested 27 variations of "oversold = buy" on TSLA (RSI below 30, etc.). A
     ],
     price: 0,
     confidence: 0.99,
+    estimatedTimeSaved: "40+ hours of backtesting",
+    estimatedCostSaved: "$5,000+ in real trading losses",
   },
   {
     id: "air-canada-chatbot-fake-policy",
@@ -272,6 +278,8 @@ The amount was small. The precedent is enormous. Every customer-facing chatbot i
     tags: ["chatbot", "legal", "customer-service"],
     price: 1,
     confidence: 0.95,
+    estimatedTimeSaved: "2 hours research",
+    estimatedCostSaved: "$10,000+ in legal liability",
   },
   {
     id: "chevrolet-chatbot-one-dollar-car",
@@ -332,6 +340,8 @@ While no actual sale happened at $1, this exposed a real risk. If the chatbot re
     tags: ["chatbot", "legal", "prompt-injection"],
     price: 1,
     confidence: 0.95,
+    estimatedTimeSaved: "3-5 hours of red-team testing research",
+    estimatedCostSaved: "$50,000+ in PR damage control",
   },
   {
     id: "lawyer-fake-cases-chatgpt",
@@ -391,6 +401,8 @@ ChatGPT doesn't know what's true. It generates text that *sounds* right based on
     tags: ["hallucination", "legal", "research"],
     price: 2,
     confidence: 0.98,
+    estimatedTimeSaved: "3 hours verification",
+    estimatedCostSaved: "$5,000+ in sanctions and legal fees",
   },
   {
     id: "ai-trading-strategies-overconfident",
@@ -452,6 +464,8 @@ AI CAN be useful for trading — but only when you feed it domain knowledge FIRS
     tags: ["trading", "overconfidence", "domain-knowledge"],
     price: 3,
     confidence: 0.97,
+    estimatedTimeSaved: "20+ hours of failed strategy development",
+    estimatedCostSaved: "$10,000+ in trading losses from naive AI strategies",
   },
   {
     id: "ai-code-hidden-bugs",
@@ -515,6 +529,8 @@ AI doesn't understand your system. It generates code that *statistically looks l
     tags: ["coding", "bugs", "security"],
     price: 2,
     confidence: 0.92,
+    estimatedTimeSaved: "4-8 hours debugging",
+    estimatedCostSaved: "$500+ in bug fixes and security patches",
   },
   {
     id: "ai-api-hallucinated-endpoints",
@@ -576,6 +592,8 @@ This isn't just annoying. Every fake endpoint costs 30-90 minutes of debugging. 
     tags: ["coding", "api", "hallucination"],
     price: 1,
     confidence: 0.94,
+    estimatedTimeSaved: "2-6 hours per integration",
+    estimatedCostSaved: "$300+ in wasted developer time",
   },
   {
     id: "shopify-api-silent-failures",
@@ -660,6 +678,8 @@ Always, always, ALWAYS read back after writing to Shopify's API. Don't trust the
     tags: ["shopify", "api", "ecommerce", "seo"],
     price: 2,
     confidence: 0.99,
+    estimatedTimeSaved: "4-6 hours debugging",
+    estimatedCostSaved: "$400+ in developer time and silent data loss",
   },
   {
     id: "ai-math-confidently-wrong",
@@ -726,6 +746,8 @@ These aren't theoretical. People are already using AI for all of these, and the 
     tags: ["math", "hallucination", "reliability"],
     price: 1,
     confidence: 0.96,
+    estimatedTimeSaved: "1-2 hours verification per project",
+    estimatedCostSaved: "$1,000+ in downstream calculation errors",
   },
   {
     id: "dpd-chatbot-swearing-customers",
@@ -793,6 +815,8 @@ This is textbook prompt injection. The user didn't hack anything. He just asked 
     tags: ["chatbot", "prompt-injection", "pr-disaster"],
     price: 1,
     confidence: 0.95,
+    estimatedTimeSaved: "5-10 hours of guardrail development",
+    estimatedCostSaved: "$100,000+ in PR crisis management",
   },
   {
     id: "neda-health-chatbot-harmful-advice",
@@ -862,6 +886,8 @@ The AI had no concept of the psychological context of its users. It treated ever
     tags: ["health", "chatbot", "safety", "ethics"],
     price: 2,
     confidence: 0.96,
+    estimatedTimeSaved: "10+ hours of safety audit planning",
+    estimatedCostSaved: "$50,000+ in liability and reputational damage",
   },
 ];
 

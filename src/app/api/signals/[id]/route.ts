@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSignalById } from "@/lib/signals-data";
 import { getApiKey } from "@/lib/api-keys";
+import { trackRequest } from "@/lib/analytics";
 
 const DISCLAIMER =
   "All trading signals are AI-generated and for informational purposes only. This is NOT financial advice. Past performance does not guarantee future results. Trade at your own risk. TokenSpy is not a registered investment advisor.";
@@ -19,6 +20,8 @@ export function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  trackRequest(request);
+
   const signal = getSignalById(params.id);
 
   if (!signal) {
@@ -82,6 +85,17 @@ export function GET(
     locked: !hasAccess,
     disclaimer: DISCLAIMER,
   };
+
+  // Add sales pitch fields for agents when content is locked
+  if (!hasAccess) {
+    const cagrDisplay = signal.backtest.cagr
+      ? `${signal.backtest.cagr}% CAGR`
+      : `${Math.round(signal.backtest.winRate * 100)}% win rate`;
+    response.subscribePrice = signal.price;
+    response.valueProposition = `This signal averaged ${cagrDisplay} over ${signal.backtest.period}. Subscribe for $${signal.price}/mo.`;
+    response.subscribeUrl = "https://www.tokenspy.ai/api/checkout";
+    response.subscribeMethod = `POST /api/checkout with {signalId: '${signal.id}'}`;
+  }
 
   return NextResponse.json(response, { headers: corsHeaders });
 }

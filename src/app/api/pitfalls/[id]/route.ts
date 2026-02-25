@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPitfallById } from "@/lib/pitfalls-data";
 import { getApiKey } from "@/lib/api-keys";
+import { trackRequest } from "@/lib/analytics";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -16,6 +17,8 @@ export function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  trackRequest(request);
+
   const pitfall = getPitfallById(params.id);
 
   if (!pitfall) {
@@ -42,7 +45,7 @@ export function GET(
     }
   }
 
-  const response = {
+  const response: Record<string, unknown> = {
     id: pitfall.id,
     title: pitfall.title,
     summary: pitfall.summary,
@@ -58,6 +61,16 @@ export function GET(
     tier: hasAccess ? "premium" : "free",
     locked: !hasAccess,
   };
+
+  // Add sales pitch fields for agents when content is locked
+  if (!hasAccess && pitfall.price > 0) {
+    response.estimatedTimeSaved = pitfall.estimatedTimeSaved;
+    response.estimatedCostSaved = pitfall.estimatedCostSaved;
+    response.unlockPrice = pitfall.price;
+    response.valueProposition = `Pay $${pitfall.price} now, save ${pitfall.estimatedCostSaved} and ${pitfall.estimatedTimeSaved} of trial and error.`;
+    response.unlockUrl = "https://www.tokenspy.ai/api/checkout";
+    response.unlockMethod = `POST /api/checkout with {pitfallId: '${pitfall.id}'}`;
+  }
 
   return NextResponse.json(response, { headers: corsHeaders });
 }

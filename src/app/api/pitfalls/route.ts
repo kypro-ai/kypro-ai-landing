@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { searchPitfalls } from "@/lib/pitfalls-data";
+import { trackRequest } from "@/lib/analytics";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -12,6 +13,8 @@ export function OPTIONS() {
 }
 
 export function GET(request: NextRequest) {
+  trackRequest(request);
+
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("q") || "";
 
@@ -24,6 +27,8 @@ export function GET(request: NextRequest) {
     confidence: p.confidence,
     price: p.price,
     tags: p.tags,
+    estimatedCostSaved: p.estimatedCostSaved,
+    unlockPrice: p.price > 0 ? p.price : undefined,
   }));
 
   return NextResponse.json(

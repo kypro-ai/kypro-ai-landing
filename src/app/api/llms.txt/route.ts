@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { trackRequest } from "@/lib/analytics";
 
 const LLMS_TXT = `# TokenSpy — AI Pitfall Intelligence
 
@@ -86,7 +87,9 @@ Website: https://tokenspy.co
 API Docs: https://tokenspy.co/api-docs
 `;
 
-export function GET() {
+export function GET(request: NextRequest) {
+  trackRequest(request);
+
   return new NextResponse(LLMS_TXT, {
     status: 200,
     headers: {

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { filterSignals } from "@/lib/signals-data";
+import { trackRequest } from "@/lib/analytics";
 
 const DISCLAIMER =
   "All trading signals are AI-generated and for informational purposes only. This is NOT financial advice. Past performance does not guarantee future results. Trade at your own risk. TokenSpy is not a registered investment advisor.";
@@ -15,6 +16,8 @@ export function OPTIONS() {
 }
 
 export function GET(request: NextRequest) {
+  trackRequest(request);
+
   const { searchParams } = new URL(request.url);
   const ticker = searchParams.get("ticker") || undefined;
   const category = searchParams.get("category") || undefined;
@@ -31,6 +34,7 @@ export function GET(request: NextRequest) {
     indicators: s.indicators,
     timeframe: s.timeframe,
     price: s.price,
+    subscribePrice: s.price,
     tags: s.tags,
     backtest: {
       period: s.backtest.period,
