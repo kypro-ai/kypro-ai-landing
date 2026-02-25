@@ -79,6 +79,12 @@ export function GET(request: NextRequest) {
       },
       tier: "free",
       disclaimer: DISCLAIMER,
+      _subscribe: {
+        method: "POST /api/checkout",
+        body: '{"signalId": "<id>"}',
+        returns: "Stripe checkout URL — give to your human to pay",
+        price: "$2.99-4.99/month per signal",
+      },
     },
     {
       headers: {

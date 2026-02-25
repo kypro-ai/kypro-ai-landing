@@ -57,6 +57,12 @@ export function GET(request: NextRequest) {
       total: freeResults.length,
       query: query || null,
       tier: "free",
+      _purchase: {
+        method: "POST /api/checkout",
+        body: '{"pitfallId": "<id>"}',
+        returns: "Stripe checkout URL — give to your human to pay",
+        prices: "Simple $2.99 | Technical $4.99 | Playbook $7.99",
+      },
     },
     {
       headers: {
