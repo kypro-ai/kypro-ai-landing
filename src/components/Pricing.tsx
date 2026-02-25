@@ -1,59 +1,67 @@
+import Link from "next/link";
+
 const tiers = [
   {
     name: 'Free',
     price: '$0',
     period: '',
-    description: 'Get a taste of what we test',
+    description: 'Browse summaries, see what we test',
     features: [
-      '1 pitfall report per week',
-      'Monthly "What Failed" digest',
-      'Community Discord access',
+      'All pitfall summaries',
+      'All signal directions (LONG/SHORT/WAIT)',
+      'API access (summaries only)',
+      'llms.txt for AI crawlers',
     ],
-    cta: 'Get Started',
+    cta: 'Browse Pitfalls',
+    href: '/pitfalls',
     highlight: false,
   },
   {
-    name: 'Basic',
-    price: '$19',
-    period: '/mo',
-    description: 'For AI hobbyists who want to save',
+    name: 'Per Pitfall',
+    price: '$3-8',
+    period: '/each',
+    description: 'Pay only for what you need',
     features: [
-      'Full pitfall database (13 and growing)',
-      'Prompt optimization templates',
-      'Weekly "What Works" report',
-      'Token savings calculator',
+      'Full playbook + code examples',
+      'Step-by-step fix guide',
+      'Technical gotchas & workarounds',
+      'API key for programmatic access',
+      'One-time purchase, forever access',
     ],
-    cta: 'Start Saving',
+    cta: 'View Pitfalls',
+    href: '/pitfalls',
     highlight: false,
   },
   {
-    name: 'Pro',
-    price: '$49',
-    period: '/mo',
-    description: 'For builders shipping AI products',
+    name: 'Signals',
+    price: '$5',
+    period: '/mo each',
+    description: '30 AI-powered trading strategies',
     features: [
-      'Everything in Basic',
-      'API compatibility database',
-      'Workflow optimization guides',
-      'Priority new pitfall alerts',
-      'Token cost benchmarks by model',
+      'Full methodology & backtest data',
+      'Daily signal updates',
+      'Entry/exit rules',
+      'Position sizing guidance',
+      'API access for agents',
     ],
-    cta: 'Go Pro',
+    cta: 'View Signals',
+    href: '/signals',
     highlight: true,
   },
   {
-    name: 'Enterprise',
-    price: '$199',
-    period: '/mo',
-    description: 'For teams burning serious tokens',
+    name: 'API Access',
+    price: 'Pay per use',
+    period: '',
+    description: 'For AI agents & developers',
     features: [
-      'Everything in Pro',
-      'Custom pitfall testing on demand',
-      'Dedicated token audit for your stack',
-      'Private Slack channel',
-      'API access to our database',
+      'RESTful JSON API',
+      'MCP Server for Claude/Cursor',
+      'Search & filter pitfalls',
+      'Real-time signal queries',
+      'CORS enabled, agent-friendly',
     ],
-    cta: 'Contact Us',
+    cta: 'API Docs',
+    href: '/api-docs',
     highlight: false,
   },
 ];
@@ -67,7 +75,7 @@ export default function Pricing() {
             Invest Cents, Save Dollars
           </h2>
           <p className="mt-4 text-lg text-dark-300 max-w-xl mx-auto">
-            One subscription saves you hundreds in wasted AI tokens every month.
+            12 pitfalls · 30 trading signals · One API. Pay $3-8 per pitfall, save $200+ in wasted time.
           </p>
         </div>
 
@@ -119,15 +127,16 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <button
-                className={`mt-8 w-full rounded-xl py-3 text-sm font-semibold font-mono transition-all active:scale-[0.98] ${
+              <Link
+                href={tier.href}
+                className={`mt-8 w-full rounded-xl py-3 text-sm font-semibold font-mono transition-all active:scale-[0.98] block text-center ${
                   tier.highlight
                     ? 'bg-brand-600 text-white hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20'
                     : 'bg-emerald-500/5 border border-emerald-500/20 text-white/80 hover:bg-emerald-500/10 hover:text-white hover:border-emerald-500/40'
                 }`}
               >
                 {tier.cta}
-              </button>
+              </Link>
             </div>
           ))}
         </div>
