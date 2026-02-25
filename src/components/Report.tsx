@@ -2,7 +2,6 @@ const methods = [
   {
     rank: '🥇',
     name: 'AI Chatbot Building',
-    nameCn: 'AI聊天机器人搭建',
     verdict: '✅',
     income: '$1.5K-$5K/mo',
     competition: '🟢 Low',
@@ -14,7 +13,6 @@ const methods = [
   {
     rank: '🥈',
     name: 'AI Content Writing',
-    nameCn: 'AI辅助内容写作',
     verdict: '✅',
     income: '$500-$3K/mo',
     competition: '🔴 High',
@@ -26,7 +24,6 @@ const methods = [
   {
     rank: '🥉',
     name: 'AI Video Editing Service',
-    nameCn: 'AI视频剪辑/内容再利用',
     verdict: '✅',
     income: '$1K-$4K/mo',
     competition: '🟡 Medium',
@@ -38,7 +35,6 @@ const methods = [
   {
     rank: '4',
     name: 'AI Social Media Management',
-    nameCn: 'AI社媒管理服务',
     verdict: '✅',
     income: '$2K-$8K/mo',
     competition: '🟡 Medium-High',
@@ -50,7 +46,6 @@ const methods = [
   {
     rank: '5',
     name: 'AI Resume Writing',
-    nameCn: 'AI简历写作服务',
     verdict: '✅',
     income: '$500-$2K/mo',
     competition: '🟡 Medium',
@@ -64,35 +59,30 @@ const methods = [
 const avoidList = [
   {
     name: 'AI Blog Farms',
-    nameCn: 'AI博客农场/内容站',
     icon: '⛔',
     reason: 'Google is actively hunting AI content farms. The HCU update wiped out thousands of sites. You could invest 6-12 months and lose everything overnight.',
     lossRisk: '$500-$5,000+',
   },
   {
     name: 'Prompt Engineering Consulting',
-    nameCn: 'Prompt工程师咨询',
     icon: '⛔',
     reason: 'AI tools are getting smarter — complex prompts are becoming unnecessary. This job title is dying in 2026. GPT-5 and Claude auto-optimize better than any human.',
     lossRisk: '$200+ in wasted learning',
   },
   {
     name: 'Generic AI Art on Etsy',
-    nameCn: '通用AI画在Etsy卖',
     icon: '⛔',
     reason: 'Massively saturated. Tens of thousands of sellers already selling AI "inspirational quote posters" and "galaxy wallpapers". Race to the bottom.',
     lossRisk: '$100-$300',
   },
   {
     name: 'AI eBook Mass Publishing',
-    nameCn: 'AI电子书批量出版',
     icon: '⛔',
     reason: 'Amazon KDP is cracking down on AI-generated low-quality books. Mandatory AI disclosure, increased takedowns. The gold rush is over.',
     lossRisk: '$200-$1,000',
   },
   {
     name: '"Make $10K in 7 Days" Courses',
-    nameCn: '"7天月入1万"课程',
     icon: '💀',
     reason: 'The only person making money is the one selling the course to YOU. If the method actually worked, they\'d use it themselves instead of selling a $97 course about it.',
     lossRisk: '$97-$997',
@@ -141,7 +131,6 @@ export default function Report() {
                   <span className="text-2xl">{m.rank}</span>
                   <div>
                     <h4 className="text-lg font-semibold text-white font-mono">{m.name}</h4>
-                    <span className="text-sm text-dark-400">{m.nameCn}</span>
                   </div>
                 </div>
                 <div className="flex gap-3 text-sm">
@@ -171,7 +160,6 @@ export default function Report() {
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <h4 className="text-lg font-semibold text-white font-mono">{a.name}</h4>
-                    <span className="text-sm text-dark-400">({a.nameCn})</span>
                   </div>
                   <p className="text-sm text-dark-200 mb-2">{a.reason}</p>
                   <p className="text-xs text-red-400 font-mono">💸 Potential waste: {a.lossRisk}</p>

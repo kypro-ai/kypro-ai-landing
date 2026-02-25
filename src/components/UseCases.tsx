@@ -2,7 +2,6 @@ const useCases = [
   {
     icon: "🏠",
     title: "Find Your Dream Home",
-    titleCn: "AI帮你找房子",
     problem: "Spending hours scrolling through hundreds of listings on Zillow and Realtor.ca?",
     solution: "Tell AI your criteria once — budget, location, schools, commute time — and it monitors listings 24/7, alerting you the moment a match appears.",
     tools: ["ChatGPT", "Custom Alerts", "Zapier"],
@@ -12,7 +11,6 @@ const useCases = [
   {
     icon: "✈️",
     title: "Plan the Perfect Trip",
-    titleCn: "AI帮你规划旅行",
     problem: "Planning a vacation takes days of research — flights, hotels, restaurants, itineraries...",
     solution: "Give AI your destination, dates, budget, and interests. Get a complete day-by-day itinerary with booking links, local tips, and backup plans for bad weather.",
     tools: ["ChatGPT", "Google Maps", "Perplexity"],
@@ -22,7 +20,6 @@ const useCases = [
   {
     icon: "⏰",
     title: "24/7 Personal Reminder",
-    titleCn: "AI全天候提醒助手",
     problem: "Forgot to pay a bill? Missed a medication? Lost track of your kid's school events?",
     solution: "Set up an AI assistant that tracks everything — medications, bills, appointments, birthdays — and sends you reminders via text, email, or voice call.",
     tools: ["Custom Bot", "Twilio", "Google Calendar"],
@@ -32,7 +29,6 @@ const useCases = [
   {
     icon: "🍕",
     title: "Find the Best Restaurant",
-    titleCn: "AI帮你找餐馆",
     problem: "\"Where should we eat?\" — the eternal question that wastes 30 minutes every time.",
     solution: "AI considers your cuisine preference, budget, dietary needs, reviews, distance, and even current wait times to give you the perfect pick in seconds.",
     tools: ["ChatGPT", "Yelp API", "Google Maps"],
@@ -42,7 +38,6 @@ const useCases = [
   {
     icon: "💰",
     title: "Save Money Automatically",
-    titleCn: "AI帮你省钱",
     problem: "Overpaying for subscriptions you forgot about? Missing cashback and coupons?",
     solution: "AI scans your expenses, finds subscriptions to cancel, tracks price drops, applies coupon codes, and negotiates bills on your behalf.",
     tools: ["Trim", "Honey", "ChatGPT"],
@@ -52,7 +47,6 @@ const useCases = [
   {
     icon: "📄",
     title: "Write Emails & Documents",
-    titleCn: "AI帮你写邮件/文书",
     problem: "Staring at a blank email for 20 minutes trying to sound professional?",
     solution: "Tell AI the context and tone. Get a polished email, cover letter, complaint letter, or any document in seconds. Edit and send.",
     tools: ["ChatGPT", "Claude", "Grammarly"],
@@ -62,7 +56,6 @@ const useCases = [
   {
     icon: "📚",
     title: "Help Kids with Homework",
-    titleCn: "AI辅导孩子作业",
     problem: "Your kid asks for help with math and you haven't touched algebra in 20 years?",
     solution: "AI explains concepts step-by-step at the right level, creates practice problems, and even makes learning fun with games and stories.",
     tools: ["ChatGPT", "Khan Academy", "Photomath"],
@@ -72,7 +65,6 @@ const useCases = [
   {
     icon: "🏋️",
     title: "Personal Fitness Coach",
-    titleCn: "AI私人健身教练",
     problem: "Can't afford a personal trainer? Generic workout plans don't fit your schedule?",
     solution: "AI creates a custom workout and meal plan based on your goals, equipment, schedule, and dietary restrictions. Adjusts weekly based on your progress.",
     tools: ["ChatGPT", "MyFitnessPal", "Hevy"],
@@ -120,7 +112,6 @@ export default function UseCases() {
                       {uc.title}
                     </h3>
                   </div>
-                  <p className="text-xs text-dark-500 font-mono mb-3">{uc.titleCn}</p>
                   
                   <div className="mb-3">
                     <p className="text-sm text-red-400/70 mb-1.5">
