@@ -220,10 +220,10 @@ export default function TermsPage() {
               <p>
                 For questions about these terms, contact us at{" "}
                 <a
-                  href="mailto:legal@tokenspy.ai"
+                  href="mailto:contact@tokenspy.ai"
                   className="text-brand-400 hover:text-brand-300 underline underline-offset-2"
                 >
-                  legal@tokenspy.ai
+                  contact@tokenspy.ai
                 </a>
               </p>
             </div>
