@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPitfallById } from "@/lib/pitfalls-data";
+import { getApiKey } from "@/lib/api-keys";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -24,21 +25,38 @@ export function GET(
     );
   }
 
-  // Free tier: summary + steps + gotchas + results
-  // Premium fields (fullContent with code examples) marked but included for now
+  // Check for API key — in query param or Authorization header
+  const { searchParams } = new URL(request.url);
+  const keyParam = searchParams.get("key");
+  const authHeader = request.headers.get("authorization");
+  const bearerKey = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  const apiKey = keyParam || bearerKey;
+
+  // Determine if user has access to full content
+  let hasAccess = pitfall.price === 0; // free pitfalls always accessible
+
+  if (apiKey && !hasAccess) {
+    const keyRecord = getApiKey(apiKey);
+    if (keyRecord && keyRecord.pitfallIds.includes(pitfall.id)) {
+      hasAccess = true;
+    }
+  }
+
   const response = {
     id: pitfall.id,
     title: pitfall.title,
     summary: pitfall.summary,
-    fullContent: pitfall.fullContent, // Will be gated behind payment later
+    fullContent: hasAccess
+      ? pitfall.fullContent
+      : `Purchase required. $${pitfall.price} to unlock the full analysis, code examples, and detailed walkthrough.`,
     steps: pitfall.steps,
     gotchas: pitfall.gotchas,
     results: pitfall.results,
     tags: pitfall.tags,
     price: pitfall.price,
     confidence: pitfall.confidence,
-    tier: "free",
-    _premium_fields: ["fullContent"], // Fields that will require payment
+    tier: hasAccess ? "premium" : "free",
+    locked: !hasAccess,
   };
 
   return NextResponse.json(response, { headers: corsHeaders });

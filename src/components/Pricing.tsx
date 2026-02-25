@@ -18,7 +18,7 @@ const tiers = [
     period: '/mo',
     description: 'For AI hobbyists who want to save',
     features: [
-      'Full pitfall database access',
+      'Full pitfall database (13 and growing)',
       'Prompt optimization templates',
       'Weekly "What Works" report',
       'Token savings calculator',
