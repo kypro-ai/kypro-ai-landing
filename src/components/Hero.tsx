@@ -77,7 +77,7 @@ export default function Hero() {
         {/* Stats */}
         <div className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto">
           {[
-            { value: '$10K+', label: 'Spent Going Undercover' },
+            { value: '$100K+', label: 'Spent Going Undercover' },
             { value: '200+', label: 'Pitfalls Exposed' },
             { value: '80%', label: 'Avg Token Savings' },
           ].map((stat) => (
