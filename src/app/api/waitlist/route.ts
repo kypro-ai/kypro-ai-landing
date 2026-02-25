@@ -1,24 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
 
-const WAITLIST_FILE = path.join(process.cwd(), "waitlist.json");
-
-function readWaitlist(): string[] {
-  try {
-    if (fs.existsSync(WAITLIST_FILE)) {
-      const data = fs.readFileSync(WAITLIST_FILE, "utf-8");
-      return JSON.parse(data);
-    }
-  } catch {
-    // ignore read errors
-  }
-  return [];
-}
-
-function writeWaitlist(emails: string[]) {
-  fs.writeFileSync(WAITLIST_FILE, JSON.stringify(emails, null, 2), "utf-8");
-}
+// In-memory waitlist (resets on redeploy — fine for now)
+const waitlistEmails: Set<string> = new Set();
 
 export async function POST(request: NextRequest) {
   try {
@@ -32,22 +15,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const emails = readWaitlist();
-
-    if (emails.includes(email)) {
+    if (waitlistEmails.has(email)) {
       return NextResponse.json(
         { message: "You're already on the waitlist! We'll be in touch soon." },
         { status: 200 }
       );
     }
 
-    emails.push(email);
-    writeWaitlist(emails);
+    waitlistEmails.add(email);
 
     return NextResponse.json(
       {
         message: "Welcome to the waitlist! We'll send you our research for free.",
-        count: emails.length,
+        count: waitlistEmails.size,
       },
       { status: 201 }
     );
@@ -57,4 +37,10 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+export async function GET() {
+  return NextResponse.json({
+    count: waitlistEmails.size,
+  });
 }
