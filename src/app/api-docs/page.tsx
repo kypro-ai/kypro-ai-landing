@@ -132,7 +132,7 @@ export default function ApiDocsPage() {
                 </h3>
                 <p className="mt-1 text-dark-200">
                   All endpoints are currently free. Premium tier (with full
-                  code examples and advanced playbooks) coming soon. Fields
+                  code examples and advanced playbooks). Fields
                   that will be gated are marked with{" "}
                   <code className="text-yellow-400">🔒 premium</code>.
                 </p>

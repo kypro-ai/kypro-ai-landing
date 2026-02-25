@@ -39,7 +39,7 @@ Returns all available pitfalls (no query filter).
 ## Pricing
 
 - Free tier: title, summary, confidence score, tags, steps, gotchas
-- Premium (coming soon): full technical playbook with code examples
+- Premium: full technical playbook with code examples
 
 ## MCP Integration
 

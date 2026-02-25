@@ -150,16 +150,16 @@ export default function UseCases() {
         <div className="mt-12 glass-card rounded-2xl p-8 text-center border border-brand-500/20">
           <div className="text-4xl mb-4">🤖</div>
           <h3 className="text-xl font-bold text-white font-mono mb-2">
-            Step-by-Step Tutorials Coming Soon
+            Step-by-Step Tutorials Available
           </h3>
           <p className="text-dark-300 text-sm max-w-lg mx-auto mb-6">
             We&apos;re building detailed guides for each use case — with screenshots, tool recommendations, and copy-paste templates. Zero tech skills required.
           </p>
           <a
-            href="#waitlist"
+            href="#pricing"
             className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
           >
-            Get Notified When Ready
+            Browse Pitfalls Now
           </a>
         </div>
       </div>

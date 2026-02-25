@@ -269,10 +269,10 @@ export default function Projects() {
             Members get access to complete data, code, parameters, and strategy details for all locked projects. Plus community discussion with other members.
           </p>
           <a
-            href="#waitlist"
+            href="#pricing"
             className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
           >
-            Join Waitlist — Early Access Free
+            Browse Pitfalls — From $2.99
           </a>
         </div>
 

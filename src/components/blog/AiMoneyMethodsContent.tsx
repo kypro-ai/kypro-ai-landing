@@ -188,16 +188,16 @@ export default function AiMoneyMethodsContent() {
 
       <p className="mt-4 text-dark-200 leading-relaxed">
         If you want the full 15-method breakdown with detailed scores,
-        real Reddit data, and source links, join our waitlist — we&apos;ll
-        send you the complete research report for free.
+        real Reddit data, and source links, check out our pitfall database — we&apos;ve got
+        the complete research with fix guides and code examples.
       </p>
 
       <div className="mt-10 text-center">
         <a
-          href="/#waitlist"
+          href="/#pricing"
           className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
         >
-          Get the Full Report — Free
+          Get Pitfall Intel — From $2.99
         </a>
       </div>
     </div>

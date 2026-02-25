@@ -96,20 +96,20 @@ export default function AI101() {
           ))}
         </div>
 
-        {/* Coming Soon Banner */}
+        {/* CTA Banner */}
         <div className="mt-12 glass-card rounded-2xl p-8 text-center border border-brand-500/20">
-          <div className="text-4xl mb-4">🚀</div>
+          <div className="text-4xl mb-4">🕵️</div>
           <h3 className="text-xl font-bold text-white font-mono mb-2">
-            Full Course Coming Soon
+            Skip the Learning Curve — Buy the Intel
           </h3>
           <p className="text-dark-300 text-sm max-w-lg mx-auto mb-6">
-            We&apos;re building the most practical AI course on the internet — no theory dumps, just real skills tested with real money. Join the waitlist to get early access.
+            20 real-world AI pitfalls documented with fix guides, code examples, and cost breakdowns. Each one saves you $50-500 in wasted time and tokens.
           </p>
           <a
-            href="#waitlist"
+            href="/pitfalls"
             className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
           >
-            Get Early Access — Free
+            Browse Pitfalls — From $2.99
           </a>
         </div>
       </div>

@@ -176,10 +176,10 @@ export default function Report() {
             Detailed scores, real Reddit data, source links, and our 4-week testing plan.
           </p>
           <a
-            href="#waitlist"
+            href="#pricing"
             className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
           >
-            Get Full Report — Free
+            Get Full Report — From $2.99
           </a>
         </div>
       </div>
