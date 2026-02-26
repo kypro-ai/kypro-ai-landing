@@ -9,7 +9,7 @@ const navLinks = [
   { href: "/blog", label: "Blog" },
   { href: "/pitfalls", label: "Pitfalls" },
   { href: "/signals", label: "Signals" },
-  { href: "/services", label: "Services" },
+  // { href: "/services", label: "Services" }, // Disabled — focus on one-time + subscription only
   { href: "/#ai101", label: "AI 101" },
   { href: "/#projects", label: "Projects" },
   { href: "/#pricing", label: "Pricing" },
