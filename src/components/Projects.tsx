@@ -272,7 +272,7 @@ export default function Projects() {
             href="#pricing"
             className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
           >
-            Browse Pitfalls — From $2.99
+            Browse Gadgets — From $2.99
           </a>
         </div>
 

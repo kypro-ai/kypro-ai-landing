@@ -6,8 +6,8 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-interface PitfallContent {
-  type: "pitfall";
+interface GadgetContent {
+  type: "gadget";
   id: string;
   title: string;
   content: {
@@ -58,7 +58,7 @@ interface ServiceContent {
   message: string;
 }
 
-type DeliveryData = PitfallContent | SignalContent | ServiceContent;
+type DeliveryData = GadgetContent | SignalContent | ServiceContent;
 
 function SuccessContent() {
   const searchParams = useSearchParams();
@@ -123,8 +123,8 @@ function SuccessContent() {
             </div>
           )}
 
-          {/* PITFALL DELIVERY */}
-          {status === "success" && data?.type === "pitfall" && (
+          {/* GADGET DELIVERY */}
+          {status === "success" && data?.type === "gadget" && (
             <div>
               <div className="text-center mb-10">
                 <div className="text-5xl mb-4">🎉</div>
@@ -132,7 +132,7 @@ function SuccessContent() {
                   Purchase Complete!
                 </h1>
                 <p className="mt-2 text-dark-300">
-                  Your full pitfall intel is below. Bookmark this page to access it later.
+                  Your full gadget intel is below. Bookmark this page to access it later.
                 </p>
               </div>
 
@@ -229,7 +229,7 @@ function SuccessContent() {
               </div>
 
               {/* API Key */}
-              {apiKey && <ApiKeyCard apiKey={apiKey} endpoint={`/api/pitfalls/${data.id}`} />}
+              {apiKey && <ApiKeyCard apiKey={apiKey} endpoint={`/api/gadgets/${data.id}`} />}
 
               <NavLinks />
             </div>
@@ -411,8 +411,8 @@ function ApiKeyCard({ apiKey, endpoint }: { apiKey: string; endpoint: string }) 
 function NavLinks({ className = "" }: { className?: string }) {
   return (
     <div className={`flex flex-col sm:flex-row gap-4 justify-center ${className}`}>
-      <Link href="/pitfalls" className="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white font-mono text-sm text-center hover:bg-brand-500 transition-colors">
-        Browse Pitfalls
+      <Link href="/gadgets" className="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white font-mono text-sm text-center hover:bg-brand-500 transition-colors">
+        Browse Gadgets
       </Link>
       <Link href="/signals" className="rounded-xl bg-white/5 border border-white/10 px-6 py-3 font-semibold text-white font-mono text-sm text-center hover:bg-white/10 transition-colors">
         View Signals

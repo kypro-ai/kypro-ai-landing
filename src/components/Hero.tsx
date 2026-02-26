@@ -41,7 +41,7 @@ export default function Hero() {
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl">
           <span className="gradient-text font-mono">TokenSpy</span>
           <br />
-          <span className="text-white/90">Undercover AI Testing &amp; Pitfall Intelligence</span>
+          <span className="text-white/90">Undercover AI Testing &amp; Gadget Intelligence</span>
         </h1>
 
         {/* Subtitle */}
@@ -55,7 +55,7 @@ export default function Hero() {
             href="#pricing"
             className="group relative inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-[0.98]"
           >
-            Get Pitfall Intel — From $2.99
+            Get Gadget Intel — From $2.99
             <svg
               className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5"
               fill="none"
@@ -67,10 +67,10 @@ export default function Hero() {
             </svg>
           </a>
           <a
-            href="/pitfalls"
+            href="/gadgets"
             className="inline-flex items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-8 py-4 text-lg font-semibold text-white/80 transition-all hover:bg-emerald-500/10 hover:text-white hover:border-emerald-500/40 active:scale-[0.98]"
           >
-            Browse Pitfalls Free
+            Browse Gadgets Free
           </a>
         </div>
 
@@ -78,7 +78,7 @@ export default function Hero() {
         <div className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto">
           {[
             { value: '$100K+', label: 'Spent Going Undercover' },
-            { value: '200+', label: 'Pitfalls Exposed' },
+            { value: '200+', label: 'Gadgets Exposed' },
             { value: '80%', label: 'Avg Token Savings' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">

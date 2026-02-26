@@ -184,7 +184,7 @@ export default function ZeroDteOptionsContent() {
             <p className="text-sm text-dark-300 font-mono mb-3">
               🔒 Complete backtest data for 1,944 combinations, exact loss percentages, and theta decay analysis
             </p>
-            <a href="/pitfalls/0dte-options-all-lose" className="inline-block rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] font-mono">
+            <a href="/gadgets/0dte-options-all-lose" className="inline-block rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98] font-mono">
               Unlock Full Backtest Data — $7.99
             </a>
           </div>
@@ -213,10 +213,10 @@ export default function ZeroDteOptionsContent() {
 
       <div className="mt-10 text-center">
         <a
-          href="/pitfalls"
+          href="/gadgets"
           className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
         >
-          Get Pitfall Intel — From $2.99
+          Get Gadget Intel — From $2.99
         </a>
       </div>
     </div>

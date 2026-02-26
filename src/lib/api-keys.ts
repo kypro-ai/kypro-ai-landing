@@ -9,7 +9,9 @@ export interface RequestLogEntry {
 
 export interface ApiKeyRecord {
   key: string;
-  pitfallIds: string[];
+  gadgetIds: string[];
+  /** @deprecated Use gadgetIds instead */
+  pitfallIds?: string[];
   createdAt: number;
   sessionId?: string;
   totalRequests: number;
@@ -22,12 +24,12 @@ const memKeys = new Map<string, ApiKeyRecord>();
 const KEY_PREFIX = "apikey:";
 const SESSION_PREFIX = "session:";
 
-/** Generate a new API key granting access to the given pitfall IDs. */
-export async function createApiKey(pitfallIds: string[], sessionId?: string): Promise<ApiKeyRecord> {
+/** Generate a new API key granting access to the given gadget IDs. */
+export async function createApiKey(gadgetIds: string[], sessionId?: string): Promise<ApiKeyRecord> {
   const key = `tspy_${randomBytes(24).toString("hex")}`;
   const record: ApiKeyRecord = {
     key,
-    pitfallIds,
+    gadgetIds,
     createdAt: Date.now(),
     sessionId,
     totalRequests: 0,
@@ -76,12 +78,12 @@ export async function findKeyBySession(sessionId: string): Promise<ApiKeyRecord 
   return found;
 }
 
-/** Add pitfall access to an existing key. */
-export async function grantAccess(key: string, pitfallId: string): Promise<boolean> {
+/** Add gadget access to an existing key. */
+export async function grantAccess(key: string, gadgetId: string): Promise<boolean> {
   const record = await getApiKey(key);
   if (!record) return false;
-  if (!record.pitfallIds.includes(pitfallId)) {
-    record.pitfallIds.push(pitfallId);
+  if (!record.gadgetIds.includes(gadgetId)) {
+    record.gadgetIds.push(gadgetId);
     const redis = getRedis();
     if (redis) {
       await redis.set(`${KEY_PREFIX}${key}`, JSON.stringify(record), { ex: 365 * 86400 });

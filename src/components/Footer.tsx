@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-6 text-center text-xs text-dark-500 font-mono">
-          Built by AI, verified by humans. All pitfall data is based on real testing.
+          Built by AI, verified by humans. All gadget data is based on real testing.
           <br />
           TokenSpy™ 2026. All rights reserved. |{" "}
           <Link href="/terms" className="hover:text-brand-400 transition-colors">

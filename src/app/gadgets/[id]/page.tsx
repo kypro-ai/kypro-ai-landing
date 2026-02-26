@@ -3,11 +3,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { pitfalls, getPitfallById } from "@/lib/pitfalls-data";
+import { gadgets, getGadgetById } from "@/lib/gadgets-data";
 
 /* ── Static params for pre-rendering ─────────────────────── */
 export function generateStaticParams() {
-  return pitfalls.map((p) => ({ id: p.id }));
+  return gadgets.map((p) => ({ id: p.id }));
 }
 
 /* ── SEO metadata ─────────────────────────────────────────── */
@@ -16,11 +16,11 @@ export function generateMetadata({
 }: {
   params: { id: string };
 }): Metadata {
-  const p = getPitfallById(params.id);
+  const p = getGadgetById(params.id);
   if (!p) return {};
 
   return {
-    title: `${p.title} — TokenSpy Pitfalls`,
+    title: `${p.title} — TokenSpy Gadgets`,
     description: p.summary,
     openGraph: {
       title: p.title,
@@ -83,12 +83,12 @@ function inlineFormat(s: string) {
 }
 
 /* ── Page ──────────────────────────────────────────────────── */
-export default function PitfallDetailPage({
+export default function GadgetDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const p = getPitfallById(params.id);
+  const p = getGadgetById(params.id);
   if (!p) notFound();
 
   const contentHtml = renderMarkdown(p.fullContent);
@@ -103,10 +103,10 @@ export default function PitfallDetailPage({
           {/* ── Back link ──────────────────────────────────── */}
           <div className="mb-8">
             <Link
-              href="/pitfalls"
+              href="/gadgets"
               className="text-sm font-mono text-dark-400 hover:text-brand-400 transition-colors"
             >
-              ← Back to Pitfalls
+              ← Back to Gadgets
             </Link>
           </div>
 
@@ -180,7 +180,7 @@ export default function PitfallDetailPage({
                     {p.estimatedCostSaved && `Estimated savings: ${p.estimatedCostSaved}`}
                   </p>
                   <a
-                    href={`/api/checkout?pitfallId=${p.id}`}
+                    href={`/api/checkout?gadgetId=${p.id}`}
                     className="inline-block rounded-full bg-brand-500 hover:bg-brand-400 text-black font-bold font-mono px-8 py-3 text-sm transition-colors"
                   >
                     Unlock for ${p.price}
@@ -286,10 +286,10 @@ export default function PitfallDetailPage({
               Get via API
             </h2>
             <p className="text-sm text-dark-400 mb-4">
-              Fetch this pitfall programmatically:
+              Fetch this gadget programmatically:
             </p>
             <pre className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 overflow-x-auto text-sm font-mono text-emerald-300 leading-relaxed">
-              <code>{`curl -X GET "https://www.tokenspy.ai/api/pitfalls/${p.id}" \\
+              <code>{`curl -X GET "https://www.tokenspy.ai/api/gadgets/${p.id}" \\
   -H "Authorization: Bearer YOUR_API_KEY"`}</code>
             </pre>
           </section>
@@ -297,10 +297,10 @@ export default function PitfallDetailPage({
           {/* ── Back link (bottom) ─────────────────────────── */}
           <div className="pt-4">
             <Link
-              href="/pitfalls"
+              href="/gadgets"
               className="text-sm font-mono text-dark-400 hover:text-brand-400 transition-colors"
             >
-              ← Back to Pitfalls
+              ← Back to Gadgets
             </Link>
           </div>
         </div>

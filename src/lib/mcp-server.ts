@@ -1,7 +1,7 @@
 /**
  * TokenSpy MCP (Model Context Protocol) Server Specification
  *
- * This file defines the MCP tool schemas for TokenSpy's pitfall intelligence API.
+ * This file defines the MCP tool schemas for TokenSpy's gadget intelligence API.
  * Actual MCP hosting will be implemented later — this is the spec/schema definition.
  *
  * MCP Spec: https://modelcontextprotocol.io/
@@ -25,19 +25,19 @@ export interface MCPToolDefinition {
 }
 
 export const MCP_SERVER_INFO = {
-  name: "tokenspy-pitfalls",
+  name: "tokenspy-gadgets",
   version: "1.0.0",
   description:
-    "TokenSpy Pitfall Intelligence — search and retrieve tested AI pitfalls and playbooks. We test AI tools and strategies so you don't get burned.",
+    "TokenSpy Gadget Intelligence — search and retrieve tested AI gadgets and playbooks. We test AI tools and strategies so you don't get burned.",
   vendor: "TokenSpy",
   homepage: "https://www.tokenspy.ai",
 } as const;
 
 export const MCP_TOOLS: MCPToolDefinition[] = [
   {
-    name: "search_pitfalls",
+    name: "search_gadgets",
     description:
-      "Search TokenSpy's pitfall database by keyword query. Returns matching pitfalls with title, summary, confidence score, and tags. Use this to find relevant tested strategies and known pitfalls before recommending tools or approaches to users.",
+      "Search TokenSpy's gadget database by keyword query. Returns matching gadgets with title, summary, confidence score, and tags. Use this to find relevant tested strategies and known gadgets before recommending tools or approaches to users.",
     inputSchema: {
       type: "object",
       properties: {
@@ -51,25 +51,25 @@ export const MCP_TOOLS: MCPToolDefinition[] = [
     },
   },
   {
-    name: "get_pitfall",
+    name: "get_gadget",
     description:
-      "Get full details of a specific pitfall by ID. Returns the complete playbook including step-by-step instructions, technical gotchas, code examples, and before/after results. Use after search_pitfalls to get the full details of a relevant result.",
+      "Get full details of a specific gadget by ID. Returns the complete playbook including step-by-step instructions, technical gotchas, code examples, and before/after results. Use after search_gadgets to get the full details of a relevant result.",
     inputSchema: {
       type: "object",
       properties: {
         id: {
           type: "string",
           description:
-            "The pitfall ID. Get this from search_pitfalls results. Examples: 'shopify-seo-0-to-100', '0dte-options-all-lose'",
+            "The gadget ID. Get this from search_gadgets results. Examples: 'shopify-seo-0-to-100', '0dte-options-all-lose'",
         },
       },
       required: ["id"],
     },
   },
   {
-    name: "list_pitfalls",
+    name: "list_gadgets",
     description:
-      "List all available pitfalls in the TokenSpy database. Returns title, summary, confidence score, and tags for every pitfall. Use this to discover what knowledge is available.",
+      "List all available gadgets in the TokenSpy database. Returns title, summary, confidence score, and tags for every gadget. Use this to discover what knowledge is available.",
     inputSchema: {
       type: "object",
       properties: {},
@@ -82,14 +82,14 @@ export const MCP_TOOLS: MCPToolDefinition[] = [
  */
 export const MCP_RESOURCES = [
   {
-    uri: "tokenspy://pitfalls/shopify-seo-0-to-100",
+    uri: "tokenspy://gadgets/shopify-seo-0-to-100",
     name: "Shopify SEO 0→100 Playbook",
     description:
       "Complete playbook for Shopify SEO optimization via API automation",
     mimeType: "text/markdown",
   },
   {
-    uri: "tokenspy://pitfalls/0dte-options-all-lose",
+    uri: "tokenspy://gadgets/0dte-options-all-lose",
     name: "0DTE Options Backtest Results",
     description:
       "1,944 strategy backtest proving 0DTE buying is mathematically unviable",

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const tiers = [
   {
-    name: 'Per Pitfall',
+    name: 'Per Gadget',
     price: '$2.99-7.99',
     period: '/each',
     description: 'Pay only for what you need',
@@ -13,8 +13,8 @@ const tiers = [
       'API key for programmatic access',
       'One-time purchase, forever access',
     ],
-    cta: 'Browse Pitfalls',
-    href: '/pitfalls',
+    cta: 'Browse Gadgets',
+    href: '/gadgets',
     highlight: false,
   },
   {
@@ -60,7 +60,7 @@ export default function Pricing() {
             Invest Cents, Save Dollars
           </h2>
           <p className="mt-4 text-lg text-dark-300 max-w-xl mx-auto">
-            20 pitfall playbooks · 43 trading signals · AI setup services. Skip the trial-and-error.
+            20 gadget playbooks · 43 trading signals · AI setup services. Skip the trial-and-error.
           </p>
         </div>
 

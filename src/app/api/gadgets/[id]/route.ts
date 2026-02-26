@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getPitfallById } from "@/lib/pitfalls-data";
+import { getGadgetById } from "@/lib/gadgets-data";
 import { getApiKey, trackKeyUsage, isAbusingKey } from "@/lib/api-keys";
 import { trackRequest } from "@/lib/analytics";
 import { checkRateLimit } from "@/lib/rate-limit";
@@ -40,11 +40,11 @@ export async function GET(
 
   trackRequest(request);
 
-  const pitfall = getPitfallById(params.id);
+  const gadget = getGadgetById(params.id);
 
-  if (!pitfall) {
+  if (!gadget) {
     return NextResponse.json(
-      { error: "Pitfall not found", id: params.id },
+      { error: "Gadget not found", id: params.id },
       {
         status: 404,
         headers: {
@@ -64,13 +64,13 @@ export async function GET(
   const apiKey = keyParam || bearerKey;
 
   // Determine if user has access to full content
-  let hasAccess = pitfall.price === 0; // free pitfalls always accessible
+  let hasAccess = gadget.price === 0; // free gadgets always accessible
 
   if (apiKey && !hasAccess) {
     const keyRecord = await getApiKey(apiKey);
-    if (keyRecord && keyRecord.pitfallIds.includes(pitfall.id)) {
+    if (keyRecord && keyRecord.gadgetIds.includes(gadget.id)) {
       // Track usage
-      await trackKeyUsage(apiKey, `/api/pitfalls/${params.id}`, pitfall.id);
+      await trackKeyUsage(apiKey, `/api/gadgets/${params.id}`, gadget.id);
 
       // Check for abuse
       if (await isAbusingKey(apiKey)) {
@@ -98,30 +98,30 @@ export async function GET(
   };
 
   const response: Record<string, unknown> = {
-    id: pitfall.id,
-    title: pitfall.title,
-    summary: pitfall.summary,
+    id: gadget.id,
+    title: gadget.title,
+    summary: gadget.summary,
     fullContent: hasAccess
-      ? (apiKey ? fingerprintContent(pitfall.fullContent, apiKey) : pitfall.fullContent)
-      : `Purchase required. $${pitfall.price} to unlock the full analysis, code examples, and detailed walkthrough.`,
-    steps: pitfall.steps,
-    gotchas: pitfall.gotchas,
-    results: pitfall.results,
-    tags: pitfall.tags,
-    price: pitfall.price,
-    confidence: pitfall.confidence,
+      ? (apiKey ? fingerprintContent(gadget.fullContent, apiKey) : gadget.fullContent)
+      : `Purchase required. $${gadget.price} to unlock the full analysis, code examples, and detailed walkthrough.`,
+    steps: gadget.steps,
+    gotchas: gadget.gotchas,
+    results: gadget.results,
+    tags: gadget.tags,
+    price: gadget.price,
+    confidence: gadget.confidence,
     tier: hasAccess ? "premium" : "free",
     locked: !hasAccess,
   };
 
   // Add sales pitch fields for agents when content is locked
-  if (!hasAccess && pitfall.price > 0) {
-    response.estimatedTimeSaved = pitfall.estimatedTimeSaved;
-    response.estimatedCostSaved = pitfall.estimatedCostSaved;
-    response.unlockPrice = pitfall.price;
-    response.valueProposition = `Pay $${pitfall.price} now, save ${pitfall.estimatedCostSaved} and ${pitfall.estimatedTimeSaved} of trial and error.`;
+  if (!hasAccess && gadget.price > 0) {
+    response.estimatedTimeSaved = gadget.estimatedTimeSaved;
+    response.estimatedCostSaved = gadget.estimatedCostSaved;
+    response.unlockPrice = gadget.price;
+    response.valueProposition = `Pay $${gadget.price} now, save ${gadget.estimatedCostSaved} and ${gadget.estimatedTimeSaved} of trial and error.`;
     response.unlockUrl = "https://www.tokenspy.ai/api/checkout";
-    response.unlockMethod = `POST /api/checkout with {pitfallId: '${pitfall.id}'}`;
+    response.unlockMethod = `POST /api/checkout with {gadgetId: '${gadget.id}'}`;
   }
 
   return NextResponse.json(response, { headers: responseHeaders });

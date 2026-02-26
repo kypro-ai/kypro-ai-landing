@@ -41,7 +41,7 @@ export default function Waitlist() {
           Join the Waitlist
         </h2>
         <p className="mt-4 text-lg text-dark-300">
-          Be the first to access our AI pitfall database and token optimization
+          Be the first to access our AI gadget database and token optimization
           toolkit. Free early access for waitlist members.
         </p>
 

@@ -42,19 +42,20 @@ export async function POST(request: NextRequest) {
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
-      const pitfallId = session.metadata?.pitfallId;
+      // Support both gadgetId and legacy pitfallId in metadata
+      const gadgetId = session.metadata?.gadgetId || session.metadata?.pitfallId;
 
       console.log("[webhook] ✅ Payment completed:", {
         sessionId: session.id,
-        pitfallId,
+        gadgetId,
         amount: session.amount_total,
         customerEmail: session.customer_details?.email,
       });
 
       // Auto-generate an API key for this purchase
-      if (pitfallId) {
-        const keyRecord = await createApiKey([pitfallId], session.id);
-        console.log("[webhook] 🔑 API key created:", keyRecord.key, "for pitfall:", pitfallId);
+      if (gadgetId) {
+        const keyRecord = await createApiKey([gadgetId], session.id);
+        console.log("[webhook] 🔑 API key created:", keyRecord.key, "for gadget:", gadgetId);
       }
     }
 

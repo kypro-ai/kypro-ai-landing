@@ -7,7 +7,7 @@ import Image from "next/image";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/blog", label: "Blog" },
-  { href: "/pitfalls", label: "Pitfalls" },
+  { href: "/gadgets", label: "Gadgets" },
   { href: "/signals", label: "Signals" },
   // { href: "/services", label: "Services" }, // Disabled — focus on one-time + subscription only
   { href: "/#ai101", label: "AI 101" },

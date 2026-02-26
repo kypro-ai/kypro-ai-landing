@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
-import { getPitfallById } from "@/lib/pitfalls-data";
+import { getGadgetById } from "@/lib/gadgets-data";
 import { getSignalById } from "@/lib/signals-data";
 
 const corsHeaders = {
@@ -58,10 +58,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const pitfallId = session.metadata?.pitfallId;
+    // Support both gadgetId and legacy pitfallId in metadata
+    const gadgetId = session.metadata?.gadgetId || session.metadata?.pitfallId;
     const signalId = session.metadata?.signalId;
     const serviceId = session.metadata?.serviceId;
-    const type = session.metadata?.type || "pitfall";
+    const type = session.metadata?.type || "gadget";
 
     // Deliver service confirmation
     if (serviceId || type === "service") {
@@ -73,29 +74,29 @@ export async function POST(request: NextRequest) {
       }, { headers: corsHeaders });
     }
 
-    // Deliver pitfall content
-    if (pitfallId) {
-      const pitfall = getPitfallById(pitfallId);
-      if (!pitfall) {
+    // Deliver gadget content
+    if (gadgetId) {
+      const gadget = getGadgetById(gadgetId);
+      if (!gadget) {
         return NextResponse.json(
-          { error: "Pitfall not found" },
+          { error: "Gadget not found" },
           { status: 404, headers: corsHeaders }
         );
       }
 
       return NextResponse.json({
-        type: "pitfall",
-        id: pitfall.id,
-        title: pitfall.title,
+        type: "gadget",
+        id: gadget.id,
+        title: gadget.title,
         content: {
-          summary: pitfall.summary,
-          fullContent: pitfall.fullContent,
-          steps: pitfall.steps,
-          gotchas: pitfall.gotchas,
-          results: pitfall.results,
-          tags: pitfall.tags,
-          estimatedTimeSaved: pitfall.estimatedTimeSaved,
-          estimatedCostSaved: pitfall.estimatedCostSaved,
+          summary: gadget.summary,
+          fullContent: gadget.fullContent,
+          steps: gadget.steps,
+          gotchas: gadget.gotchas,
+          results: gadget.results,
+          tags: gadget.tags,
+          estimatedTimeSaved: gadget.estimatedTimeSaved,
+          estimatedCostSaved: gadget.estimatedCostSaved,
         },
         customerEmail: session.customer_details?.email || null,
       }, { headers: corsHeaders });

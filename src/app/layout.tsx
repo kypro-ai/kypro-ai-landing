@@ -5,13 +5,13 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'TokenSpy — AI Undercover Testing & Pitfall Intelligence',
+  title: 'TokenSpy — AI Undercover Testing & Gadget Intelligence',
   description:
     'We go undercover inside AI tools so you don\'t get burned. Real tests, real results, real savings.',
   openGraph: {
     title: 'TokenSpy — We Test AI So You Don\'t Get Burned',
     description:
-      'Undercover AI testing, verified pitfalls, and proven methods. Intelligence you can trust.',
+      'Undercover AI testing, verified gadgets, and proven methods. Intelligence you can trust.',
     type: 'website',
   },
 };

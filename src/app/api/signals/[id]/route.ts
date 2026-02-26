@@ -73,9 +73,9 @@ export async function GET(
   if (apiKey) {
     const keyRecord = await getApiKey(apiKey);
     if (keyRecord) {
-      // API key grants access to signals if the signal ID is in the pitfallIds array
-      // (reusing the same key system — pitfallIds includes signal IDs too)
-      hasAccess = keyRecord.pitfallIds.includes(signal.id);
+      // API key grants access to signals if the signal ID is in the gadgetIds array
+      // (reusing the same key system — gadgetIds includes signal IDs too)
+      hasAccess = keyRecord.gadgetIds.includes(signal.id);
 
       if (hasAccess) {
         // Track usage

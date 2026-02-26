@@ -1,7 +1,7 @@
 const features = [
   {
     icon: '🚫',
-    title: 'AI Pitfall Database',
+    title: 'AI Gadget Database',
     description:
       'A growing library of verified failures — APIs that block AI, strategies that don\'t work, prompts that waste tokens. Learn from our mistakes, not yours.',
   },
@@ -55,23 +55,23 @@ export default function Features() {
           ))}
         </div>
 
-        {/* Example pitfalls */}
+        {/* Example gadgets */}
         <div className="mt-20">
           <h3 className="text-center text-2xl font-bold text-white mb-10 font-mono">
-            Recent Pitfalls We&apos;ve Documented
+            Recent Gadgets We&apos;ve Documented
           </h3>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { tag: 'Web Scraping', pitfall: 'realtor.ca, zolo.ca, rew.ca — all blocked by Incapsula/Cloudflare from server IPs', saved: '$50+' },
-              { tag: 'Trading', pitfall: '0DTE options buying: tested 1,944 parameter combos — 100% lost money. Mathematically unviable.', saved: '$200+' },
-              { tag: 'Trading', pitfall: 'Oversold = Buy? Tested 27 strategies on TSLA. Almost ALL lost money. Oversold = Short is correct.', saved: '$150+' },
-              { tag: 'API', pitfall: 'HouseSigma API endpoints return 404 — no public API despite having internal ones', saved: '$30+' },
+              { tag: 'Web Scraping', gadget: 'realtor.ca, zolo.ca, rew.ca — all blocked by Incapsula/Cloudflare from server IPs', saved: '$50+' },
+              { tag: 'Trading', gadget: '0DTE options buying: tested 1,944 parameter combos — 100% lost money. Mathematically unviable.', saved: '$200+' },
+              { tag: 'Trading', gadget: 'Oversold = Buy? Tested 27 strategies on TSLA. Almost ALL lost money. Oversold = Short is correct.', saved: '$150+' },
+              { tag: 'API', gadget: 'HouseSigma API endpoints return 404 — no public API despite having internal ones', saved: '$30+' },
             ].map((item, i) => (
               <div key={i} className="glass-card rounded-xl p-6 flex gap-4">
                 <div className="text-2xl">⚠️</div>
                 <div>
                   <span className="inline-block text-xs font-medium font-mono text-brand-400 bg-brand-500/10 rounded-full px-2 py-0.5 mb-2">{item.tag}</span>
-                  <p className="text-sm text-dark-200">{item.pitfall}</p>
+                  <p className="text-sm text-dark-200">{item.gadget}</p>
                   <p className="mt-2 text-xs text-brand-400 font-mono">Saved you: {item.saved} in tokens</p>
                 </div>
               </div>

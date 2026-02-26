@@ -4,10 +4,10 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { pitfalls } from "@/lib/pitfalls-data";
+import { gadgets } from "@/lib/gadgets-data";
 
 /* ── collect every unique tag ─────────────────────────────── */
-const allTags = Array.from(new Set(pitfalls.flatMap((p) => p.tags))).sort();
+const allTags = Array.from(new Set(gadgets.flatMap((p) => p.tags))).sort();
 
 /* ── confidence badge color ───────────────────────────────── */
 function confidenceColor(c: number) {
@@ -17,12 +17,12 @@ function confidenceColor(c: number) {
   return "text-orange-400 bg-orange-500/10";
 }
 
-export default function PitfallsPage() {
+export default function GadgetsPage() {
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
-    let list = pitfalls;
+    let list = gadgets;
 
     if (activeTag) {
       list = list.filter((p) => p.tags.includes(activeTag));
@@ -50,13 +50,13 @@ export default function PitfallsPage() {
           {/* ── Header ──────────────────────────────────────── */}
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-medium font-mono text-brand-400 bg-brand-500/10 rounded-full px-3 py-1 mb-4">
-              Pitfall Database
+              Gadget Database
             </span>
             <h1 className="text-4xl font-extrabold text-white sm:text-5xl font-mono">
-              <span className="gradient-text">AI Pitfalls</span>
+              <span className="gradient-text">AI Gadgets</span>
             </h1>
             <p className="mt-4 text-lg text-dark-300 max-w-2xl mx-auto">
-              {pitfalls.length} real-world AI failures tested, documented, and
+              {gadgets.length} real-world AI failures tested, documented, and
               priced — so you don&apos;t repeat them.
             </p>
           </div>
@@ -65,7 +65,7 @@ export default function PitfallsPage() {
           <div className="mb-6">
             <input
               type="text"
-              placeholder="Search pitfalls…"
+              placeholder="Search gadgets…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm text-white placeholder:text-dark-500 font-mono focus:outline-none focus:ring-2 focus:ring-brand-500/40 transition"
@@ -102,12 +102,12 @@ export default function PitfallsPage() {
           {/* ── Cards grid ──────────────────────────────────── */}
           {filtered.length === 0 ? (
             <p className="text-center text-dark-400 font-mono py-16">
-              No pitfalls match your search.
+              No gadgets match your search.
             </p>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2">
               {filtered.map((p) => (
-                <Link key={p.id} href={`/pitfalls/${p.id}`}>
+                <Link key={p.id} href={`/gadgets/${p.id}`}>
                   <div className="glass-card rounded-2xl p-7 h-full flex flex-col transition-all hover:scale-[1.02] hover:border-brand-500/30 group cursor-pointer">
                     {/* tags */}
                     <div className="flex flex-wrap gap-1.5 mb-3">

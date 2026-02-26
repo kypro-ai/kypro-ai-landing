@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { getStripe } from "@/lib/stripe";
-import { getPitfallById } from "@/lib/pitfalls-data";
+import { getGadgetById } from "@/lib/gadgets-data";
 import { getSignalById } from "@/lib/signals-data";
 import { logVisit } from "@/lib/visit-log";
 
@@ -59,7 +59,7 @@ const services: Record<string, { name: string; price: number; description: strin
   },
 };
 
-async function handleCheckout(request: NextRequest, pitfallId?: string, signalId?: string, serviceId?: string) {
+async function handleCheckout(request: NextRequest, gadgetId?: string, signalId?: string, serviceId?: string) {
   const stripe = getStripe();
   if (!stripe) {
     return NextResponse.json(
@@ -148,22 +148,22 @@ async function handleCheckout(request: NextRequest, pitfallId?: string, signalId
     return session.url;
   }
 
-  // Pitfall one-time checkout
-  if (!pitfallId) {
-    return NextResponse.json({ error: "pitfallId, signalId, or serviceId is required" }, { status: 400 });
+  // Gadget one-time checkout
+  if (!gadgetId) {
+    return NextResponse.json({ error: "gadgetId, signalId, or serviceId is required" }, { status: 400 });
   }
 
-  const pitfall = getPitfallById(pitfallId);
-  if (!pitfall) {
+  const gadget = getGadgetById(gadgetId);
+  if (!gadget) {
     return NextResponse.json(
-      { error: "Pitfall not found", id: pitfallId },
+      { error: "Gadget not found", id: gadgetId },
       { status: 404 }
     );
   }
 
-  if (pitfall.price === 0) {
+  if (gadget.price === 0) {
     return NextResponse.json(
-      { error: "This pitfall is free — no purchase needed" },
+      { error: "This gadget is free — no purchase needed" },
       { status: 400 }
     );
   }
@@ -175,20 +175,20 @@ async function handleCheckout(request: NextRequest, pitfallId?: string, signalId
       {
         price_data: {
           currency: "usd",
-          unit_amount: Math.round(pitfall.price * 100),
+          unit_amount: Math.round(gadget.price * 100),
           product_data: {
-            name: pitfall.title,
-            description: pitfall.summary.slice(0, 500),
+            name: gadget.title,
+            description: gadget.summary.slice(0, 500),
           },
         },
         quantity: 1,
       },
     ],
     metadata: {
-      pitfallId: pitfall.id,
+      gadgetId: gadget.id,
     },
     success_url: `${origin}/purchase/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${origin}/pitfalls/${pitfall.id}`,
+    cancel_url: `${origin}/gadgets/${gadget.id}`,
   });
 
   return session.url;
@@ -208,13 +208,14 @@ export async function GET(request: NextRequest) {
 
     logVisit("/api/checkout", ua, ip, true);
 
-    const pitfallId = request.nextUrl.searchParams.get("pitfallId");
+    // Support both gadgetId and legacy pitfallId
+    const gadgetId = request.nextUrl.searchParams.get("gadgetId") || request.nextUrl.searchParams.get("pitfallId");
     const signalId = request.nextUrl.searchParams.get("signalId");
     const serviceId = request.nextUrl.searchParams.get("serviceId");
-    if (!pitfallId && !signalId && !serviceId) {
-      return NextResponse.json({ error: "pitfallId, signalId, or serviceId is required" }, { status: 400 });
+    if (!gadgetId && !signalId && !serviceId) {
+      return NextResponse.json({ error: "gadgetId, signalId, or serviceId is required" }, { status: 400 });
     }
-    const url = await handleCheckout(request, pitfallId || undefined, signalId || undefined, serviceId || undefined);
+    const url = await handleCheckout(request, gadgetId || undefined, signalId || undefined, serviceId || undefined);
     if (url && typeof url === "string") {
       return NextResponse.redirect(url);
     }
@@ -241,11 +242,13 @@ export async function POST(request: NextRequest) {
     logVisit("/api/checkout", ua, ip, true);
 
     const body = await request.json();
-    const { pitfallId, signalId, serviceId } = body as { pitfallId?: string; signalId?: string; serviceId?: string };
-    if (!pitfallId && !signalId && !serviceId) {
-      return NextResponse.json({ error: "pitfallId, signalId, or serviceId is required" }, { status: 400 });
+    // Support both gadgetId and legacy pitfallId for backward compatibility
+    const { gadgetId, pitfallId, signalId, serviceId } = body as { gadgetId?: string; pitfallId?: string; signalId?: string; serviceId?: string };
+    const resolvedGadgetId = gadgetId || pitfallId; // fallback to legacy pitfallId
+    if (!resolvedGadgetId && !signalId && !serviceId) {
+      return NextResponse.json({ error: "gadgetId, signalId, or serviceId is required" }, { status: 400 });
     }
-    const url = await handleCheckout(request, pitfallId, signalId, serviceId);
+    const url = await handleCheckout(request, resolvedGadgetId, signalId, serviceId);
     if (typeof url === "string") {
       return NextResponse.json({ url });
     }

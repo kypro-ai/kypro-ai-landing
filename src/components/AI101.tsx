@@ -103,13 +103,13 @@ export default function AI101() {
             Skip the Learning Curve — Buy the Intel
           </h3>
           <p className="text-dark-300 text-sm max-w-lg mx-auto mb-6">
-            20 real-world AI pitfalls documented with fix guides, code examples, and cost breakdowns. Each one saves you $50-500 in wasted time and tokens.
+            20 real-world AI gadgets documented with fix guides, code examples, and cost breakdowns. Each one saves you $50-500 in wasted time and tokens.
           </p>
           <a
-            href="/pitfalls"
+            href="/gadgets"
             className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white transition-all hover:bg-brand-500 active:scale-[0.98]"
           >
-            Browse Pitfalls — From $2.99
+            Browse Gadgets — From $2.99
           </a>
         </div>
       </div>

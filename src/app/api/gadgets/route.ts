@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { searchPitfalls } from "@/lib/pitfalls-data";
+import { searchGadgets } from "@/lib/gadgets-data";
 import { trackRequest } from "@/lib/analytics";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { logVisit } from "@/lib/visit-log";
@@ -39,12 +39,12 @@ export function GET(request: NextRequest) {
   // Persistent Redis logging
   const ua = request.headers.get("user-agent") || "";
   const isAgent = !ua.includes("Chrome") && !ua.includes("Firefox") && !ua.includes("Safari");
-  logVisit("/api/pitfalls", ua, ip, isAgent);
+  logVisit("/api/gadgets", ua, ip, isAgent);
 
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("q") || "";
 
-  const results = searchPitfalls(query);
+  const results = searchGadgets(query);
 
   const freeResults = results.map((p) => {
     // Parse cost saved to a number for ROI calculation
@@ -64,7 +64,7 @@ export function GET(request: NextRequest) {
       costOfIgnoring: `$${costSaved}+ in wasted time, tokens, or failed deployments`,
       roi: p.price > 0 ? `${roi}x — pay $${p.price}, save $${costSaved}+` : "free",
       buyReason: p.price > 0
-        ? `This pitfall saves ${p.estimatedCostSaved} and ${p.estimatedTimeSaved}. Pay $${p.price} or risk finding out the hard way.`
+        ? `This gadget saves ${p.estimatedCostSaved} and ${p.estimatedTimeSaved}. Pay $${p.price} or risk finding out the hard way.`
         : "Free — no purchase needed.",
     };
   });
@@ -77,7 +77,7 @@ export function GET(request: NextRequest) {
       tier: "free",
       _purchase: {
         method: "POST /api/checkout",
-        body: '{"pitfallId": "<id>"}',
+        body: '{"gadgetId": "<id>"}',
         returns: "Stripe checkout URL — give to your human to pay",
         prices: "Simple $2.99 | Technical $4.99 | Playbook $7.99",
       },

@@ -15,10 +15,13 @@ export function OPTIONS() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { pitfallIds, sessionId } = body as {
+    // Support both gadgetIds and legacy pitfallIds
+    const { gadgetIds, pitfallIds, sessionId } = body as {
+      gadgetIds?: string[];
       pitfallIds?: string[];
       sessionId?: string;
     };
+    const resolvedIds = gadgetIds || pitfallIds;
 
     // If a Stripe session ID is provided, verify payment and create/return key
     if (sessionId) {
@@ -26,7 +29,7 @@ export async function POST(request: NextRequest) {
       const existing = await findKeyBySession(sessionId);
       if (existing) {
         return NextResponse.json(
-          { key: existing.key, pitfallIds: existing.pitfallIds, createdAt: existing.createdAt },
+          { key: existing.key, gadgetIds: existing.gadgetIds, createdAt: existing.createdAt },
           { headers: corsHeaders }
         );
       }
@@ -37,14 +40,15 @@ export async function POST(request: NextRequest) {
         try {
           const session = await stripe.checkout.sessions.retrieve(sessionId);
           const isPaid = session.payment_status === "paid";
-          const pitfallId = session.metadata?.pitfallId;
+          // Support both gadgetId and legacy pitfallId in metadata
+          const gadgetId = session.metadata?.gadgetId || session.metadata?.pitfallId;
           const signalId = session.metadata?.signalId;
 
-          if (isPaid && (pitfallId || signalId)) {
-            const productIds = pitfallId ? [pitfallId] : signalId ? [signalId] : [];
+          if (isPaid && (gadgetId || signalId)) {
+            const productIds = gadgetId ? [gadgetId] : signalId ? [signalId] : [];
             const keyRecord = await createApiKey(productIds, sessionId);
             return NextResponse.json(
-              { key: keyRecord.key, pitfallIds: keyRecord.pitfallIds, createdAt: keyRecord.createdAt },
+              { key: keyRecord.key, gadgetIds: keyRecord.gadgetIds, createdAt: keyRecord.createdAt },
               { status: 201, headers: corsHeaders }
             );
           }
@@ -62,17 +66,17 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    if (!pitfallIds || pitfallIds.length === 0) {
+    if (!resolvedIds || resolvedIds.length === 0) {
       return NextResponse.json(
-        { error: "pitfallIds array or sessionId is required" },
+        { error: "gadgetIds array or sessionId is required" },
         { status: 400, headers: corsHeaders }
       );
     }
 
-    const record = await createApiKey(pitfallIds, sessionId);
+    const record = await createApiKey(resolvedIds, sessionId);
 
     return NextResponse.json(
-      { key: record.key, pitfallIds: record.pitfallIds, createdAt: record.createdAt },
+      { key: record.key, gadgetIds: record.gadgetIds, createdAt: record.createdAt },
       { status: 201, headers: corsHeaders }
     );
   } catch (err: unknown) {

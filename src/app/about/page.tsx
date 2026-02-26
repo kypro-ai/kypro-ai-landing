@@ -20,7 +20,7 @@ const team = [
     name: "JD",
     role: "Founder & CEO",
     color: "brand",
-    desc: "Business owner turned AI tester. Approaches AI with a businessman's skepticism: \"Show me the P&L, not the pitch deck.\" Has personally lost money on most of the pitfalls we document — so you don't have to.",
+    desc: "Business owner turned AI tester. Approaches AI with a businessman's skepticism: \"Show me the P&L, not the pitch deck.\" Has personally lost money on most of the gadgets we document — so you don't have to.",
   },
   {
     emoji: "🛡️",
@@ -261,7 +261,7 @@ export default function AboutPage() {
               href="/#pricing"
               className="inline-flex items-center justify-center rounded-xl bg-brand-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/20 active:scale-[0.98]"
             >
-              Get Pitfall Intel — From $2.99
+              Get Gadget Intel — From $2.99
             </a>
           </div>
         </div>
