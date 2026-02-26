@@ -5,6 +5,19 @@ import { getPitfallById } from "@/lib/pitfalls-data";
 import { getSignalById } from "@/lib/signals-data";
 import { logVisit } from "@/lib/visit-log";
 
+/* ── Bot detection ─────────────────────────────────────────── */
+const BOT_PATTERNS = [
+  /GPTBot/i, /ChatGPT-User/i, /CCBot/i, /ClaudeBot/i, /anthropic-ai/i,
+  /Googlebot/i, /Bingbot/i, /Slurp/i, /DuckDuckBot/i, /Baiduspider/i,
+  /YandexBot/i, /Sogou/i, /facebookexternalhit/i, /Twitterbot/i,
+  /Applebot/i, /SemrushBot/i, /AhrefsBot/i, /MJ12bot/i, /DotBot/i,
+  /PetalBot/i, /bytespider/i,
+];
+
+function isCrawler(ua: string): boolean {
+  return BOT_PATTERNS.some((p) => p.test(ua));
+}
+
 /* ── Service definitions (for /services page) ─────────────── */
 const services: Record<string, { name: string; price: number; description: string; mode: "payment" | "subscription"; interval?: "month" }> = {
   "full-setup": {
@@ -185,6 +198,14 @@ export async function GET(request: NextRequest) {
   try {
     const ua = request.headers.get("user-agent") || "";
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+
+    if (isCrawler(ua)) {
+      return NextResponse.json(
+        { error: "Bots cannot access checkout. Visit https://www.tokenspy.ai for info." },
+        { status: 403 }
+      );
+    }
+
     logVisit("/api/checkout", ua, ip, true);
 
     const pitfallId = request.nextUrl.searchParams.get("pitfallId");
@@ -209,6 +230,14 @@ export async function POST(request: NextRequest) {
   try {
     const ua = request.headers.get("user-agent") || "";
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+
+    if (isCrawler(ua)) {
+      return NextResponse.json(
+        { error: "Bots cannot access checkout. Visit https://www.tokenspy.ai for info." },
+        { status: 403 }
+      );
+    }
+
     logVisit("/api/checkout", ua, ip, true);
 
     const body = await request.json();

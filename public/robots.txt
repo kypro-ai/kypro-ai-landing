@@ -1,0 +1,27 @@
+# TokenSpy robots.txt
+# Allow indexing of public pages, block API endpoints
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /purchase/
+
+# Specifically block known AI crawlers from API
+User-agent: GPTBot
+Disallow: /api/
+Disallow: /purchase/
+
+User-agent: ChatGPT-User
+Disallow: /api/
+Disallow: /purchase/
+
+User-agent: CCBot
+Disallow: /api/
+
+User-agent: anthropic-ai
+Disallow: /api/
+
+User-agent: ClaudeBot
+Disallow: /api/
+
+Sitemap: https://www.tokenspy.ai/sitemap.xml
