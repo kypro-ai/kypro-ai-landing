@@ -1336,6 +1336,51 @@ One main agent (Opus) for everything complex. Subtasks on Sonnet only for well-d
     estimatedTimeSaved: "5+ hours of multi-agent debugging",
     estimatedCostSaved: "$200-400/month by avoiding unnecessary agent proliferation",
   },
+  {
+    id: "test-purchase",
+    title: "🧪 Test Purchase — Payment Flow Verification",
+    summary:
+      "This is a $0.01 test item to verify the full purchase flow: checkout → Stripe payment → content delivery → API key generation.",
+    fullContent: `# 🧪 Test Purchase Successful!
+
+Congratulations — if you're reading this, the entire payment pipeline works:
+
+1. ✅ Checkout API created a Stripe session
+2. ✅ Stripe processed the payment
+3. ✅ Success page loaded and called /api/deliver
+4. ✅ Content was delivered to you
+5. ✅ API key was generated (if applicable)
+
+## What This Means
+The TokenSpy payment infrastructure is fully operational. Real purchases will deliver full pitfall intelligence, signal methodologies, and API access.
+
+## Technical Details
+- Payment processor: Stripe (live mode)
+- Content delivery: Direct session verification (no webhook dependency)
+- API key: Auto-generated on purchase
+
+This test item will be removed after verification.`,
+    steps: [
+      "Click Buy → redirected to Stripe Checkout",
+      "Enter payment details (use real card for $0.01)",
+      "Complete payment → redirected to success page",
+      "Verify content delivery on success page",
+      "Check API key generation",
+    ],
+    gotchas: [
+      "This is a real $0.01 charge, not a test mode transaction",
+      "Stripe minimum charge may vary by country",
+    ],
+    results: {
+      before: "Payment flow untested with real money",
+      after: "Full end-to-end payment verification complete",
+    },
+    tags: ["test", "payment", "verification"],
+    price: 0.01,
+    confidence: 1.0,
+    estimatedTimeSaved: "0 minutes — this is a test",
+    estimatedCostSaved: "$0.01 well spent on peace of mind",
+  },
 ];
 
 /**
